@@ -17,6 +17,8 @@ import Button from "components/CustomButtons/Button.jsx";
 import Parallax from "components/Parallax/Parallax.jsx";
 // sections for this page
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
+import HeaderLinksRight from "components/Header/HeaderLinksRight";
+import HeaderLinksLeft from "components/Header/HeaderLinksLeft";
 import SectionBasics from "./Sections/SectionBasics.jsx";
 import SectionNavbars from "./Sections/SectionNavbars.jsx";
 import SectionTabs from "./Sections/SectionTabs.jsx";
@@ -38,16 +40,18 @@ class Components extends React.Component {
     return (
       <div>
         <Header
-          brand="Material Kit React"
-          rightLinks={<HeaderLinks />}
+          //brand="Abbott"
+          leftLinks={<HeaderLinksLeft />}
+          rightLinks={<HeaderLinksRight />}
           fixed
-          color="transparent"
-          changeColorOnScroll={{
+          color="primary"
+          /*changeColorOnScroll={{
             height: 400,
             color: "white"
-          }}
+          }}*/
           {...rest}
         />
+        {/*
         <Parallax image={require("assets/img/bg4.jpg")}>
           <div className={classes.container}>
             <GridContainer>
@@ -62,6 +66,7 @@ class Components extends React.Component {
             </GridContainer>
           </div>
         </Parallax>
+        */}
 
         <div className={classNames(classes.main, classes.mainRaised)}>
           <SectionBasics />
