@@ -16,6 +16,8 @@ import Menu from "@material-ui/icons/Menu";
 // core components
 import headerStyle from "assets/jss/material-kit-react/components/headerStyle.jsx";
 
+import productImage from "assets/img/abbott.png";
+
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -71,7 +73,19 @@ class Header extends React.Component {
       [classes.absolute]: absolute,
       [classes.fixed]: fixed
     });
-    const brandComponent = <Button className={classes.title}>{brand}</Button>;
+    const brandComponent = (
+      <Button className={classes.title} color="transparent">
+        <img
+          src={productImage}
+          width="20px"
+          height="20px"
+          alt="Abbott"
+          color="transparent"
+        />
+        &nbsp;
+        {brand}
+      </Button>
+    );
     return (
       <AppBar className={appBarClasses}>
         <Toolbar className={classes.container}>
@@ -120,7 +134,7 @@ class Header extends React.Component {
 }
 
 Header.defaultProp = {
-  color: "white"
+  color: "transparent"
 };
 
 Header.propTypes = {

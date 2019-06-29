@@ -40,7 +40,7 @@ class Components extends React.Component {
     return (
       <div>
         <Header
-          //brand="Abbott"
+          brand="Abbott"
           leftLinks={<HeaderLinksLeft />}
           rightLinks={<HeaderLinksRight />}
           fixed

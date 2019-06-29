@@ -19,23 +19,11 @@ import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 
 import headerLinksStyle from "assets/jss/material-kit-react/components/headerLinksStyle.jsx";
-import productImage from "assets/img/abbott-logo.png";
 
 function HeaderLinksLeft({ ...props }) {
   const { classes } = props;
   return (
     <List className={classes.list}>
-         <ListItem className={classes.listItem}>
-                <Button color="transparent">
-                    <img
-                    src={productImage}
-                    className={classes.img}
-                    alt="Abbott"
-                    height="16"
-                    width="60"
-                    />
-                </Button>
-            </ListItem>
       <ListItem className={classes.listItem}>
         <Button
           href="#"

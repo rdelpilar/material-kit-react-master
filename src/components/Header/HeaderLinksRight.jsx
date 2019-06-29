@@ -25,18 +25,15 @@ function HeaderLinksRight({ ...props }) {
   const { classes } = props;
   return (
     <List className={classes.list}>
-        <ListItem className={classes.listItem}>
+        <ListItem className={classes.listItem} style={{paddingRight: 20 + 'px', paddingLeft: 20 + 'px'}}>
             <Button
             justIcon
             round
             href="#"
-            color="transparent"
+            color="white"
             onClick={e => e.preventDefault()}
-            className={classes.navLink}
             >
-                <div className={classes.typo}>
-                    <h3 className={classes.note}>SU</h3>
-              </div>
+            SU
             </Button>
       </ListItem>
       <ListItem className={classes.listItem}>
