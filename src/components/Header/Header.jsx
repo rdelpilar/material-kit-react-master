@@ -16,7 +16,7 @@ import Menu from "@material-ui/icons/Menu";
 // core components
 import headerStyle from "assets/jss/material-kit-react/components/headerStyle.jsx";
 
-import productImage from "assets/img/abbott.png";
+import productImage from "assets/img/abbott.jpg";
 
 class Header extends React.Component {
   constructor(props) {
@@ -77,8 +77,8 @@ class Header extends React.Component {
       <Button className={classes.title} color="transparent">
         <img
           src={productImage}
-          width="20px"
-          height="20px"
+          width="40px"
+          height="40px"
           alt="Abbott"
           color="transparent"
         />
