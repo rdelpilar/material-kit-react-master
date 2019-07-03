@@ -38,7 +38,7 @@ class Notifications extends Component {
     return (
       <div>
         <Header
-          brand="Abbott"
+          brand=""
           leftLinks={<HeaderLinksLeft />}
           rightLinks={<HeaderLinksRight />}
           fixed

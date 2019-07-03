@@ -19,7 +19,7 @@ import Menu from "@material-ui/icons/Menu";
 // core components
 import headerStyle from "assets/jss/material-kit-react/components/headerStyle.jsx";
 
-import productImage from "assets/img/abbott.jpg";
+import productImage from "assets/img/abbott-logo.jpg";
 
 class Header extends React.Component {
   constructor(props) {
@@ -82,7 +82,7 @@ class Header extends React.Component {
           src={productImage}
           width="40px"
           height="40px"
-          alt="Abbott"
+          alt=""
           color="primary"
         />
         <Link to="/">
