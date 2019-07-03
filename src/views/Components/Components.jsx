@@ -42,7 +42,7 @@ class Components extends React.Component {
     return (
       <div>
         <Header
-          brand="Abbott"
+          brand=""
           leftLinks={<HeaderLinksLeft />}
           rightLinks={<HeaderLinksRight />}
           fixed
@@ -71,7 +71,7 @@ class Components extends React.Component {
         */}
 
         <div className={classNames(classes.main, classes.mainRaised)}>
-        <br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <div style={{ marginTop: 200 + "px" }} />
           <SectionBasics />
           <SectionNavbars />
           <SectionTabs />

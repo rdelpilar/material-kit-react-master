@@ -38,20 +38,16 @@ class Notifications extends Component {
     return (
       <div>
         <Header
-          brand="Abbott"
+          brand=""
           leftLinks={<HeaderLinksLeft />}
           rightLinks={<HeaderLinksRight />}
           fixed
           color="primary"
-          // changeColorOnScroll={{
-          //   height: 400,
-          //   color: "white"
-          // }}
           {...rest}
         />
 
         <div className={classNames(classes.main, classes.mainRaised)}>
-          <div style={{ marginTop: 100 + "px" }} />
+          <div style={{ marginTop: 120 + "px" }} />
           <div className={classes.sections}>
             <div className={classes.container}>
               <div className={classes.title}>

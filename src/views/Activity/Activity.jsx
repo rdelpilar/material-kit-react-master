@@ -8,7 +8,6 @@ import HeaderLinksLeft from "components/Header/HeaderLinksLeft";
 import Footer from "components/Footer/Footer.jsx";
 import componentsStyle from "assets/jss/material-kit-react/views/components.jsx";
 
-import { Link } from "react-router-dom";
 class Activity extends React.Component {
   render() {
     const { classes, ...rest } = this.props;
@@ -16,28 +15,16 @@ class Activity extends React.Component {
     return (
       <div>
         <Header
-          brand="Abbott"
+          brand=""
           leftLinks={<HeaderLinksLeft />}
           rightLinks={<HeaderLinksRight />}
           fixed
           color="primary"
-          // changeColorOnScroll={{
-          //   height: 400,
-          //   color: "white"
-          // }}
           {...rest}
         />
 
         <div className={classNames(classes.main, classes.mainRaised)}>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
+          <div style={{ marginTop: 120 + "px" }} />
           <p>{params.id}</p>
           <Footer />
         </div>

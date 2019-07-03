@@ -25,13 +25,14 @@ function HeaderLinksLeft({ ...props }) {
   return (
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
+      <Link to="/notifications">
         <Button
-          href="/notifications"
           color="transparent"
           className={classes.navLink}
         >
         Notifications
         </Button>
+        </Link>
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button
