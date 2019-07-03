@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import ReactDOMServer from "react-dom/server";
+import ReactDOM from "react-dom";
 import ActionsMenu from "views/Actions/ActionsMenu";
 
 import "../Styling/datatables.css";
@@ -41,8 +42,9 @@ class NotificationsTable extends Component {
         },
         {
           title: "Actions",
-          data: getActionsColumn,
-          ordering: false
+          //data: getActionsColumn,
+          ordering: false,
+          render: getActionsColumn
         }
       ]
     });
@@ -63,7 +65,7 @@ class NotificationsTable extends Component {
   }
 
   componentWillUnmount() {
-    this.$el.DataTable.destroy(true);
+    //this.$el.DataTable.destroy(true);
     // $(".data-table-wrapper")
     //   .find("table")
     //   .DataTable()

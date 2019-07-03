@@ -5,8 +5,6 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 // @material-ui/core components
 
-import { BrowserRouter as Router, Link } from "react-router-dom";
-
 import withStyles from "@material-ui/core/styles/withStyles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -85,10 +83,7 @@ class Header extends React.Component {
           alt=""
           color="primary"
         />
-        <Link to="/">
-          &nbsp;
-          {brand}
-        </Link>
+        {brand}
       </Button>
     );
     return (

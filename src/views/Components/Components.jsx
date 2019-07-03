@@ -71,7 +71,7 @@ class Components extends React.Component {
         */}
 
         <div className={classNames(classes.main, classes.mainRaised)}>
-        <br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <div style={{ marginTop: 200 + "px" }} />
           <SectionBasics />
           <SectionNavbars />
           <SectionTabs />

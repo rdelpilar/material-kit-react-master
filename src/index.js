@@ -3,7 +3,7 @@ import "react-app-polyfill/stable";
 import React from "react";
 import ReactDOM from "react-dom";
 import { createBrowserHistory } from "history";
-import { Router, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch, Redirect } from "react-router-dom";
 
 import "assets/scss/material-kit-react.scss?v=1.7.0";
 
@@ -22,13 +22,13 @@ var hist = createBrowserHistory();
 ReactDOM.render(
   <Router history={hist}>
     <Switch>
-      <Route exact path="/" component={Notifications} />
+      <Redirect exact from="/" to="/notifications" />
+      <Route exact path="/notifications" component={Notifications} />
       <Route path="/activity/patient/:id" component={Activity} />
       <Route path="/components" component={Components} />
       <Route path="/landing-page" component={LandingPage} />
       <Route path="/profile-page" component={ProfilePage} />
       <Route path="/login-page" component={LoginPage} />
-
       <Route path="*" component={Error404} />
     </Switch>
   </Router>,
