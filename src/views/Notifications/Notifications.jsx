@@ -51,12 +51,7 @@ class Notifications extends Component {
         />
 
         <div className={classNames(classes.main, classes.mainRaised)}>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
+          <div style={{ marginTop: 100 + "px" }} />
           <div className={classes.sections}>
             <div className={classes.container}>
               <div className={classes.title}>
