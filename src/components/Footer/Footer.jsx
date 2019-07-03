@@ -24,57 +24,54 @@ function Footer({ ...props }) {
   return (
     <footer className={footerClasses}>
       <div className={classes.container}>
-        <div className={classes.left}>
+        <div className={classes.center}>
           <List className={classes.list}>
             <ListItem className={classes.inlineBlock}>
               <a
-                href="https://www.creative-tim.com/?ref=mkr-footer"
+                href="https://t4pilot.merlin.net/documents/35011/701468/Terms_and_Conditions.pdf"
                 className={classes.block}
                 target="_blank"
               >
-                Creative Tim
+                Website Terms of Use
               </a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
               <a
-                href="https://www.creative-tim.com/presentation?ref=mkr-footer"
+                href="https://t4pilot.merlin.net/documents/35011/701476/Clinic_Terms_and_Conditions_US.pdf"
                 className={classes.block}
                 target="_blank"
               >
-                About us
+                Clinic Terms and Conditions
               </a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
               <a
-                href="http://blog.creative-tim.com/?ref=mkr-footer"
+                href="https://t4pilot.merlin.net/documents/35011/701468/Privacy_Policy.pdf"
                 className={classes.block}
                 target="_blank"
               >
-                Blog
+                Privacy Policy
               </a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
               <a
-                href="https://www.creative-tim.com/license?ref=mkr-footer"
+                href="javascript:void(0)"
                 className={classes.block}
                 target="_blank"
               >
-                Licenses
+                Contact Us
+              </a>
+            </ListItem>
+            <ListItem className={classes.inlineBlock}>
+              <a
+                href="https://www.cardiovascular.abbott/"
+                className={classes.block}
+                target="_blank"
+              >
+                www.cardiovascular.abbott
               </a>
             </ListItem>
           </List>
-        </div>
-        <div className={classes.right}>
-          &copy; {1900 + new Date().getYear()} , made with{" "}
-          <Favorite className={classes.icon} /> by{" "}
-          <a
-            href="https://www.creative-tim.com?ref=mkr-footer"
-            className={aClasses}
-            target="_blank"
-          >
-            Creative Tim
-          </a>{" "}
-          for a better web.
         </div>
       </div>
     </footer>

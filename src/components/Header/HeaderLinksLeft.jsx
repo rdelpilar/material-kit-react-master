@@ -26,7 +26,7 @@ function HeaderLinksLeft({ ...props }) {
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
         <Button
-          href="#"
+          href="/notifications"
           color="transparent"
           className={classes.navLink}
         >
@@ -35,7 +35,7 @@ function HeaderLinksLeft({ ...props }) {
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button
-          href="#"
+          href="/all-patients"
           color="transparent"
           className={classes.navLink}
         >
@@ -44,7 +44,7 @@ function HeaderLinksLeft({ ...props }) {
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button
-          href="#"
+          href="/clinic"
           color="transparent"
           className={classes.navLink}
         >

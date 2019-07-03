@@ -19,6 +19,7 @@ import Parallax from "components/Parallax/Parallax.jsx";
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
 import HeaderLinksRight from "components/Header/HeaderLinksRight";
 import HeaderLinksLeft from "components/Header/HeaderLinksLeft";
+
 import SectionBasics from "./Sections/SectionBasics.jsx";
 import SectionNavbars from "./Sections/SectionNavbars.jsx";
 import SectionTabs from "./Sections/SectionTabs.jsx";
@@ -31,6 +32,7 @@ import SectionCompletedExamples from "./Sections/SectionCompletedExamples.jsx";
 import SectionLogin from "./Sections/SectionLogin.jsx";
 import SectionExamples from "./Sections/SectionExamples.jsx";
 import SectionDownload from "./Sections/SectionDownload.jsx";
+
 
 import componentsStyle from "assets/jss/material-kit-react/views/components.jsx";
 
@@ -45,10 +47,10 @@ class Components extends React.Component {
           rightLinks={<HeaderLinksRight />}
           fixed
           color="primary"
-          /*changeColorOnScroll={{
-            height: 400,
-            color: "white"
-          }}*/
+          // changeColorOnScroll={{
+          //   height: 400,
+          //   color: "white"
+          // }}
           {...rest}
         />
         {/*
@@ -69,6 +71,7 @@ class Components extends React.Component {
         */}
 
         <div className={classNames(classes.main, classes.mainRaised)}>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br />
           <SectionBasics />
           <SectionNavbars />
           <SectionTabs />

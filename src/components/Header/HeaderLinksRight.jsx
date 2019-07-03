@@ -29,7 +29,7 @@ function HeaderLinksRight({ ...props }) {
             <Button
             justIcon
             round
-            href="#"
+            href="/my-account"
             color="white"
             onClick={e => e.preventDefault()}
             >
@@ -46,19 +46,19 @@ function HeaderLinksRight({ ...props }) {
           }}
           buttonIcon={Help}
           dropdownList={[
-            <Link to="/" className={classes.dropdownLink}>
+            <Link to="/help" className={classes.dropdownLink}>
               Help
             </Link>,
             <a
-              href="#"
+              href="/learn-more"
               className={classes.dropdownLink}
             >
               Learn More
             </a>,
-            <Link to="/" className={classes.dropdownLink}>
+            <Link to="/about" className={classes.dropdownLink}>
                 About
             </Link>,
-            <Link to="/" className={classes.dropdownLink}>
+            <Link to="/practice-site" className={classes.dropdownLink}>
                 Practice Site
             </Link>
           ]}
@@ -74,7 +74,7 @@ function HeaderLinksRight({ ...props }) {
           }}
           buttonIcon={CompareArrows}
           dropdownList={[
-            <Link to="/" className={classes.dropdownLink}>
+            <Link to="/ep" className={classes.dropdownLink}>
               Arrhythmia & Device Management
             </Link>
           ]}
@@ -82,7 +82,7 @@ function HeaderLinksRight({ ...props }) {
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button
-          href="#"
+          href="/sign-out"
           color="transparent"
           className={classes.navLink}
         >

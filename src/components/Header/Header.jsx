@@ -4,6 +4,9 @@ import classNames from "classnames";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
+
+import { BrowserRouter as Router, Link } from "react-router-dom";
+
 import withStyles from "@material-ui/core/styles/withStyles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -74,16 +77,18 @@ class Header extends React.Component {
       [classes.fixed]: fixed
     });
     const brandComponent = (
-      <Button className={classes.title} color="transparent">
+      <Button className={classes.title} color="primary">
         <img
           src={productImage}
           width="40px"
           height="40px"
           alt="Abbott"
-          color="transparent"
+          color="primary"
         />
-        &nbsp;
-        {brand}
+        <Link to="/">
+          &nbsp;
+          {brand}
+        </Link>
       </Button>
     );
     return (
