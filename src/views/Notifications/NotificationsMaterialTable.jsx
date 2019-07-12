@@ -1,5 +1,16 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+
+import { Link } from "react-router-dom";
+import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
+import Button from "components/CustomButtons/Button.jsx";
+import { Apps, CloudDownload, Help, CompareArrows } from "@material-ui/icons";
+import withStyles from "@material-ui/core/styles/withStyles";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import headerLinksStyle from "assets/jss/material-kit-react/components/headerLinksStyle.jsx";
+
+
 import MaterialTable from "material-table";
 import { CircularProgress, Typography } from "@material-ui/core";
 import axios from "axios";
@@ -13,23 +24,6 @@ import Chart from "../Charts/Chart";
 class NotificationsMaterialTable extends Component {
   state = {
     data: [],
-    anchorEl: null
-  };
-
-  //this.handleClick = this.handleClick.bind(this);
-  //this.handleClose = this.handleClose.bind(this);
-
-  handleClick = event => {
-    this.setState({
-      anchorEl: event.currentTarget
-    });
-    console.log(this.state.anchorEl);
-  };
-
-  handleClose = () => {
-    this.setState({
-      anchorEl: null
-    });
   };
 
   componentDidMount() {
@@ -43,7 +37,6 @@ class NotificationsMaterialTable extends Component {
   }
 
   getData = () => {
-    const { anchorEl } = this.state;
     axios
       .get(
         `https://tc.raneldelpilar.com/merlin-demo-webservice/api/v1/patientinfo/list`
@@ -53,6 +46,8 @@ class NotificationsMaterialTable extends Component {
         let items = [];
         let chartDiv = "chartDiv_";
         let i = 0;
+
+        const { classes } = this.props;
 
         res.data.patientInfos.forEach(item => {
           let cc = chartDiv + i++;
@@ -65,24 +60,28 @@ class NotificationsMaterialTable extends Component {
 
           item.action = (
             <div>
-              <IconButton
-                aria-controls="simple-menu"
-                aria-haspopup="true"
-                onClick={this.handleClick}
-              >
-                <MoreVertIcon />
-              </IconButton>
-              <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={this.handleClose}
-              >
-                <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                <MenuItem onClick={this.handleClose}>Logout</MenuItem>
-              </Menu>
+              <CustomDropdown
+                noLiPadding
+                buttonProps={{
+                  className: classes.navLink,
+                  color: "transparent"
+                }}
+                buttonIcon={MoreVertIcon}
+                dropdownList={[
+                  <Link to="/help" className={classes.dropdownLink}>
+                    Help
+                  </Link>,
+                  <a href="/learn-more" className={classes.dropdownLink}>
+                    Learn More
+                  </a>,
+                  <Link to="/about" className={classes.dropdownLink}>
+                    About
+                  </Link>,
+                  <Link to="/practice-site" className={classes.dropdownLink}>
+                    Practice Site
+                  </Link>
+                ]}
+              />
             </div>
           );
 
@@ -127,4 +126,4 @@ class NotificationsMaterialTable extends Component {
   }
 }
 
-export default NotificationsMaterialTable;
+export default withStyles(headerLinksStyle)(NotificationsMaterialTable);

@@ -97,9 +97,9 @@ class Chart extends Component {
 
     // Add simple bullet
     var circleBullet = lineSeries.bullets.push(new am4charts.CircleBullet());
-    circleBullet.circle.radius = 6;
+    circleBullet.circle.radius = 5;
     circleBullet.circle.stroke = am4core.color("#fff");
-    circleBullet.circle.strokeWidth = 2;
+    circleBullet.circle.strokeWidth = 1;
     circleBullet.tooltipText = "{date}\nValue: [bold]{value}[/]";
 
     var labelBullet = lineSeries.bullets.push(new am4charts.LabelBullet());
