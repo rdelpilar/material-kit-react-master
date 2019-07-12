@@ -52,6 +52,15 @@ function HeaderLinksLeft({ ...props }) {
         Clinic
         </Button>
       </ListItem>
+      <ListItem className={classes.listItem}>
+        <Button
+          href="/notifications-jquery"
+          color="transparent"
+          className={classes.navLink}
+        >
+        jQuery DataTables
+        </Button>
+      </ListItem>
     </List>
   );
 }

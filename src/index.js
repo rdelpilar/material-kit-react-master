@@ -14,8 +14,10 @@ import ProfilePage from "views/ProfilePage/ProfilePage.jsx";
 import LoginPage from "views/LoginPage/LoginPage.jsx";
 
 import Notifications from "views/Notifications/Notifications.jsx";
+import NotificationsJQuery from "views/Notifications/NotificationsJQuery.jsx";
 import Activity from "views/Activity/Activity.jsx";
 import Error404 from "views/Utils/Error404.jsx";
+import AllPatients from "views/AllPatients/AllPatients";
 
 var hist = createBrowserHistory();
 
@@ -24,7 +26,12 @@ ReactDOM.render(
     <Switch>
       <Redirect exact from="/" to="/notifications" />
       <Route exact path="/notifications" component={Notifications} />
-      <Route exact path="/notifications" component={Notifications} />
+      <Route
+        exact
+        path="/notifications-jquery"
+        component={NotificationsJQuery}
+      />
+      <Route exact path="/all-patients" component={AllPatients} />
       <Route path="/activity/patient/:id" component={Activity} />
       <Route path="/components" component={Components} />
       <Route path="/landing-page" component={LandingPage} />

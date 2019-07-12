@@ -9,8 +9,8 @@ import Footer from "components/Footer/Footer.jsx";
 
 import componentsStyle from "assets/jss/material-kit-react/views/components.jsx";
 
-//import NotificationsMUIDataTables from "views/Notifications/NotificationsMUIDataTables.jsx";
-import NotificationsMaterialTable from "views/Notifications/NotificationsMaterialTable.jsx";
+//import AllPatientsMUIDataTables from "views/AllPatients/AllPatientsMUIDataTables.jsx";
+import AllPatientsMaterialTable from "views/AllPatients/AllPatientsMaterialTable.jsx";
 
 class Notifications extends Component {
   constructor(props) {
@@ -35,10 +35,8 @@ class Notifications extends Component {
         <div className={classNames(classes.main, classes.mainRaised)}>
           <div style={{ marginTop: 120 + "px" }} />
           <br />
-          <div
-            style={{ width: "98%", marginLeft: "auto", marginRight: "auto" }}
-          >
-            <NotificationsMaterialTable />
+          <div style={{ width: "98%", marginLeft: "auto", marginRight: "auto"}}>
+            <AllPatientsMaterialTable />
           </div>
           <br />
           <Footer />

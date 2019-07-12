@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import ReactDOMServer from "react-dom/server";
-import ReactDOM from "react-dom";
 import ActionsMenu from "views/Actions/ActionsMenu";
 
 import "../Styling/datatables.css";
@@ -9,7 +8,7 @@ import "../Styling/datatables.css";
 const $ = require("jquery");
 $.DataTable = require("datatables.net");
 
-class NotificationsTable extends Component {
+class NotificationsJQueryDataTable extends Component {
   componentDidMount() {
     this.$el = $(this.el);
     this.$el.DataTable({
@@ -95,4 +94,4 @@ function getActionsColumn() {
   return ReactDOMServer.renderToString(<ActionsMenu></ActionsMenu>);
 }
 
-export default NotificationsTable;
+export default NotificationsJQueryDataTable;

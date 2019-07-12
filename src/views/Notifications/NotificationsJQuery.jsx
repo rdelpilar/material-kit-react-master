@@ -7,18 +7,32 @@ import HeaderLinksRight from "components/Header/HeaderLinksRight";
 import HeaderLinksLeft from "components/Header/HeaderLinksLeft";
 import Footer from "components/Footer/Footer.jsx";
 
+import NotificationsJQueryDataTable from "./NotificationsJQueryDataTable.jsx";
+import axios from "axios";
 import componentsStyle from "assets/jss/material-kit-react/views/components.jsx";
 
-//import NotificationsMUIDataTables from "views/Notifications/NotificationsMUIDataTables.jsx";
-import NotificationsMaterialTable from "views/Notifications/NotificationsMaterialTable.jsx";
-
-class Notifications extends Component {
+class NotificationsJQuery extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      data: []
+    };
   }
-  componentDidMount() {}
+
+  componentDidMount() {
+    axios
+      .get(
+        `https://tc.raneldelpilar.com/merlin-demo-webservice/api/v1/patientinfo/list`
+      )
+      .then(res => {
+        const data = res.data.patientInfos;
+        this.setState({ data });
+      });
+  }
 
   render() {
+    if (this.state.data.length <= 0) return false;
+
     const { classes, ...rest } = this.props;
 
     return (
@@ -34,11 +48,16 @@ class Notifications extends Component {
 
         <div className={classNames(classes.main, classes.mainRaised)}>
           <div style={{ marginTop: 120 + "px" }} />
+          <div className={classes.sections}>
+            <div className={classes.container}>
+              <div className={classes.title}>
+                <h2>Using jQuery DataTables</h2>
+              </div>
+            </div>
+          </div>
           <br />
-          <div
-            style={{ width: "98%", marginLeft: "auto", marginRight: "auto" }}
-          >
-            <NotificationsMaterialTable />
+          <div className="NotificationsJQueryDataTable">
+            <NotificationsJQueryDataTable data={this.state.data} />
           </div>
           <br />
           <Footer />
@@ -48,4 +67,4 @@ class Notifications extends Component {
   }
 }
 
-export default withStyles(componentsStyle)(Notifications);
+export default withStyles(componentsStyle)(NotificationsJQuery);
