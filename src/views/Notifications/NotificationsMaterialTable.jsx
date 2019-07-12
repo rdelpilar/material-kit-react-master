@@ -46,16 +46,20 @@ class NotificationsMaterialTable extends Component {
     const { anchorEl } = this.state;
     axios
       .get(
-        //`https://tc.raneldelpilar.com/merlin-demo-webservice/api/v1/patientinfo/list`
-        `http://10.94.222.251:8090/api/v1/patientinfo/list`
+        `https://tc.raneldelpilar.com/merlin-demo-webservice/api/v1/patientinfo/list`
+        //`http://10.94.222.251:8090/api/v1/patientinfo/list`
       )
       .then(res => {
         let items = [];
+        let chartDiv = "chartDiv_";
+        let i = 0;
 
         res.data.patientInfos.forEach(item => {
+          let cc = chartDiv + i++;
+
           item.paTrend = (
             <div>
-              <Chart />
+              <Chart chartDivId={cc} />
             </div>
           );
 

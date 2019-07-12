@@ -1,0 +1,13 @@
+C:\Users\Ranel\VisualStudioCodeProjects\material-kit-react-master\node_modules\@amcharts\amcharts4\.internal\core\utils
+
+line: 107
+
+if (!options.commercialLicense) {
+    ...
+}
+
+change to
+
+if (options.commercialLicense) {
+    ...
+}
