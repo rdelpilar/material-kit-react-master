@@ -1,31 +1,39 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
+import ReactDOMServer from "react-dom/server";
 
-import { Link } from "react-router-dom";
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
-import Button from "components/CustomButtons/Button.jsx";
-import { Apps, CloudDownload, Help, CompareArrows } from "@material-ui/icons";
 import withStyles from "@material-ui/core/styles/withStyles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
 import headerLinksStyle from "assets/jss/material-kit-react/components/headerLinksStyle.jsx";
 
-
 import MaterialTable from "material-table";
-import { CircularProgress, Typography } from "@material-ui/core";
 import axios from "axios";
-import IconButton from "@material-ui/core/IconButton";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Primary from "components/Typography/Primary";
+import Danger from "components/Typography/Danger.jsx";
 import Chart from "../Charts/Chart";
 
-class NotificationsMaterialTable extends Component {
-  state = {
-    data: [],
-  };
+import Button from "components/CustomButtons/Button.jsx";
+//import AddInterventionsDialog from "../Dialogs/AddInterventionDialog";
 
+import Slide from "@material-ui/core/Slide";
+import AddInterventionDialog from "views/Dialogs/AddInterventionDialog";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="down" ref={ref} {...props} />;
+});
+
+Transition.displayName = "Transition";
+
+class NotificationsMaterialTable extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+      classicModal: false
+    };
+  }
   componentDidMount() {
     this.getData();
   }
@@ -40,7 +48,6 @@ class NotificationsMaterialTable extends Component {
     axios
       .get(
         `https://tc.raneldelpilar.com/merlin-demo-webservice/api/v1/patientinfo/list`
-        //`http://10.94.222.251:8090/api/v1/patientinfo/list`
       )
       .then(res => {
         let items = [];
@@ -52,6 +59,21 @@ class NotificationsMaterialTable extends Component {
         res.data.patientInfos.forEach(item => {
           let cc = chartDiv + i++;
 
+          item.patientClinician = this.getPatientClinicianColumn(
+            item.id,
+            item.name,
+            item.dob,
+            item.phone,
+            item.subscribingClinicians
+          );
+
+          item.goalType = this.getGoalTypeColumn(item.goalType, item.goal);
+
+          item.notificationDate = this.getNotificationDateColumn(
+            item.notificationDate,
+            item.notification
+          );
+
           item.paTrend = (
             <div>
               <Chart chartDivId={cc} />
@@ -61,6 +83,28 @@ class NotificationsMaterialTable extends Component {
           item.action = (
             <div>
               <CustomDropdown
+                left
+                caret={false}
+                dropdownHeader="Actions"
+                buttonText={<MoreVertIcon />}
+                buttonProps={{
+                  className:
+                    classes.navLink + " " + classes.imageDropdownButton,
+                  color: "transparent"
+                }}
+                dropdownList={[
+                  <AddInterventionDialog>
+                    Add Intervention
+                  </AddInterventionDialog>,
+                  { divider: true },
+                  "Add Clinical Note",
+                  "Update Status",
+                  "Clear Notification(s)",
+                  "Remind Me",
+                  "Subscribed"
+                ]}
+              />
+              {/* <CustomDropdown
                 noLiPadding
                 buttonProps={{
                   className: classes.navLink,
@@ -68,20 +112,25 @@ class NotificationsMaterialTable extends Component {
                 }}
                 buttonIcon={MoreVertIcon}
                 dropdownList={[
-                  <Link to="/help" className={classes.dropdownLink}>
-                    Help
+                  <AddInterventionsDialog></AddInterventionsDialog>,
+                  <hr/>,
+                  <Link to="/learn-more" className={classes.dropdownLink}>
+                    Add Clinical Note
                   </Link>,
-                  <a href="/learn-more" className={classes.dropdownLink}>
-                    Learn More
-                  </a>,
                   <Link to="/about" className={classes.dropdownLink}>
-                    About
+                    Update Status
                   </Link>,
-                  <Link to="/practice-site" className={classes.dropdownLink}>
-                    Practice Site
-                  </Link>
+                  <Link to="#" className={classes.dropdownLink}>
+                    Clear Notification(s)
+                  </Link>,
+                  <Link to="#" className={classes.dropdownLink}>
+                    Remind Me
+                </Link>,
+                  <Link to="#" className={classes.dropdownLink}>
+                    Subscribed
+              </Link>
                 ]}
-              />
+              /> */}
             </div>
           );
 
@@ -94,7 +143,63 @@ class NotificationsMaterialTable extends Component {
       });
   };
 
+  getPatientClinicianColumn(id, name, dob, phone, subscribingClinicians) {
+    return (
+      <div>
+        <Link to={"/activity/patient/" + id}>
+          <h4>{name}</h4>
+        </Link>
+        <small>DOB: {dob} </small>
+        <br />
+        <small>{phone}</small>
+        <br />
+        <br />
+        {subscribingClinicians}
+      </div>
+    );
+  }
+
+  getGoalTypeColumn(goalType, goal) {
+    let goalInt = parseInt(goal, 10);
+    if (goalInt >= 30) {
+      return (
+        <div>
+          <div>
+            <h2 style={{ color: "#f44336" }} className={this.props.title}>
+              {goal}
+            </h2>
+          </div>
+          <div>{goalType}</div>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <div>
+            <h2 className={this.props.title + " " + this.props.dangerText}>
+              {goal}
+            </h2>
+          </div>
+          <div>{goalType}</div>
+        </div>
+      );
+    }
+  }
+
+  getNotificationDateColumn(notification, notificationDate) {
+    return (
+      <div>
+        <div>
+          <h6 className={this.props.title}>
+            {notification} / {notificationDate}
+          </h6>
+        </div>
+      </div>
+    );
+  }
+
   render() {
+    const { classes } = this.props;
     if (this.state.count <= 0) return false;
     const { data } = this.state;
 
@@ -104,7 +209,7 @@ class NotificationsMaterialTable extends Component {
     };
 
     const columns = [
-      { title: "Patient / Clinician", field: "name" },
+      { title: "Patient / Clinician", field: "patientClinician" },
       { title: "Notification / Date", field: "notificationDate" },
       { title: "Goal / Type", field: "goalType" },
       { title: "Last Measurement", field: "lastMeasurement" },
@@ -116,7 +221,11 @@ class NotificationsMaterialTable extends Component {
     return (
       <div>
         <MaterialTable
-          title={<Typography variant="title">Notification</Typography>}
+          title={
+            <div className={classes.typo}>
+              <h3>Notification</h3>
+            </div>
+          }
           data={data}
           columns={columns}
           options={options}

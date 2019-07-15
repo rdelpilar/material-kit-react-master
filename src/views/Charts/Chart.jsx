@@ -55,7 +55,7 @@ class Chart extends Component {
       },
       {
         date: new Date(2019, 7, 22),
-        value: 65
+        value: 56
       },
       {
         date: new Date(2019, 7, 23),

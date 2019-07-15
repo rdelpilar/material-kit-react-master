@@ -45,15 +45,21 @@ class SectionJavascript extends React.Component {
       openRight: false
     };
   }
-  handleClickOpen(modal) {
-    var x = [];
-    x[modal] = true;
-    this.setState(x);
+  handleClickOpen() {
+    this.setState({
+      classicModal: true
+    });
+    // var x = [];
+    // x[modal] = true;
+    // this.setState(x);
   }
-  handleClose(modal) {
-    var x = [];
-    x[modal] = false;
-    this.setState(x);
+  handleClose() {
+    this.setState({
+      classicModal: false
+    });
+    // var x = [];
+    // x[modal] = false;
+    // this.setState(x);
   }
   handleClosePopover(state) {
     this.setState({
@@ -83,7 +89,7 @@ class SectionJavascript extends React.Component {
                   <Button
                     color="primary"
                     block
-                    onClick={() => this.handleClickOpen("classicModal")}
+                    onClick={() => this.handleClickOpen()}
                   >
                     <LibraryBooks className={classes.icon} />
                     Classic
@@ -96,7 +102,7 @@ class SectionJavascript extends React.Component {
                     open={this.state.classicModal}
                     TransitionComponent={Transition}
                     keepMounted
-                    onClose={() => this.handleClose("classicModal")}
+                    onClose={() => this.handleClose()}
                     aria-labelledby="classic-modal-slide-title"
                     aria-describedby="classic-modal-slide-description"
                   >
@@ -110,7 +116,7 @@ class SectionJavascript extends React.Component {
                         key="close"
                         aria-label="Close"
                         color="inherit"
-                        onClick={() => this.handleClose("classicModal")}
+                        onClick={() => this.handleClose()}
                       >
                         <Close className={classes.modalClose} />
                       </IconButton>
@@ -140,7 +146,7 @@ class SectionJavascript extends React.Component {
                         Nice Button
                       </Button>
                       <Button
-                        onClick={() => this.handleClose("classicModal")}
+                        onClick={() => this.handleClose()}
                         color="danger"
                         simple
                       >

@@ -1,4 +1,4 @@
-C:\Users\Ranel\VisualStudioCodeProjects\material-kit-react-master\node_modules\@amcharts\amcharts4\.internal\core\utils
+C:\Users\Ranel\VisualStudioCodeProjects\material-kit-react-master\node_modules\@amcharts\amcharts4\.internal\core\utils\Instance.js
 
 line: 107
 

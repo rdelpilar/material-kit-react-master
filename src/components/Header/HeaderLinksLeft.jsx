@@ -25,14 +25,13 @@ function HeaderLinksLeft({ ...props }) {
   return (
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
-      <Link to="/notifications">
         <Button
+          href="/notifications"
           color="transparent"
           className={classes.navLink}
         >
-        Notifications
+          Notifications
         </Button>
-        </Link>
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button
@@ -40,7 +39,7 @@ function HeaderLinksLeft({ ...props }) {
           color="transparent"
           className={classes.navLink}
         >
-        All Patients
+          All Patients
         </Button>
       </ListItem>
       <ListItem className={classes.listItem}>
@@ -49,7 +48,16 @@ function HeaderLinksLeft({ ...props }) {
           color="transparent"
           className={classes.navLink}
         >
-        Clinic
+          Clinic
+        </Button>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <Button
+          href="/notifications-mui2"
+          color="transparent"
+          className={classes.navLink}
+        >
+          MUI Table
         </Button>
       </ListItem>
       <ListItem className={classes.listItem}>
@@ -58,7 +66,7 @@ function HeaderLinksLeft({ ...props }) {
           color="transparent"
           className={classes.navLink}
         >
-        jQuery DataTables
+          jQuery table
         </Button>
       </ListItem>
     </List>

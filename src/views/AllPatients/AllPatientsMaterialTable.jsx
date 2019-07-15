@@ -22,8 +22,7 @@ class NotificationsMaterialTable extends Component {
   getData = () => {
     axios
       .get(
-        //`https://tc.raneldelpilar.com/merlin-demo-webservice/api/v1/patientinfo/list`
-        `http://10.94.222.251:8090/api/v1/patientinfo/list`
+        `https://tc.raneldelpilar.com/merlin-demo-webservice/api/v1/patientinfo/list`
       )
       .then(res => {
         let items = [];
