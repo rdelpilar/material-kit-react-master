@@ -32,6 +32,7 @@ class CustomTabs extends React.Component {
       plainTabs,
       tabs,
       title,
+      alignCenter,
       rtlActive
     } = this.props;
     const cardTitle = classNames({
@@ -51,6 +52,7 @@ class CustomTabs extends React.Component {
               root: classes.tabsRoot,
               indicator: classes.displayNone
             }}
+            centered={alignCenter}
           >
             {tabs.map((prop, key) => {
               var icon = {};
@@ -112,7 +114,8 @@ CustomTabs.propTypes = {
     })
   ),
   rtlActive: PropTypes.bool,
-  plainTabs: PropTypes.bool
+  plainTabs: PropTypes.bool,
+  alignCenter: PropTypes.bool
 };
 
 export default withStyles(customTabsStyle)(CustomTabs);

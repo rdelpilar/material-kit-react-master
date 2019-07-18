@@ -19,6 +19,7 @@ import Activity from "views/Activity/Activity.jsx";
 import Error404 from "views/Utils/Error404.jsx";
 import AllPatients from "views/AllPatients/AllPatients";
 import NotificationsMUIDataTable2 from "views/Notifications/NotificationsMUIDataTable2";
+import Settings from "views/Settings/Settings";
 
 var hist = createBrowserHistory();
 
@@ -39,6 +40,7 @@ ReactDOM.render(
       />
       <Route exact path="/all-patients" component={AllPatients} />
       <Route path="/activity/patient/:id" component={Activity} />
+      <Route path="/settings/patient/:id" component={Settings} />
       <Route path="/components" component={Components} />
       <Route path="/landing-page" component={LandingPage} />
       <Route path="/profile-page" component={ProfilePage} />

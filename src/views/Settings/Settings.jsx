@@ -7,13 +7,12 @@ import HeaderLinksRight from "components/Header/HeaderLinksRight";
 import HeaderLinksLeft from "components/Header/HeaderLinksLeft";
 import Footer from "components/Footer/Footer.jsx";
 import componentsStyle from "assets/jss/material-kit-react/views/components.jsx";
-import PatientInfoLayer1 from "./PatientInfoLayer1";
-import PatientInfoLayer2 from "./PatientInfoLayer2";
-import PatientSecondaryNav from "./PatientSecondaryNav";
-import ActivityNotification from "./ActivityNotification";
-import ActivityPortletsContainer from "./ActivityPortletsContainer";
+import PatientInfoLayer1 from "../Activity/PatientInfoLayer1";
+import PatientInfoLayer2 from "../Activity/PatientInfoLayer2";
+import PatientSecondaryNav from "../Activity/PatientSecondaryNav";
+import SettingsPortletContainer from "./SettingsPortletContainer";
 
-class Activity extends React.Component {
+class Settings extends React.Component {
   constructor() {
     super();
   }
@@ -43,11 +42,7 @@ class Activity extends React.Component {
           </div>
           <PatientSecondaryNav />
           <div className={classNames(classes.main, classes.mainRaised)}>
-            <ActivityNotification />
-          </div>
-          <br />
-          <div className={classNames(classes.main, classes.mainRaised)}>
-            <ActivityPortletsContainer />
+            <SettingsPortletContainer />
           </div>
           <br />
         </div>
@@ -57,4 +52,4 @@ class Activity extends React.Component {
   }
 }
 
-export default withStyles(componentsStyle)(Activity);
+export default withStyles(componentsStyle)(Settings);

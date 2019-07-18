@@ -35,19 +35,19 @@ const container = {
   ...conatinerFluid,
   "@media (min-width: 576px)": {
     // maxWidth: "540px"
-    maxWidth: "80%"
+    maxWidth: "90%"
   },
   "@media (min-width: 768px)": {
     // maxWidth: "720px"
-    maxWidth: "80%"
+    maxWidth: "90%"
   },
   "@media (min-width: 992px)": {
     // maxWidth: "960px"
-    maxWidth: "80%"
+    maxWidth: "85%"
   },
   "@media (min-width: 1200px)": {
     // maxWidth: "1140px"
-    maxWidth: "80%"
+    maxWidth: "85%"
   }
 };
 

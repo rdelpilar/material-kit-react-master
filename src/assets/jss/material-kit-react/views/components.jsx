@@ -23,16 +23,24 @@ const componentsStyle = {
     zIndex: "3"
   },
   mainRaised: {
-    margin: "-60px 30px 0px",
+    margin: "0px 30px 0px",
     borderRadius: "6px",
     boxShadow:
-      "0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)"
+      // "0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)"
+      "0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12)"
   },
   link: {
     textDecoration: "none"
   },
   textCenter: {
     textAlign: "center"
+  },
+  header: {
+    fontSize: "24px !important",
+    lineHeight: "32px !important",
+    fontWeight: "400",
+    letterSpacing: "normal !important",
+    fontFamily: "Roboto, sans-serif !important"
   }
 };
 
