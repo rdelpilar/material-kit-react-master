@@ -11,7 +11,7 @@ import PatientInfoLayer1 from "./PatientInfoLayer1";
 import PatientInfoLayer2 from "./PatientInfoLayer2";
 import PatientSecondaryNav from "./PatientSecondaryNav";
 import ActivityNotification from "./ActivityNotification";
-import ActivityPortletsContainer from "./ActivityPortletsContainer";
+import ActivityPortletsContainer from "../Portlets/ActivityPortletsContainer";
 
 class Activity extends React.Component {
   constructor() {
@@ -32,8 +32,8 @@ class Activity extends React.Component {
         />
 
         <div
-          className={classNames(classes.main)}
-          style={{ marginTop: 80 + "px", background: "#F4F3EF" }}
+          className={classNames(classes.main, classes.mainRaised)}
+          style={{ marginTop: 80 + "px"}}
         >
           <br />
           <div className={classNames(classes.main, classes.mainRaised)}>
@@ -50,8 +50,8 @@ class Activity extends React.Component {
             <ActivityPortletsContainer />
           </div>
           <br />
+          <Footer />
         </div>
-        <Footer />
       </div>
     );
   }

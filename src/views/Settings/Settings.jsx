@@ -10,7 +10,7 @@ import componentsStyle from "assets/jss/material-kit-react/views/components.jsx"
 import PatientInfoLayer1 from "../Activity/PatientInfoLayer1";
 import PatientInfoLayer2 from "../Activity/PatientInfoLayer2";
 import PatientSecondaryNav from "../Activity/PatientSecondaryNav";
-import SettingsPortletContainer from "./SettingsPortletContainer";
+import SettingsPortletContainer from "../Portlets/SettingsPortletContainer";
 
 class Settings extends React.Component {
   constructor() {
@@ -31,8 +31,8 @@ class Settings extends React.Component {
         />
 
         <div
-          className={classNames(classes.main)}
-          style={{ marginTop: 80 + "px", background: "#F4F3EF" }}
+          className={classNames(classes.main, classes.mainRaised)}
+          style={{ marginTop: 80 + "px" }}
         >
           <br />
           <div className={classNames(classes.main, classes.mainRaised)}>
@@ -45,8 +45,8 @@ class Settings extends React.Component {
             <SettingsPortletContainer />
           </div>
           <br />
+          <Footer />
         </div>
-        <Footer />
       </div>
     );
   }

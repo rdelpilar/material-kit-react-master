@@ -18,7 +18,7 @@ import CustomInput from "components/CustomInput/CustomInput.jsx";
 
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
 
-import image from "assets/img/bg7.jpg";
+import image from "assets/img/girl-bg.jpg";
 
 class LoginPageAbbott extends React.Component {
   constructor(props) {

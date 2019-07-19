@@ -33,7 +33,7 @@ class Notifications extends Component {
         />
 
         <div className={classNames(classes.main, classes.mainRaised)}>
-          <div style={{ marginTop: 120 + "px" }} />
+          <div style={{ marginTop: 80 + "px" }} />
           <br />
           <div
             style={{ width: "98%", marginLeft: "auto", marginRight: "auto" }}

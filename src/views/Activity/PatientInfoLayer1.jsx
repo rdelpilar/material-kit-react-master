@@ -17,14 +17,14 @@ class PatientInfoLayer1 extends React.Component {
     return (
       <div className={classes.section}>
         <div className={classes.container}>
-          <GridContainer>
-            <GridItem xs={12} sm={12} md={3}>
+          <GridContainer style={{ justify: "space-between" }}>
+            <GridItem xs={12} sm={3} md={3}>
               <div className={classes.header} style={{ paddingTop: 35 + "px" }}>Graham, Leanne</div>
             </GridItem>
-            <GridItem xs={12} sm={12} md={7}>
+            <GridItem xs={12} sm={5} md={6}>
               <div style={{ paddingTop: 40 + "px" }}>DOB: 01-01-1880</div>
             </GridItem>
-            <GridItem xs={12} sm={12} md={2}>
+            <GridItem xs={12} sm={1} md={1}>
               <Actions></Actions>
             </GridItem>
           </GridContainer>

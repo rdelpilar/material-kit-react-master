@@ -17,19 +17,17 @@ class PatientSecondaryNav extends React.Component {
         className={classes.section}
         style={{ paddingTop: 20 + "px", paddingBottom: 20 + "px" }}
       >
-        <div className={classes.container} style={{ maxWidth: 20 + "%" }}>
-          <div>
-            <GridContainer>
-              <GridItem xs={12} sm={12} md={12}>
-                <Link to={"/activity/patient/1"}>
-                  <Button color="primary">Activity</Button>
-                </Link>
-                <Link to={"/settings/patient/1"}>
-                  <Button color="primary">Settings</Button>
-                </Link>
-              </GridItem>
-            </GridContainer>
-          </div>
+        <div className={classes.container}>
+          <GridContainer style={{ textAlign: "center" }}>
+            <GridItem xs={12} sm={12} md={12}>
+              <Link to={"/activity/patient/1"}>
+                <Button color="primary">Activity</Button>
+              </Link>
+              <Link to={"/settings/patient/1"}>
+                <Button color="primary">Settings</Button>
+              </Link>
+            </GridItem>
+          </GridContainer>
         </div>
       </div>
     );
