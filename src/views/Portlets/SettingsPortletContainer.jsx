@@ -13,6 +13,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import PatientProfilePortlet from "./PatientProfilePortlet";
 import CardioMemsPortlet from "./CardioMemsPortlet";
 import DiagnosisPortlet from "./DiagnosisPortlet";
+import MedicationsPortlet from "./MedicationsPortlet";
 
 class SettingsPortletsContainer extends React.Component {
   render() {
@@ -23,7 +24,7 @@ class SettingsPortletsContainer extends React.Component {
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1bh-content"
-            id="panel1bh-header"
+            id="patientProfilePortlet"
           >
             <Typography className={classes.heading}>Patient Profile</Typography>
           </ExpansionPanelSummary>
@@ -40,7 +41,7 @@ class SettingsPortletsContainer extends React.Component {
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel2bh-content"
-            id="panel2bh-header"
+            id="myCardioMemsPortlet"
           >
             <Typography className={classes.heading}>
               myCardioMEMS Mobile Application
@@ -59,7 +60,7 @@ class SettingsPortletsContainer extends React.Component {
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel3bh-content"
-            id="panel3bh-header"
+            id="diagnosesPortlet"
           >
             <Typography className={classes.heading}>Diagnoses</Typography>
           </ExpansionPanelSummary>
@@ -76,7 +77,24 @@ class SettingsPortletsContainer extends React.Component {
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel3bh-content"
-            id="panel3bh-header"
+            id="medicationsPortlet"
+          >
+            <Typography className={classes.heading}>Medications</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <div
+              className={classNames(classes.main, classes.mainRaised)}
+              style={{ width: "100%" }}
+            >
+              <MedicationsPortlet />
+            </div>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+        <ExpansionPanel>
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel3bh-content"
+            id="goalsAndThresholdsPortlet"
           >
             <Typography className={classes.heading}>
               Goals and Thresholds
@@ -90,7 +108,7 @@ class SettingsPortletsContainer extends React.Component {
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel3bh-content"
-            id="panel3bh-header"
+            id="notificationsPortlet"
           >
             <Typography className={classes.heading}>Notifications</Typography>
           </ExpansionPanelSummary>
@@ -104,21 +122,7 @@ class SettingsPortletsContainer extends React.Component {
             aria-controls="panel3bh-content"
             id="panel3bh-header"
           >
-            <Typography className={classes.heading}>Notifications</Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <div className={classNames(classes.main, classes.mainRaised)}></div>
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-        <ExpansionPanel>
-          <ExpansionPanelSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel3bh-content"
-            id="panel3bh-header"
-          >
-            <Typography className={classes.heading}>
-              Hospitalizations
-            </Typography>
+            <Typography className={classes.heading}>Hospitalizations</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <div className={classNames(classes.main, classes.mainRaised)}></div>
