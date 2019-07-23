@@ -26,13 +26,11 @@ class ActivityPortletsContainer extends React.Component {
             id="panel1bh-header"
           >
             <Typography className={classes.heading}>
-              Recent Intervention
+              <h4>Recent Intervention</h4>
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <Typography>
-              Recent interventions...
-            </Typography>
+            <Typography>Recent interventions...</Typography>
           </ExpansionPanelDetails>
         </ExpansionPanel>
         <ExpansionPanel expanded>
@@ -42,7 +40,7 @@ class ActivityPortletsContainer extends React.Component {
             id="panel2bh-header"
           >
             <Typography className={classes.heading}>
-              DirectTrend Viewer
+              <h4>DirectTrend Viewer</h4>
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
@@ -55,7 +53,9 @@ class ActivityPortletsContainer extends React.Component {
             aria-controls="panel3bh-content"
             id="panel3bh-header"
           >
-            <Typography className={classes.heading}>Readings</Typography>
+            <Typography className={classes.heading}>
+              <h4>Readings</h4>
+            </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <div className={classNames(classes.main, classes.mainRaised)}>

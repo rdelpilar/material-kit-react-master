@@ -14,6 +14,7 @@ import PatientProfilePortlet from "./PatientProfilePortlet";
 import CardioMemsPortlet from "./CardioMemsPortlet";
 import DiagnosisPortlet from "./DiagnosisPortlet";
 import MedicationsPortlet from "./MedicationsPortlet";
+import GoalsAndThresholdsPortlet from "./GoalsAndThresholdsPortlet";
 
 class SettingsPortletsContainer extends React.Component {
   render() {
@@ -26,7 +27,9 @@ class SettingsPortletsContainer extends React.Component {
             aria-controls="panel1bh-content"
             id="patientProfilePortlet"
           >
-            <Typography className={classes.heading}>Patient Profile</Typography>
+            <Typography className={classes.heading}>
+              <h4>Patient Profile</h4>
+            </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <div
@@ -44,7 +47,7 @@ class SettingsPortletsContainer extends React.Component {
             id="myCardioMemsPortlet"
           >
             <Typography className={classes.heading}>
-              myCardioMEMS Mobile Application
+              <h4>myCardioMEMS Mobile Application</h4>
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
@@ -62,7 +65,9 @@ class SettingsPortletsContainer extends React.Component {
             aria-controls="panel3bh-content"
             id="diagnosesPortlet"
           >
-            <Typography className={classes.heading}>Diagnoses</Typography>
+            <Typography className={classes.heading}>
+              <h4>Diagnoses</h4>
+            </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <div
@@ -79,7 +84,9 @@ class SettingsPortletsContainer extends React.Component {
             aria-controls="panel3bh-content"
             id="medicationsPortlet"
           >
-            <Typography className={classes.heading}>Medications</Typography>
+            <Typography className={classes.heading}>
+              <h4>Medications</h4>
+            </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <div
@@ -97,7 +104,23 @@ class SettingsPortletsContainer extends React.Component {
             id="goalsAndThresholdsPortlet"
           >
             <Typography className={classes.heading}>
-              Goals and Thresholds
+              <h4>Goals and Thresholds</h4>
+            </Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <div style={{ width: "100%" }}>
+              <GoalsAndThresholdsPortlet />
+            </div>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+        <ExpansionPanel>
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel3bh-content"
+            id="notificationsPortlet"
+          >
+            <Typography className={classes.heading}>
+              <h4>Notifications</h4>
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
@@ -108,9 +131,11 @@ class SettingsPortletsContainer extends React.Component {
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel3bh-content"
-            id="notificationsPortlet"
+            id="panel3bh-header"
           >
-            <Typography className={classes.heading}>Notifications</Typography>
+            <Typography className={classes.heading}>
+              <h4>Hospitalizations</h4>
+            </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <div className={classNames(classes.main, classes.mainRaised)}></div>
@@ -122,19 +147,9 @@ class SettingsPortletsContainer extends React.Component {
             aria-controls="panel3bh-content"
             id="panel3bh-header"
           >
-            <Typography className={classes.heading}>Hospitalizations</Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <div className={classNames(classes.main, classes.mainRaised)}></div>
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-        <ExpansionPanel>
-          <ExpansionPanelSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel3bh-content"
-            id="panel3bh-header"
-          >
-            <Typography className={classes.heading}>Notes</Typography>
+            <Typography className={classes.heading}>
+              <h4>Notes</h4>
+            </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <div className={classNames(classes.main, classes.mainRaised)}></div>
