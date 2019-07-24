@@ -15,6 +15,7 @@ import {
   Divider
 } from "@material-ui/core";
 import Info from "@material-ui/icons/Info";
+import Button from "components/CustomButtons/Button.jsx";
 
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -23,8 +24,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
-function createData(name, calories, fat, carbs) {
-  return { name, calories, fat, carbs };
+function createData(raMean, raMeanVal, paMean, paMeanVal) {
+  return { raMean, raMeanVal, paMean, paMeanVal };
 }
 
 const rows = [
@@ -44,7 +45,7 @@ class GoalsAndThresholdsPortlet extends React.Component {
     return (
       <div>
         <GridContainer>
-          <GridItem xs={12} sm={12} md={6} justify>
+          <GridItem xs={12} sm={12} md={6}>
             <div className={classNames(classes.main)}>
               <div className={classNames(classes.section, classes.mainRaised)}>
                 <br />
@@ -55,8 +56,10 @@ class GoalsAndThresholdsPortlet extends React.Component {
                   >
                     <FormLabel component="legend">
                       <h4>
-                        1. Select the Primary Metric that will be used for
-                        monitoring this patient.
+                        <small style={{ fontWeight: 500 }}>
+                          1. Select the Primary Metric that will be used for
+                          monitoring this patient.
+                        </small>
                       </h4>
                     </FormLabel>
                     <RadioGroup
@@ -75,14 +78,15 @@ class GoalsAndThresholdsPortlet extends React.Component {
                         label="PA Mean Pressure"
                       />
                       <FormHelperText>
-                        <Info color="primary" />
-                        Changing the patient's primary Metric will reset the
-                        detection of clinical Notifications.
+                        <div>
+                          <Info color="primary" />
+                          Changing the patient's primary Metric will reset the
+                          detection of clinical Notifications.
+                        </div>
                       </FormHelperText>
                     </RadioGroup>
                   </FormControl>
                 </div>
-                <br />
                 <br />
                 <div className={classes.container}>
                   <FormControl
@@ -90,7 +94,11 @@ class GoalsAndThresholdsPortlet extends React.Component {
                     className={classes.FormControl}
                   >
                     <FormLabel component="legend">
-                      <h4>2. Select the phase that the patient is in.</h4>
+                      <h4>
+                        <small style={{ fontWeight: 500 }}>
+                          2. Select the phase that the patient is in.
+                        </small>
+                      </h4>
                     </FormLabel>
                     <RadioGroup
                       aria-label="phase"
@@ -127,17 +135,16 @@ class GoalsAndThresholdsPortlet extends React.Component {
                   <br />
                   <Paper className={classes.root}>
                     <Table className={classes.table}>
-                      <TableHead>
-                      </TableHead>
+                      <TableHead></TableHead>
                       <TableBody>
                         {rows.map(row => (
                           <TableRow key={row.name}>
                             <TableCell component="th" scope="row">
-                              {row.name}
+                              {row.raMean}
                             </TableCell>
-                            <TableCell align="right">{row.calories}</TableCell>
-                            <TableCell align="right">{row.fat}</TableCell>
-                            <TableCell align="right">{row.carbs}</TableCell>
+                            <TableCell align="right">{row.raMeanVal}</TableCell>
+                            <TableCell align="right">{row.paMean}</TableCell>
+                            <TableCell align="right">{row.paMeanVal}</TableCell>
                           </TableRow>
                         ))}
                       </TableBody>
@@ -149,6 +156,19 @@ class GoalsAndThresholdsPortlet extends React.Component {
             </div>
           </GridItem>
         </GridContainer>
+        <div
+          className={classes.section}
+          style={{ paddingTop: 20 + "px", paddingBottom: 20 + "px" }}
+        >
+          <div className={classes.container}>
+            <GridContainer style={{ textAlign: "right" }}>
+              <GridItem xs={12} sm={12} md={12}>
+                <Button color="primary">Cancel</Button>
+                <Button>Save</Button>
+              </GridItem>
+            </GridContainer>
+          </div>
+        </div>
       </div>
     );
   }

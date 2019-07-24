@@ -15,6 +15,7 @@ import CardioMemsPortlet from "./CardioMemsPortlet";
 import DiagnosisPortlet from "./DiagnosisPortlet";
 import MedicationsPortlet from "./MedicationsPortlet";
 import GoalsAndThresholdsPortlet from "./GoalsAndThresholdsPortlet";
+import NotificationsPortlet from "./NotificationsPortlet";
 
 class SettingsPortletsContainer extends React.Component {
   render() {
@@ -124,7 +125,9 @@ class SettingsPortletsContainer extends React.Component {
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <div className={classNames(classes.main, classes.mainRaised)}></div>
+            <div style={{ width: "100%" }}>
+              <NotificationsPortlet />
+            </div>
           </ExpansionPanelDetails>
         </ExpansionPanel>
         <ExpansionPanel>

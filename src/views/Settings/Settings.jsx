@@ -11,6 +11,8 @@ import PatientInfoLayer1 from "../Activity/PatientInfoLayer1";
 import PatientInfoLayer2 from "../Activity/PatientInfoLayer2";
 import PatientSecondaryNav from "../Activity/PatientSecondaryNav";
 import SettingsPortletContainer from "../Portlets/SettingsPortletContainer";
+import GridContainer from "components/Grid/GridContainer";
+import GridItem from "components/Grid/GridItem";
 
 class Settings extends React.Component {
   constructor() {
