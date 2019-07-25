@@ -9,8 +9,8 @@ import {
   FormControl,
   FormGroup,
   Input,
-  FormControlLabel,
-  Checkbox
+  Checkbox,
+  Divider
 } from "@material-ui/core";
 
 import Button from "components/CustomButtons/Button.jsx";
@@ -475,40 +475,40 @@ class ClinicThresholdsPortlet extends React.Component {
 
     return (
       <div>
+        <Divider />
+        <br />
         <GridContainer>
           <GridItem xs={12} sm={12} md={12}>
             <div className={classNames(classes.main)}>
-              <div className={classNames(classes.section, classes.mainRaised)}>
-                <div className={classes.container}>
-                  <br />
-                  <Paper className={classes.root} style={{ overflowX: "auto" }}>
-                    <Table className={classes.table}>
-                      <TableHead>
-                        <TableRow>
-                          <TableCell>Metric</TableCell>
-                          <TableCell>Active</TableCell>
-                          <TableCell>Lower Bound</TableCell>
-                          <TableCell>Upper Bound</TableCell>
-                          <TableCell></TableCell>
-                        </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {rows.map(row => {
-                          return (
-                            <TableRow key={row.name}>
-                              <TableCell>{row.metric}</TableCell>
-                              <TableCell>{row.active}</TableCell>
-                              <TableCell>{row.lowerBound}</TableCell>
-                              <TableCell>{row.upperBound}</TableCell>
-                              <TableCell>{row.notes}</TableCell>
-                            </TableRow>
-                          );
-                        })}
-                      </TableBody>
-                    </Table>
-                  </Paper>
-                  <br />
-                </div>
+              <div className={classes.container}>
+                <br />
+                <Paper className={classes.root} style={{ overflowX: "auto" }}>
+                  <Table className={classes.table}>
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>Metric</TableCell>
+                        <TableCell>Active</TableCell>
+                        <TableCell>Lower Bound</TableCell>
+                        <TableCell>Upper Bound</TableCell>
+                        <TableCell></TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {rows.map(row => {
+                        return (
+                          <TableRow key={row.name}>
+                            <TableCell>{row.metric}</TableCell>
+                            <TableCell>{row.active}</TableCell>
+                            <TableCell>{row.lowerBound}</TableCell>
+                            <TableCell>{row.upperBound}</TableCell>
+                            <TableCell>{row.notes}</TableCell>
+                          </TableRow>
+                        );
+                      })}
+                    </TableBody>
+                  </Table>
+                </Paper>
+                <br />
               </div>
             </div>
           </GridItem>
