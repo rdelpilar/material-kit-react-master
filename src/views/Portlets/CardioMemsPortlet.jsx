@@ -9,15 +9,10 @@ import DialogActions from "@material-ui/core/DialogActions";
 import GridContainer from "components/Grid/GridContainer";
 import GridItem from "components/Grid/GridItem";
 
-import classNames from "classnames";
-
-import Input from "@material-ui/core/Input";
 import MenuItem from "@material-ui/core/MenuItem";
 import { TextField } from "@material-ui/core";
 
 import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-
 import Primary from "components/Typography/Primary";
 import Button from "components/CustomButtons/Button.jsx";
 import Slide from "@material-ui/core/Slide";

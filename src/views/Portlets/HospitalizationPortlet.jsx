@@ -10,18 +10,21 @@ import GridContainer from "components/Grid/GridContainer";
 import GridItem from "components/Grid/GridItem";
 
 import Datetime from "react-datetime";
-import Input from "@material-ui/core/Input";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
-
 import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import Button from "components/CustomButtons/Button.jsx";
+import { TextField } from "@material-ui/core";
 
 import Primary from "components/Typography/Primary";
+import Button from "components/CustomButtons/Button.jsx";
 import Slide from "@material-ui/core/Slide";
 import MaterialTable from "material-table";
-import { TextField, Divider } from "@material-ui/core";
+import {
+  FormControlLabel,
+  Divider,
+  FormControl,
+  FormGroup
+} from "@material-ui/core";
+
+import { CheckBox } from "@material-ui/icons";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -29,22 +32,22 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 Transition.displayName = "Transition";
 
-class DiagnosisPortlet extends React.Component {
+class HospitalizationPortlet extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      addDiagnosisModal: false
+      addHospitalizationModal: false
     };
   }
 
-  handleClickOpenAddDiagnosisModal() {
+  handleClickOpenAddHospitalizationModal() {
     this.setState({
-      addDiagnosisModal: true
+      addHospitalizationModal: true
     });
   }
-  handleCloseAddDiagnosisModal() {
+  handleCloseAddHospitalizationModal() {
     this.setState({
-      addDiagnosisModal: false
+      addHospitalizationModal: false
     });
   }
   render() {
@@ -56,9 +59,10 @@ class DiagnosisPortlet extends React.Component {
     };
 
     const columns = [
-      { title: "Diagnosis Date", field: "diagnosisDate" },
-      { title: "Medical Condition", field: "medicalCondition" },
-      { title: "Comments", field: "comments" }
+      { title: "Admission", field: "admissionDate" },
+      { title: "Discharge", field: "dischargeDate" },
+      { title: "Duration", field: "duration" },
+      { title: "Notes", field: "notes" }
     ];
 
     return (
@@ -68,19 +72,19 @@ class DiagnosisPortlet extends React.Component {
             <Button
               color="primary"
               simple
-              onClick={() => this.handleClickOpenAddDiagnosisModal()}
+              onClick={() => this.handleClickOpenAddHospitalizationModal()}
             >
-              Add Diagnosis
+              Add Hospitalization
             </Button>
             <Dialog
               classes={{
                 root: classes.center,
                 paper: classes.modal
               }}
-              open={this.state.addDiagnosisModal}
+              open={this.state.addHospitalizationModal}
               // TransitionComponent={Transition}
               keepMounted
-              onClose={() => this.handleCloseAddDiagnosisModal()}
+              onClose={() => this.handleCloseAddHospitalizationModal()}
               aria-labelledby="classic-modal-slide-title"
               aria-describedby="classic-modal-slide-description"
             >
@@ -90,7 +94,7 @@ class DiagnosisPortlet extends React.Component {
                 style={{ backgroundColor: "#009CDE" }}
               >
                 <h3 className={classes.modalTitle} style={{ color: "#FFFFFF" }}>
-                  Add Diagnosis
+                  Add Hospitalization
                 </h3>
               </DialogTitle>
               <DialogContent className={classes.modalBody}>
@@ -99,7 +103,7 @@ class DiagnosisPortlet extends React.Component {
                   style={{
                     justify: "space-evenly",
                     maxWidth: "100%",
-                    height: "420px",
+                    height: "480px",
                     width: "400px"
                   }}
                 >
@@ -110,7 +114,7 @@ class DiagnosisPortlet extends React.Component {
                         className={classes.formControl}
                         style={{ width: "100%", color: "#009CDE" }}
                       >
-                        <InputLabel shrink>Diagnosis Date</InputLabel>
+                        <InputLabel shrink>Admission Date</InputLabel>
                         <br />
                         <Datetime />
                       </FormControl>
@@ -121,19 +125,9 @@ class DiagnosisPortlet extends React.Component {
                         className={classes.formControl}
                         style={{ width: "100%", color: "#009CDE" }}
                       >
-                        <InputLabel shrink htmlFor="age-label-placeholder">
-                          Medical Condition
-                        </InputLabel>
-                        <Select
-                          input={<Input name="clinicalTrialSettings" />}
-                          name="clinicalTrialSettings"
-                          className={classes.selectEmpty}
-                        >
-                          <MenuItem value={1}>Medical Condition 1</MenuItem>
-                          <MenuItem value={2}>Medical Condition 2</MenuItem>
-                          <MenuItem value={3}>Medical Condition 3</MenuItem>
-                          <MenuItem value={4}>Medical Condition 4</MenuItem>
-                        </Select>
+                        <InputLabel shrink>Discharge Date</InputLabel>
+                        <br />
+                        <Datetime />
                       </FormControl>
                     </GridItem>
                     <GridItem xs={12} sm={12} md={12}>
@@ -142,11 +136,28 @@ class DiagnosisPortlet extends React.Component {
                         className={classes.formControl}
                         style={{ width: "100%", color: "#009CDE" }}
                       >
-                        <InputLabel shrink htmlFor="age-label-placeholder">
-                          Medical Condition
-                        </InputLabel>
+                        <FormGroup>
+                          <p>
+                            <span>
+                              <FormControlLabel
+                                control={
+                                  <CheckBox checked={false} color="primary" />
+                                }
+                                label="No Discharge Date"
+                              />
+                            </span>
+                          </p>
+                        </FormGroup>
+                      </FormControl>
+                    </GridItem>
+                    <GridItem xs={12} sm={12} md={12}>
+                      <br />
+                      <FormControl
+                        className={classes.formControl}
+                        style={{ width: "100%", color: "#009CDE" }}
+                      >
                         <TextField
-                          label="Comments"
+                          label="Notes"
                           multiline
                           rows="5"
                           rowsMax="5"
@@ -154,7 +165,7 @@ class DiagnosisPortlet extends React.Component {
                           margin="normal"
                           variant="outlined"
                           fullWidth
-                          placeholder="Add comment..."
+                          placeholder="Add notes..."
                           style={{
                             backgroundColor: "#FFFFFF",
                             marginTop: 0 + "px"
@@ -167,13 +178,13 @@ class DiagnosisPortlet extends React.Component {
               </DialogContent>
               <DialogActions className={classes.modalFooter}>
                 <Button
-                  onClick={() => this.handleCloseAddDiagnosisModal()}
+                  onClick={() => this.handleCloseAddHospitalizationModal()}
                   color="primary"
                 >
                   Cancel
                 </Button>
                 <Button
-                  onClick={() => this.handleCloseAddDiagnosisModal()}
+                  onClick={() => this.handleCloseAddHospitalizationModal()}
                   color="default"
                 >
                   Save
@@ -204,8 +215,8 @@ class DiagnosisPortlet extends React.Component {
     );
   }
 }
-DiagnosisPortlet.propTypes = {
+HospitalizationPortlet.propTypes = {
   classes: PropTypes.object
 };
 
-export default withStyles(componentsStyle)(DiagnosisPortlet);
+export default withStyles(componentsStyle)(HospitalizationPortlet);

@@ -16,6 +16,8 @@ import DiagnosisPortlet from "./DiagnosisPortlet";
 import MedicationsPortlet from "./MedicationsPortlet";
 import GoalsAndThresholdsPortlet from "./GoalsAndThresholdsPortlet";
 import NotificationsPortlet from "./NotificationsPortlet";
+import HospitalizationPortlet from "./HospitalizationPortlet";
+import NotesPortlet from "./NotesPortlet";
 
 class SettingsPortletsContainer extends React.Component {
   render() {
@@ -33,10 +35,7 @@ class SettingsPortletsContainer extends React.Component {
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <div
-              className={classNames(classes.main, classes.mainRaised)}
-              style={{ width: "100%" }}
-            >
+            <div style={{ width: "100%" }}>
               <PatientProfilePortlet />
             </div>
           </ExpansionPanelDetails>
@@ -52,10 +51,7 @@ class SettingsPortletsContainer extends React.Component {
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <div
-              className={classNames(classes.main, classes.mainRaised)}
-              style={{ width: "100%" }}
-            >
+            <div style={{ width: "100%" }}>
               <CardioMemsPortlet />
             </div>
           </ExpansionPanelDetails>
@@ -71,10 +67,7 @@ class SettingsPortletsContainer extends React.Component {
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <div
-              className={classNames(classes.main, classes.mainRaised)}
-              style={{ width: "100%" }}
-            >
+            <div style={{ width: "100%" }}>
               <DiagnosisPortlet />
             </div>
           </ExpansionPanelDetails>
@@ -90,10 +83,7 @@ class SettingsPortletsContainer extends React.Component {
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <div
-              className={classNames(classes.main, classes.mainRaised)}
-              style={{ width: "100%" }}
-            >
+            <div style={{ width: "100%" }}>
               <MedicationsPortlet />
             </div>
           </ExpansionPanelDetails>
@@ -134,28 +124,32 @@ class SettingsPortletsContainer extends React.Component {
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel3bh-content"
-            id="panel3bh-header"
+            id="hospitalizationPortlet"
           >
             <Typography className={classes.heading}>
               <h4>Hospitalizations</h4>
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <div className={classNames(classes.main, classes.mainRaised)}></div>
+            <div style={{ width: "100%" }}>
+              <HospitalizationPortlet />
+            </div>
           </ExpansionPanelDetails>
         </ExpansionPanel>
         <ExpansionPanel>
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel3bh-content"
-            id="panel3bh-header"
+            id="notesPortlet"
           >
             <Typography className={classes.heading}>
               <h4>Notes</h4>
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <div className={classNames(classes.main, classes.mainRaised)}></div>
+            <div style={{ width: "100%" }}>
+              <NotesPortlet />
+            </div>
           </ExpansionPanelDetails>
         </ExpansionPanel>
       </div>

@@ -44,6 +44,8 @@ class GoalsAndThresholdsPortlet extends React.Component {
     const { classes, ...rest } = this.props;
     return (
       <div>
+        <Divider />
+        <br />
         <GridContainer>
           <GridItem xs={12} sm={12} md={6}>
             <div className={classNames(classes.main)}>
@@ -128,7 +130,7 @@ class GoalsAndThresholdsPortlet extends React.Component {
                 <div className={classes.container}>
                   <br />
                   <div className={classes.header}>
-                    RIGHT HEART CATH IMPLANT VALUES
+                    Right Heart Cath Implant Values
                   </div>
                   <br />
                   <Divider />

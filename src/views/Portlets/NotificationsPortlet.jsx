@@ -67,6 +67,8 @@ class NotificationsPortlet extends React.Component {
 
     return (
       <div>
+        <Divider />
+        <br />
         <GridContainer>
           <GridItem xs={12} sm={12} md={6} justify>
             <div className={classNames(classes.main)}>

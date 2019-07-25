@@ -22,6 +22,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Close from "@material-ui/icons/Close";
 import Slide from "@material-ui/core/Slide";
+import { Divider } from "@material-ui/core";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -68,196 +69,179 @@ class PatientProfilePortlet extends React.Component {
     const { classes, ...rest } = this.props;
     return (
       <div className={classes.section}>
-        <div className={classes.container}>
-          <GridContainer style={{ justify: "space-between" }}>
-            <GridItem xs={12} sm={12} md={4} justify>
-              <div className={classes.header} style={{ paddingTop: "10px" }}>Patient</div>
-            </GridItem>
-            <GridItem xs={12} sm={12} md={4}>
+        <GridContainer style={{ textAlign: "right" }}>
+          <GridItem xs={12} sm={12} md={6}>
+            <div className={classes.container}>
               <GridContainer>
-                <GridItem xs={12} sm={12} md={12} lg={4}>
-                  <Button
-                    color="primary"
-                    simple
-                    onClick={() => this.handleClickOpenClinicalTrialSettings()}
-                  >
-                    Clinical Trial Settings
-                  </Button>
-                  <Dialog
-                    classes={{
-                      root: classes.center,
-                      paper: classes.modal
-                    }}
-                    open={this.state.clinicalTrialSettingsModal}
-                    // TransitionComponent={Transition}
-                    keepMounted
-                    onClose={() => this.handleCloseClinicalTrialSettingsModal()}
-                    aria-labelledby="classic-modal-slide-title"
-                    aria-describedby="classic-modal-slide-description"
-                  >
-                    <DialogTitle
-                      id="classic-modal-slide-title"
-                      disableTypography
-                      className={classes.modalHeader}
-                      style={{ backgroundColor: "#009CDE" }}
-                    >
-                      <h3
-                        className={classes.modalTitle}
-                        style={{ color: "#FFFFFF" }}
-                      >
-                        Clinical Trial Settings
-                      </h3>
-                    </DialogTitle>
-                    <DialogContent
-                      id="classic-modal-slide-description"
-                      className={classes.modalBody}
-                    >
-                      <h4>Select a clinical trial</h4>
-                      <br />
-                      <div
-                        className={classes.container}
-                        style={{
-                          justify: "space-evenly",
-                          maxWidth: "100%"
-                        }}
-                      >
-                        <GridContainer>
-                          <GridItem xs={12} sm={12} md={12}>
-                            <FormControl className={classes.formControl}>
-                              <InputLabel
-                                shrink
-                                htmlFor="age-label-placeholder"
-                              >
-                                DirectCall Method*
-                              </InputLabel>
-                              <Select
-                                input={<Input name="clinicalTrialSettings" />}
-                                name="clinicalTrialSettings"
-                                className={classes.selectEmpty}
-                              >
-                                <MenuItem value={1}>INTELLECT 2-HF</MenuItem>
-                              </Select>
-                              <small>
-                                To remove the patient from the study or to
-                                correct a control arm designation mistake,
-                                please contact Technical Support.
-                              </small>
-                            </FormControl>
-                          </GridItem>
-                        </GridContainer>
-                      </div>
-                    </DialogContent>
-                    <DialogActions className={classes.modalFooter}>
-                      <Button
-                        onClick={() =>
-                          this.handleCloseClinicalTrialSettingsModal()
-                        }
-                        color="primary"
-                      >
-                        Cancel
-                      </Button>
-                      <Button
-                        onClick={() =>
-                          this.handleCloseClinicalTrialSettingsModal()
-                        }
-                        color="default"
-                      >
-                        Save
-                      </Button>
-                    </DialogActions>
-                  </Dialog>
+                <GridItem xs={12} sm={12} md={12}>
+                  <div className={classes.header}>Patient Messaging</div>
                 </GridItem>
               </GridContainer>
-            </GridItem>
-            <GridItem xs={12} sm={12} md={1}>
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={12} lg={12}>
-                  <Button
-                    color="primary"
-                    simple
-                    onClick={() => this.handleClickOpenImportFlashDriveModal()}
-                  >
-                    Import from Flash Drive
-                  </Button>
-                  <Dialog
-                    classes={{
-                      root: classes.center,
-                      paper: classes.modal
-                    }}
-                    open={this.state.importFlashDriveModal}
-                    // TransitionComponent={Transition}
-                    keepMounted
-                    onClose={() => this.handleCloseImportFlashDriveModal()}
-                    aria-labelledby="classic-modal-slide-title"
-                    aria-describedby="classic-modal-slide-description"
-                  >
-                    <DialogTitle
-                      id="classic-modal-slide-title"
-                      disableTypography
-                      className={classes.modalHeader}
-                      style={{ backgroundColor: "#009CDE" }}
-                    >
-                      <h3
-                        className={classes.modalTitle}
-                        style={{ color: "#FFFFFF" }}
-                      >
-                        Import from Flash Drive
-                      </h3>
-                    </DialogTitle>
-                    <DialogContent
-                      id="classic-modal-slide-description"
-                      className={classes.modalBody}
-                    >
-                      <h4>Select a file to import</h4>
-                      <br />
-                      <div
-                        className={classes.container}
-                        style={{
-                          justify: "space-evenly",
-                          maxWidth: "100%",
-                          width: "500px"
+            </div>
+          </GridItem>
+          <GridItem xs={12} sm={12} md={3}>
+            <Button
+              color="primary"
+              simple
+              onClick={() => this.handleClickOpenClinicalTrialSettings()}
+            >
+              Clinical Trial Settings
+            </Button>
+            <Dialog
+              classes={{
+                root: classes.center,
+                paper: classes.modal
+              }}
+              open={this.state.clinicalTrialSettingsModal}
+              // TransitionComponent={Transition}
+              keepMounted
+              onClose={() => this.handleCloseClinicalTrialSettingsModal()}
+              aria-labelledby="classic-modal-slide-title"
+              aria-describedby="classic-modal-slide-description"
+            >
+              <DialogTitle
+                id="classic-modal-slide-title"
+                disableTypography
+                className={classes.modalHeader}
+                style={{ backgroundColor: "#009CDE" }}
+              >
+                <h3 className={classes.modalTitle} style={{ color: "#FFFFFF" }}>
+                  Clinical Trial Settings
+                </h3>
+              </DialogTitle>
+              <DialogContent
+                id="classic-modal-slide-description"
+                className={classes.modalBody}
+              >
+                <h4>Select a clinical trial</h4>
+                <br />
+                <div
+                  className={classes.container}
+                  style={{
+                    justify: "space-evenly",
+                    maxWidth: "100%"
+                  }}
+                >
+                  <GridContainer>
+                    <GridItem xs={12} sm={12} md={12}>
+                      <FormControl className={classes.formControl}>
+                        <InputLabel shrink htmlFor="age-label-placeholder">
+                          DirectCall Method*
+                        </InputLabel>
+                        <Select
+                          input={<Input name="clinicalTrialSettings" />}
+                          name="clinicalTrialSettings"
+                          className={classes.selectEmpty}
+                        >
+                          <MenuItem value={1}>INTELLECT 2-HF</MenuItem>
+                        </Select>
+                        <small>
+                          To remove the patient from the study or to correct a
+                          control arm designation mistake, please contact
+                          Technical Support.
+                        </small>
+                      </FormControl>
+                    </GridItem>
+                  </GridContainer>
+                </div>
+              </DialogContent>
+              <DialogActions className={classes.modalFooter}>
+                <Button
+                  onClick={() => this.handleCloseClinicalTrialSettingsModal()}
+                  color="primary"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  onClick={() => this.handleCloseClinicalTrialSettingsModal()}
+                  color="default"
+                >
+                  Save
+                </Button>
+              </DialogActions>
+            </Dialog>
+          </GridItem>
+          <GridItem xs={12} sm={12} md={2}>
+            <Button
+              color="primary"
+              simple
+              onClick={() => this.handleClickOpenImportFlashDriveModal()}
+            >
+              Import from Flash Drive
+            </Button>
+            <Dialog
+              classes={{
+                root: classes.center,
+                paper: classes.modal
+              }}
+              open={this.state.importFlashDriveModal}
+              // TransitionComponent={Transition}
+              keepMounted
+              onClose={() => this.handleCloseImportFlashDriveModal()}
+              aria-labelledby="classic-modal-slide-title"
+              aria-describedby="classic-modal-slide-description"
+            >
+              <DialogTitle
+                id="classic-modal-slide-title"
+                disableTypography
+                className={classes.modalHeader}
+                style={{ backgroundColor: "#009CDE" }}
+              >
+                <h3 className={classes.modalTitle} style={{ color: "#FFFFFF" }}>
+                  Import from Flash Drive
+                </h3>
+              </DialogTitle>
+              <DialogContent
+                id="classic-modal-slide-description"
+                className={classes.modalBody}
+              >
+                <h4>Select a file to import</h4>
+                <br />
+                <div
+                  className={classes.container}
+                  style={{
+                    justify: "space-evenly",
+                    maxWidth: "100%",
+                    width: "500px"
+                  }}
+                >
+                  <GridContainer>
+                    <GridItem xs={12} sm={12} md={12} lg={12}>
+                      <CustomInput
+                        labelText="Click to open File Dialog"
+                        formControlProps={{
+                          fullWidth: true
                         }}
-                      >
-                        <GridContainer>
-                          <GridItem xs={12} sm={12} md={12} lg={12}>
-                            <CustomInput
-                              labelText="Click to open File Dialog"
-                              formControlProps={{
-                                fullWidth: true
-                              }}
-                              inputProps={{
-                                endAdornment: (
-                                  <InputAdornment position="end">
-                                    <i className="fas fa-folder-open" />
-                                  </InputAdornment>
-                                )
-                              }}
-                            />
-                          </GridItem>
-                        </GridContainer>
-                      </div>
-                    </DialogContent>
-                    <DialogActions className={classes.modalFooter}>
-                      <Button
-                        onClick={() => this.handleCloseImportFlashDriveModal()}
-                        color="primary"
-                      >
-                        Cancel
-                      </Button>
-                      <Button
-                        onClick={() => this.handleCloseImportFlashDriveModal()}
-                        color="default"
-                      >
-                        Save
-                      </Button>
-                    </DialogActions>
-                  </Dialog>
-                </GridItem>
-              </GridContainer>
-            </GridItem>
-          </GridContainer>
-        </div>
-        <hr />
+                        inputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <i className="fas fa-folder-open" />
+                            </InputAdornment>
+                          )
+                        }}
+                      />
+                    </GridItem>
+                  </GridContainer>
+                </div>
+              </DialogContent>
+              <DialogActions className={classes.modalFooter}>
+                <Button
+                  onClick={() => this.handleCloseImportFlashDriveModal()}
+                  color="primary"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  onClick={() => this.handleCloseImportFlashDriveModal()}
+                  color="default"
+                >
+                  Save
+                </Button>
+              </DialogActions>
+            </Dialog>
+          </GridItem>
+        </GridContainer>
+        <Divider />
         <div
           className={classes.container}
           style={{
@@ -567,7 +551,7 @@ class PatientProfilePortlet extends React.Component {
             </GridItem>
           </GridContainer>
         </div>
-        <hr />
+        <Divider />
         <br />
         <div
           className={classes.container}
@@ -610,8 +594,7 @@ class PatientProfilePortlet extends React.Component {
             </GridItem>
           </GridContainer>
         </div>
-        <hr />
-        <br />
+        <Divider />
         <br />
         <div
           className={classes.container}
