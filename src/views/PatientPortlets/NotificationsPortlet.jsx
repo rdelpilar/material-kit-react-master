@@ -12,14 +12,14 @@ import {
   Divider,
   Input,
   FormControl,
-  FormGroup
+  FormGroup,
+  Checkbox
 } from "@material-ui/core";
 
 import Button from "components/CustomButtons/Button.jsx";
 import Slide from "@material-ui/core/Slide";
 import { setConstantValue } from "typescript";
-import Info from "@material-ui/icons/Info";
-import { CheckBox, Help } from "@material-ui/icons";
+import { Info, Help } from "@material-ui/icons";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -99,7 +99,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={true} color="primary" />
+                              <Checkbox checked={true} color="primary" />
                             }
                             label="High pressure reading greater than"
                           />
@@ -124,7 +124,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={true} color="primary" />
+                              <Checkbox checked={true} color="primary" />
                             }
                             label="Low pressure reading less than"
                           />
@@ -149,7 +149,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={false} color="primary" />
+                              <Checkbox checked={false} color="primary" />
                             }
                             label="Rapid pressure change of"
                           />
@@ -175,7 +175,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={true} color="primary" />
+                              <Checkbox checked={true} color="primary" />
                             }
                             label="Pressure readings transitioned from High to Low range (without patient returning to optimal state)"
                           />
@@ -186,7 +186,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={false} color="primary" />
+                              <Checkbox checked={false} color="primary" />
                             }
                             label="Pressure readings transitioned from Low to High range (without patient returning to optimal state)"
                           />
@@ -197,7 +197,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={false} color="primary" />
+                              <Checkbox checked={false} color="primary" />
                             }
                             label="1 reading above optimal range"
                           />
@@ -208,7 +208,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={true} color="primary" />
+                              <Checkbox checked={true} color="primary" />
                             }
                             label="1 reading below optimal range"
                           />
@@ -219,7 +219,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={true} color="primary" />
+                              <Checkbox checked={true} color="primary" />
                             }
                             label="3 readings above optimal range"
                           />
@@ -230,7 +230,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={true} color="primary" />
+                              <Checkbox checked={true} color="primary" />
                             }
                             label="3 readings below optimal range"
                           />
@@ -241,7 +241,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={true} color="primary" />
+                              <Checkbox checked={true} color="primary" />
                             }
                             label="7 or more readings above optimal range"
                           />
@@ -252,7 +252,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={true} color="primary" />
+                              <Checkbox checked={true} color="primary" />
                             }
                             label="7 or more readings below optimal range"
                           />
@@ -262,7 +262,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={false} color="primary" />
+                              <Checkbox checked={false} color="primary" />
                             }
                             label="Patient returns to optimal state after medication change"
                           />
@@ -302,7 +302,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={false} color="primary" />
+                              <Checkbox checked={false} color="primary" />
                             }
                             label="No pressure readings for"
                           />
@@ -327,7 +327,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={true} color="primary" />
+                              <Checkbox checked={true} color="primary" />
                             }
                             label="First pressure reading after"
                           />
@@ -352,7 +352,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={true} color="primary" />
+                              <Checkbox checked={true} color="primary" />
                             }
                             margin="dense"
                             label="Pressure reading is suspect"
@@ -363,7 +363,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={true} color="primary" />
+                              <Checkbox checked={true} color="primary" />
                             }
                             label="Patient review reminder"
                           />
@@ -373,7 +373,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={true} color="primary" />
+                              <Checkbox checked={true} color="primary" />
                             }
                             label="Patient does not have pressure goal established"
                           />
@@ -414,7 +414,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={true} color="primary" />
+                              <Checkbox checked={true} color="primary" />
                             }
                             label="Diastolic pressure out of threshold"
                           />
@@ -424,7 +424,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={false} color="primary" />
+                              <Checkbox checked={false} color="primary" />
                             }
                             label="Diastolic pressure trend out of threshold"
                           />
@@ -434,7 +434,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={false} color="primary" />
+                              <Checkbox checked={false} color="primary" />
                             }
                             label="Mean pressure out of threshold"
                           />
@@ -444,7 +444,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={true} color="primary" />
+                              <Checkbox checked={true} color="primary" />
                             }
                             label="Mean pressure trend out of threshold"
                           />
@@ -454,7 +454,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={true} color="primary" />
+                              <Checkbox checked={true} color="primary" />
                             }
                             label="Heart rate out of threshold"
                           />
@@ -464,7 +464,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={true} color="primary" />
+                              <Checkbox checked={true} color="primary" />
                             }
                             label="Pulse pressure out of threshold"
                           />
@@ -474,7 +474,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={true} color="primary" />
+                              <Checkbox checked={true} color="primary" />
                             }
                             label="Systolic pressure out of threshold"
                           />
@@ -484,7 +484,7 @@ class NotificationsPortlet extends React.Component {
                         <span>
                           <FormControlLabel
                             control={
-                              <CheckBox checked={true} color="primary" />
+                              <Checkbox checked={true} color="primary" />
                             }
                             label="Systolic pressure trend out of threshold"
                           />

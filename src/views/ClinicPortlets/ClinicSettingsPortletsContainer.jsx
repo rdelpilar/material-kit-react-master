@@ -10,11 +10,10 @@ import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ClinicPASensorPatientDefaultSettingsPortlet from "./ClinicPASensorPatientDefaultSettingsPortlet";
+import ClinicThresholdsPortlet from "./ClinicThresholdsPortlet";
 
-import ReadingsPortlet from "views/PatientActivity/ReadingsPortlet";
-import DirectTrendChart from "views/Charts/DirectTrendChart";
-
-class ActivityPortletsContainer extends React.Component {
+class ClinicSettingsPortletsContainer extends React.Component {
   render() {
     const { classes } = this.props;
     return (
@@ -23,43 +22,63 @@ class ActivityPortletsContainer extends React.Component {
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1bh-content"
-            id="panel1bh-header"
+            id="clinicProfilePortlet"
           >
             <Typography className={classes.heading}>
-              <h4>Recent Intervention</h4>
+              <h4>Clinic Profile</h4>
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <Typography>Recent interventions...</Typography>
+            <div style={{ width: "100%" }}>
+              {/* <PatientProfilePortlet /> */}
+            </div>
           </ExpansionPanelDetails>
         </ExpansionPanel>
-        <ExpansionPanel expanded>
+        <ExpansionPanel>
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel2bh-content"
-            id="panel2bh-header"
+            id="clinicPASensorPatientDefaultSettingsPortlet"
           >
             <Typography className={classes.heading}>
-              <h4>DirectTrend Viewer</h4>
+              <h4>PA Sensor Patient Default Settings</h4>
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <DirectTrendChart />
+            <div style={{ width: "100%" }}>
+              <ClinicPASensorPatientDefaultSettingsPortlet />
+            </div>
           </ExpansionPanelDetails>
         </ExpansionPanel>
         <ExpansionPanel>
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel3bh-content"
-            id="panel3bh-header"
+            id="clinicThresholdsPortlet"
           >
             <Typography className={classes.heading}>
-              <h4>Readings</h4>
+              <h4>Thresholds</h4>
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <div className={classNames(classes.main, classes.mainRaised)}>
-              <ReadingsPortlet />
+            <div style={{ width: "100%" }}>
+              <ClinicThresholdsPortlet />
+            </div>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+        <ExpansionPanel>
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel3bh-content"
+            id="clinicNotificationsPortlet"
+          >
+            <Typography className={classes.heading}>
+              <h4>Notifications</h4>
+            </Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <div style={{ width: "100%" }}>
+              {/* <MedicationsPortlet /> */}
             </div>
           </ExpansionPanelDetails>
         </ExpansionPanel>
@@ -68,8 +87,8 @@ class ActivityPortletsContainer extends React.Component {
   }
 }
 
-ActivityPortletsContainer.propTypes = {
+ClinicSettingsPortletsContainer.propTypes = {
   classes: PropTypes.object
 };
 
-export default withStyles(componentsStyle)(ActivityPortletsContainer);
+export default withStyles(componentsStyle)(ClinicSettingsPortletsContainer);

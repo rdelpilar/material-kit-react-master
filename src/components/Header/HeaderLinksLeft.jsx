@@ -44,7 +44,7 @@ function HeaderLinksLeft({ ...props }) {
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button
-          href="/clinic"
+          href="/clinic-settings"
           color="transparent"
           className={classes.navLink}
         >
