@@ -66,7 +66,7 @@ class NotesPortlet extends React.Component {
               simple
               onClick={() => this.handleClickOpenAddNoteModal()}
             >
-              Add Hospitalization
+              Add Note
             </Button>
             <Dialog
               classes={{

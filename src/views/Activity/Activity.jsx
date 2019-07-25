@@ -11,7 +11,7 @@ import PatientInfoLayer1 from "./PatientInfoLayer1";
 import PatientInfoLayer2 from "./PatientInfoLayer2";
 import PatientSecondaryNav from "./PatientSecondaryNav";
 import ActivityNotification from "./ActivityNotification";
-import ActivityPortletsContainer from "../Portlets/ActivityPortletsContainer";
+import ActivityPortletsContainer from "../PatientPortlets/ActivityPortletsContainer";
 
 class Activity extends React.Component {
   constructor() {
