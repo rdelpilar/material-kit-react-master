@@ -87,8 +87,7 @@ class ClinicNotificationsPortlet extends React.Component {
                     <h5>
                       <Info color="primary" />
                       <small style={{ fontStyle: "italic" }}>
-                        Changing the patient's primary Metric will reset the
-                        detection of clinical Notifications.
+                        These notifications are based on the patient's primary metric (PA Diastolic pressure or PA Mean pressure).
                       </small>
                     </h5>
                   </FormHelperText>
@@ -379,6 +378,16 @@ class ClinicNotificationsPortlet extends React.Component {
                           />
                         </span>
                       </p>
+                      <p>
+                        <span>
+                          <FormControlLabel
+                            control={
+                              <Checkbox checked={false} color="primary" />
+                            }
+                            label="First home reading from a patient after enrollment or transfer"
+                          />
+                        </span>
+                      </p>
                     </FormGroup>
                   </FormControl>
                 </div>
@@ -492,20 +501,6 @@ class ClinicNotificationsPortlet extends React.Component {
                       </p>
                     </FormGroup>
                   </FormControl>
-                  <br />
-                  <FormHelperText>
-                    <h5>
-                      <Info color="primary" />
-                      <small style={{ fontStyle: "italic" }}>
-                        The availability of the "Diastolic Pressure out of
-                        threshold" and "Mean Pressure out of threshold"
-                        notifications depends on the patient's primary metric
-                        type. For instance, if the patient is monitored by
-                        Diastolic Pressure, then the "Diastolic Pressure out of
-                        threshold" notification does not apply.
-                      </small>
-                    </h5>
-                  </FormHelperText>
                 </div>
                 <br />
               </div>
