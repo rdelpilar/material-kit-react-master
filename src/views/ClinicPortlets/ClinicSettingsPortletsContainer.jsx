@@ -13,6 +13,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ClinicPASensorPatientDefaultSettingsPortlet from "./ClinicPASensorPatientDefaultSettingsPortlet";
 import ClinicThresholdsPortlet from "./ClinicThresholdsPortlet";
 import ClinicNotificationsPortlet from "./ClinicNotificationsPortlet";
+import ClinicProfilePortlet from "./ClinicProfilePortlet";
 
 class ClinicSettingsPortletsContainer extends React.Component {
   render() {
@@ -31,7 +32,7 @@ class ClinicSettingsPortletsContainer extends React.Component {
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <div style={{ width: "100%" }}>
-              {/* <PatientProfilePortlet /> */}
+              <ClinicProfilePortlet />
             </div>
           </ExpansionPanelDetails>
         </ExpansionPanel>

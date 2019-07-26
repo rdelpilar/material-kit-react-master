@@ -34,35 +34,35 @@ class ClinicProfilePortlet extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      customizePhoneMessagesModal: false,
-      customizeTextMessagesModal: false
+      clinicalTrialSettingsModal: false,
+      importFlashDriveModal: false
     };
   }
 
-  handleClickOpenCustomizePhoneMessagesModal() {
+  handleClickOpenClinicalTrialSettings() {
     this.setState({
-        customizePhoneMessagesModal: true
+      clinicalTrialSettingsModal: true
     });
     // var x = [];
     // x[modal] = true;
     // this.setState(x);
   }
-  handleCloseCustomizePhoneMessagesModal() {
+  handleCloseClinicalTrialSettingsModal() {
     this.setState({
-        customizePhoneMessagesModal: false
+      clinicalTrialSettingsModal: false
     });
     // var x = [];
     // x[modal] = false;
     // this.setState(x);
   }
-  handleClickOpenCustomizeTextMessagesModal() {
+  handleClickOpenImportFlashDriveModal() {
     this.setState({
-        customizeTextMessagesModal: true
+      importFlashDriveModal: true
     });
   }
-  handleCloseCustomizeTextMessagesModal() {
+  handleCloseImportFlashDriveModal() {
     this.setState({
-        customizeTextMessagesModal: false
+      importFlashDriveModal: false
     });
   }
   render() {
