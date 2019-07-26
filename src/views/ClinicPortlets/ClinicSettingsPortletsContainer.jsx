@@ -12,6 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ClinicPASensorPatientDefaultSettingsPortlet from "./ClinicPASensorPatientDefaultSettingsPortlet";
 import ClinicThresholdsPortlet from "./ClinicThresholdsPortlet";
+import ClinicNotificationsPortlet from "./ClinicNotificationsPortlet";
 
 class ClinicSettingsPortletsContainer extends React.Component {
   render() {
@@ -78,7 +79,7 @@ class ClinicSettingsPortletsContainer extends React.Component {
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <div style={{ width: "100%" }}>
-              {/* <MedicationsPortlet /> */}
+              <ClinicNotificationsPortlet />
             </div>
           </ExpansionPanelDetails>
         </ExpansionPanel>
