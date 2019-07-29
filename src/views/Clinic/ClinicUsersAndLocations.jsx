@@ -9,9 +9,9 @@ import Footer from "components/Footer/Footer.jsx";
 import componentsStyle from "assets/jss/material-kit-react/views/components.jsx";
 import ClinicInfoLayer1 from "./ClinicInfoLayer1";
 import ClinicSecondaryNav from "./ClinicSecondaryNav";
-import ClinicSettingsPortletsContainer from "views/ClinicPortlets/ClinicSettingsPortletsContainer";
+import ClinicUsersAndLocationsPortletsContainer from "views/ClinicPortlets/ClinicUsersAndLocationsPortletsContainer";
 
-class ClinicSettings extends React.Component {
+class ClinicUsersAndLocations extends React.Component {
   constructor() {
     super();
   }
@@ -40,7 +40,7 @@ class ClinicSettings extends React.Component {
           <ClinicSecondaryNav />
           <br />
           <div className={classNames(classes.main, classes.mainRaised)}>
-            <ClinicSettingsPortletsContainer />
+            <ClinicUsersAndLocationsPortletsContainer />
           </div>
           <br />
           <Footer />
@@ -50,4 +50,4 @@ class ClinicSettings extends React.Component {
   }
 }
 
-export default withStyles(componentsStyle)(ClinicSettings);
+export default withStyles(componentsStyle)(ClinicUsersAndLocations);

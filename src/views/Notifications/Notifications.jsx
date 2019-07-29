@@ -8,8 +8,6 @@ import HeaderLinksLeft from "components/Header/HeaderLinksLeft";
 import Footer from "components/Footer/Footer.jsx";
 
 import componentsStyle from "assets/jss/material-kit-react/views/components.jsx";
-
-//import NotificationsMUIDataTables from "views/Notifications/NotificationsMUIDataTables.jsx";
 import NotificationsMaterialTable from "views/Notifications/NotificationsMaterialTable.jsx";
 
 class Notifications extends Component {
