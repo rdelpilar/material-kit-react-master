@@ -12,7 +12,7 @@ import ListItem from "@material-ui/core/ListItem";
 import Tooltip from "@material-ui/core/Tooltip";
 
 // @material-ui/icons
-import { Apps, CloudDownload } from "@material-ui/icons";
+import { Apps, CloudDownload, ViewHeadline } from "@material-ui/icons";
 
 // core components
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
@@ -25,13 +25,29 @@ function HeaderLinksLeft({ ...props }) {
   return (
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
-        <Button
-          href="/notifications"
-          color="transparent"
-          className={classes.navLink}
-        >
-          Notifications
-        </Button>
+        <CustomDropdown
+            noLiPadding
+            buttonText="Notifications"
+            buttonProps={{
+              className: classes.navLink,
+              color: "transparent"
+            }}
+            buttonIcon={ViewHeadline}
+            dropdownList={[
+              <Link to="/notifications" className={classes.dropdownLink}>
+                Material Table (Default)
+              </Link>,
+              <a
+                href="/notifications-mui2"
+                className={classes.dropdownLink}
+              >
+                MUI Table
+              </a>,
+              <Link to="/notifications-jquery" className={classes.dropdownLink}>
+                  jQuery Table
+              </Link>
+            ]}
+          />
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button
@@ -49,24 +65,6 @@ function HeaderLinksLeft({ ...props }) {
           className={classes.navLink}
         >
           Clinic
-        </Button>
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <Button
-          href="/notifications-mui2"
-          color="transparent"
-          className={classes.navLink}
-        >
-          MUI Table
-        </Button>
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <Button
-          href="/notifications-jquery"
-          color="transparent"
-          className={classes.navLink}
-        >
-          jQuery table
         </Button>
       </ListItem>
     </List>

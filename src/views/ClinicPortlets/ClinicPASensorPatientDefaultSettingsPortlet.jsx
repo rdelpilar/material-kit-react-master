@@ -192,52 +192,44 @@ class GoalsAndThresholdsPortlet extends React.Component {
           <GridItem xs={12} sm={12} md={6}>
             <div className={classNames(classes.main)}>
               <br />
-              <div className={classNames(classes.section, classes.mainRaised)}>
-                <div className={classes.container}>
-                  <br />
-                  <div
-                    className={classes.header}
-                    style={{ textTransform: "uppercase" }}
-                  >
-                    Primary Metric
-                  </div>
-                  <br />
-                  <Divider />
-                  <br />
-                  <FormHelperText>
-                    <h5>
-                      <Info color="primary" />
-                      <small style={{ fontStyle: "italic" }}>
-                        Select the Primary Metric that your clinic will use to
-                        monitor most of your patients. (This can be modified on
-                        a per-patient basis as necessary)
-                      </small>
-                    </h5>
-                  </FormHelperText>
-                  <br />
-                  <FormControl
-                    component="fieldset"
-                    className={classes.FormControl}
-                  >
-                    <RadioGroup
-                      aria-label="primaryMetric"
-                      name="primaryMetric"
-                      className={classes.group}
-                    >
-                      <FormControlLabel
-                        value="pad"
-                        control={<Radio color="primary" />}
-                        label="PA Diastolic Pressure"
-                      />
-                      <FormControlLabel
-                        value="pam"
-                        control={<Radio color="primary" />}
-                        label="PA Mean Pressure"
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </div>
+              <div className={classes.container}>
                 <br />
+                <div className={classes.header}>Primary Metric</div>
+                <br />
+                <Divider />
+                <br />
+                <FormHelperText>
+                  <h5>
+                    <Info color="primary" />
+                    <small style={{ fontStyle: "italic" }}>
+                      Select the Primary Metric that your clinic will use to
+                      monitor most of your patients. (This can be modified on a
+                      per-patient basis as necessary)
+                    </small>
+                  </h5>
+                </FormHelperText>
+                <br />
+                <FormControl
+                  component="fieldset"
+                  className={classes.FormControl}
+                >
+                  <RadioGroup
+                    aria-label="primaryMetric"
+                    name="primaryMetric"
+                    className={classes.group}
+                  >
+                    <FormControlLabel
+                      value="pad"
+                      control={<Radio color="primary" />}
+                      label="PA Diastolic Pressure"
+                    />
+                    <FormControlLabel
+                      value="pam"
+                      control={<Radio color="primary" />}
+                      label="PA Mean Pressure"
+                    />
+                  </RadioGroup>
+                </FormControl>
               </div>
             </div>
           </GridItem>
@@ -246,60 +238,54 @@ class GoalsAndThresholdsPortlet extends React.Component {
           <GridItem xs={12} sm={12} md={6} justify>
             <div className={classNames(classes.main)}>
               <br />
-              <div className={classNames(classes.section, classes.mainRaised)}>
-                <div className={classes.container}>
-                  <br />
-                  <div
-                    className={classes.header}
-                    style={{ textTransform: "uppercase" }}
-                  >
-                    Return to Optimal State Threshold
-                  </div>
-                  <br />
-                  <Divider />
-                  <br />
-                  <FormHelperText>
-                    <h5>
-                      <Info color="primary" />
-                      <small style={{ fontStyle: "italic" }}>
-                        Define how many consecutive readings in the optimal
-                        range are needed to consider the patient to be in an
-                        optimal state.
-                      </small>
-                    </h5>
-                  </FormHelperText>
-                  <br />
-                  <FormControl component="fieldset">
-                    <FormGroup>
-                      <p>
-                        <span>
-                          Optimal State Threshold:
-                          <Input
-                            className={classes.input}
-                            style={{
-                              marginLeft: "5px",
-                              marginRight: "5px",
-                              width: "10%"
-                            }}
-                            value={6}
-                            margin="normal"
-                            // onChange={handleInputChange}
-                            // onBlur={handleBlur}
-                            inputProps={{
-                              step: 1,
-                              min: 1,
-                              max: 50,
-                              type: "number",
-                              "aria-labelledby": "input-slider"
-                            }}
-                          />
-                          consecutive readings.
-                        </span>
-                      </p>
-                    </FormGroup>
-                  </FormControl>
+              <div className={classes.container}>
+                <br />
+                <div className={classes.header}>
+                  Return to Optimal State Threshold
                 </div>
                 <br />
+                <Divider />
+                <br />
+                <FormHelperText>
+                  <h5>
+                    <Info color="primary" />
+                    <small style={{ fontStyle: "italic" }}>
+                      Define how many consecutive readings in the optimal range
+                      are needed to consider the patient to be in an optimal
+                      state.
+                    </small>
+                  </h5>
+                </FormHelperText>
+                <br />
+                <FormControl component="fieldset">
+                  <FormGroup>
+                    <p>
+                      <span>
+                        Optimal State Threshold:
+                        <Input
+                          className={classes.input}
+                          style={{
+                            marginLeft: "5px",
+                            marginRight: "5px",
+                            width: "10%"
+                          }}
+                          value={6}
+                          margin="normal"
+                          // onChange={handleInputChange}
+                          // onBlur={handleBlur}
+                          inputProps={{
+                            step: 1,
+                            min: 1,
+                            max: 50,
+                            type: "number",
+                            "aria-labelledby": "input-slider"
+                          }}
+                        />
+                        consecutive readings.
+                      </span>
+                    </p>
+                  </FormGroup>
+                </FormControl>
               </div>
             </div>
           </GridItem>
@@ -312,48 +298,59 @@ class GoalsAndThresholdsPortlet extends React.Component {
           <GridItem xs={12} sm={12} md={12}>
             <div className={classNames(classes.main)}>
               <br />
-              <div className={classNames(classes.section, classes.mainRaised)}>
-                <div className={classes.container}>
-                  <br />
-                  <div className={classes.header}>
-                    Optimal Range Default Settings for Primary Metric
-                  </div>
-                  <br />
-                  <Divider />
-                  <br />
-                  <FormHelperText>
-                    <h5>
-                      <small style={{ fontStyle: "italic" }}>
-                        Define the optimal range values that will be used when a
-                        goal for a patient's Primary Metric is set.
-                      </small>
-                    </h5>
-                  </FormHelperText>
-                  <br />
-                  <Paper className={classes.root} style={{ overflowX: "auto" }}>
-                    <Table className={classes.table}>
-                      <TableHead>
-                        <TableRow>
-                          <TableCell>Primary Metric</TableCell>
-                          <TableCell>Phase</TableCell>
-                          <TableCell>Default Optimal Range</TableCell>
-                        </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {rows.map(row => {
-                          return (
-                            <TableRow key={row.name}>
-                              <TableCell>{row.primaryMetric}</TableCell>
-                              <TableCell>{row.phase}</TableCell>
-                              <TableCell>{row.defaultOptimalRange}</TableCell>
-                            </TableRow>
-                          );
-                        })}
-                      </TableBody>
-                    </Table>
-                  </Paper>
-                  <br />
+              <div className={classes.container} style={{ marginLeft: "4%" }}>
+                <br />
+                <div className={classes.header}>
+                  Optimal Range Default Settings for Primary Metric
                 </div>
+                <br />
+                <Divider />
+                <br />
+                <FormHelperText
+                  style={{
+                    overflowX: "auto",
+                    marginLeft: "10%",
+                    marginRight: "10%"
+                  }}
+                >
+                  <h5>
+                  <Info color="primary" />
+                    <small style={{ fontStyle: "italic" }}>
+                      Define the optimal range values that will be used when a
+                      goal for a patient's Primary Metric is set.
+                    </small>
+                  </h5>
+                </FormHelperText>
+                <br />
+                <Paper
+                  className={classes.root}
+                  style={{
+                    overflowX: "auto",
+                    marginLeft: "10%",
+                    marginRight: "10%"
+                  }}
+                >
+                  <Table className={classes.table}>
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>Primary Metric</TableCell>
+                        <TableCell>Phase</TableCell>
+                        <TableCell>Default Optimal Range</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {rows.map(row => {
+                        return (
+                          <TableRow key={row.name}>
+                            <TableCell>{row.primaryMetric}</TableCell>
+                            <TableCell>{row.phase}</TableCell>
+                            <TableCell>{row.defaultOptimalRange}</TableCell>
+                          </TableRow>
+                        );
+                      })}
+                    </TableBody>
+                  </Table>
+                </Paper>
               </div>
             </div>
           </GridItem>
