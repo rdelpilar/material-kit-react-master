@@ -23,7 +23,7 @@ import Settings from "views/PatientSettings/Settings";
 import ClinicSettings from "views/Clinic/ClinicSettings";
 import ClinicUsersAndLocations from "views/Clinic/ClinicUsersAndLocations";
 import ClinicHistory from "views/Clinic/History";
-import ClinicDrugsAndMedicalConditions from "views/Clinic/DrugsAndMedicalConditions";
+import ClinicDrugsAndMedicalConditions from "views/Clinic/ClinicDrugsAndMedicalConditions";
 
 var hist = createBrowserHistory();
 
