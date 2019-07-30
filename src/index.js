@@ -22,7 +22,7 @@ import NotificationsMUIDataTable2 from "views/Notifications/NotificationsMUIData
 import Settings from "views/PatientSettings/Settings";
 import ClinicSettings from "views/Clinic/ClinicSettings";
 import ClinicUsersAndLocations from "views/Clinic/ClinicUsersAndLocations";
-import ClinicHistory from "views/Clinic/History";
+import ClinicHistory from "views/Clinic/ClinicHistory";
 import ClinicDrugsAndMedicalConditions from "views/Clinic/ClinicDrugsAndMedicalConditions";
 
 var hist = createBrowserHistory();
@@ -52,7 +52,7 @@ ReactDOM.render(
         path="/users-and-locations"
         component={ClinicUsersAndLocations}
       />
-      <Route exact path="/history" component={ClinicHistory} />
+      <Route exact path="/clinic-history" component={ClinicHistory} />
       <Route
         exact
         path="/drugs-and-medical-conditions"

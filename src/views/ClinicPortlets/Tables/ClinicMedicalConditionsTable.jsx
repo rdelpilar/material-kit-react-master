@@ -4,7 +4,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import componentsStyle from "assets/jss/material-kit-react/views/components.jsx";
 
 import MaterialTable from "material-table";
-import { Typography } from "@material-ui/core";
+import { Typography, FormGroup, FormControlLabel } from "@material-ui/core";
 import axios from "axios";
 import Primary from "components/Typography/Primary";
 
@@ -20,17 +20,18 @@ import Datetime from "react-datetime";
 import InputLabel from "@material-ui/core/InputLabel";
 import { TextField } from "@material-ui/core";
 import { Divider, FormControl } from "@material-ui/core";
+import { CheckBox } from "@material-ui/icons";
 
-class ClinicDrugsTable extends Component {
+class ClinicMedicalConditionsTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
-      editDrugModal: false
+      editMedicalConditionsModal: false
     };
   }
 
-  handleClickOpenEditDrugModal(actionString, rowData) {
+  handleClickOpenEditMedicalConditionModal(actionString, rowData) {
     if (actionString == "edit") {
       console.log("Edit");
     } else if (actionString == "add") {
@@ -40,26 +41,27 @@ class ClinicDrugsTable extends Component {
     }
 
     this.setState({
-      editDrugModal: true
+      editMedicalConditionsModal: true
     });
   }
-  handleCloseEditDrugModal() {
+  handleCloseEditMedicalConditionsModal() {
     this.setState({
-      editDrugModal: false
+      editMedicalConditionsModal: false
     });
   }
   componentDidMount() {
     this.getData();
+    console.log(this.state.data);
   }
 
   getData = () => {
     axios
       .get(
-        `https://tc.raneldelpilar.com/merlin-demo-webservice/api/v1/drug/list`
+        `https://tc.raneldelpilar.com/merlin-demo-webservice/api/v1/medicalcondition/list`
       )
       .then(res => {
         let items = [];
-        res.data.drugs.forEach(item => {
+        res.data.medicalConditions.forEach(item => {
           items.push(item);
         });
         this.setState({
@@ -76,8 +78,7 @@ class ClinicDrugsTable extends Component {
 
     const columns = [
       { title: "Name", field: "name" },
-      { title: "Trade Name", field: "tradeName" },
-      { title: "Class", field: "drugClass" }
+      { title: "HF Related", field: "hfRelated" }
     ];
 
     const options = {
@@ -89,16 +90,16 @@ class ClinicDrugsTable extends Component {
     const actions = [
       {
         icon: "edit",
-        tooltip: "Edit drug",
+        tooltip: "Edit Medical Condition",
         onClick: (event, rowData) =>
-          this.handleClickOpenEditDrugModal("edit", rowData)
+          this.handleClickOpenEditMedicalConditionModal("edit", rowData)
       },
       {
         icon: "add",
-        tooltip: "Add Drug",
+        tooltip: "Add MedicalCondition",
         isFreeAction: true,
         onClick: (event, rowData) =>
-          this.handleClickOpenEditDrugModal("add", rowData)
+          this.handleClickOpenEditMedicalConditionModal("add", rowData)
       }
     ];
 
@@ -116,10 +117,10 @@ class ClinicDrugsTable extends Component {
             root: classes.center,
             paper: classes.modal
           }}
-          open={this.state.editDrugModal}
+          open={this.state.editMedicalConditionsModal}
           // TransitionComponent={Transition}
           keepMounted
-          onClose={() => this.handleCloseEditDrugModal()}
+          onClose={() => this.handleCloseEditMedicalConditionsModal()}
           aria-labelledby="classic-modal-slide-title"
           aria-describedby="classic-modal-slide-description"
         >
@@ -129,7 +130,7 @@ class ClinicDrugsTable extends Component {
             style={{ backgroundColor: "#009CDE" }}
           >
             <h3 className={classes.modalTitle} style={{ color: "#FFFFFF" }}>
-              Drugs
+              Medical Condition
             </h3>
           </DialogTitle>
           <DialogContent className={classes.modalBody}>
@@ -142,13 +143,12 @@ class ClinicDrugsTable extends Component {
             >
               <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
-                  <br />
                   <FormControl
                     className={classes.formControl}
                     style={{ width: "100%", color: "#009CDE" }}
                   >
                     <TextField
-                      label="Name"
+                      label="Condition Name"
                       className={classes.textField}
                       margin="normal"
                       fullWidth
@@ -161,40 +161,28 @@ class ClinicDrugsTable extends Component {
                     className={classes.formControl}
                     style={{ width: "100%", color: "#009CDE" }}
                   >
-                    <TextField
-                      label="Trade Name"
-                      className={classes.textField}
-                      margin="normal"
-                      fullWidth
-                    />
-                  </FormControl>
-                </GridItem>
-                <GridItem xs={12} sm={12} md={12}>
-                  <br />
-                  <FormControl
-                    className={classes.formControl}
-                    style={{ width: "100%", color: "#009CDE" }}
-                  >
-                    <TextField
-                      label="Class"
-                      className={classes.textField}
-                      margin="normal"
-                      fullWidth
-                    />
+                      <br />
+                    <FormGroup row>
+                      <FormControlLabel
+                        control={<CheckBox checked={false} color="primary" />}
+                        label="HF Related"
+                      />
+                    </FormGroup>
                   </FormControl>
                 </GridItem>
               </GridContainer>
             </div>
           </DialogContent>
+          <br />
           <DialogActions className={classes.modalFooter}>
             <Button
-              onClick={() => this.handleCloseEditDrugModal()}
+              onClick={() => this.handleCloseEditMedicalConditionsModal()}
               color="primary"
             >
               Cancel
             </Button>
             <Button
-              onClick={() => this.handleCloseEditDrugModal()}
+              onClick={() => this.handleCloseEditMedicalConditionsModal()}
               color="default"
             >
               Save
@@ -206,8 +194,8 @@ class ClinicDrugsTable extends Component {
   }
 }
 
-ClinicDrugsTable.propTypes = {
+ClinicMedicalConditionsTable.propTypes = {
   classes: PropTypes.object
 };
 
-export default withStyles(componentsStyle)(ClinicDrugsTable);
+export default withStyles(componentsStyle)(ClinicMedicalConditionsTable);

@@ -26,7 +26,7 @@ class ClinicSecondaryNav extends React.Component {
               <Link to={"/users-and-locations"}>
                 <Button color="primary">Users & Locations</Button>
               </Link>
-              <Link to={"/history"}>
+              <Link to={"/clinic-history"}>
                 <Button color="primary">History</Button>
               </Link>
               <Link to={"/drugs-and-medical-conditions"}>
