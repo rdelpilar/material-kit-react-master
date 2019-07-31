@@ -11,7 +11,9 @@ import MaterialTable from "material-table";
 import axios from "axios";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Primary from "components/Typography/Primary";
+import Typography from "@material-ui/core/Typography";
 import Danger from "components/Typography/Danger.jsx";
+import Tooltip from "@material-ui/core/Tooltip";
 import Chart from "../Charts/Chart";
 
 import Button from "components/CustomButtons/Button.jsx";
@@ -146,7 +148,17 @@ class NotificationsMaterialTable extends Component {
   getPatientClinicianColumn(id, name, dob, phone, subscribingClinicians) {
     return (
       <div>
-        <Link to={"/activity/patient/" + id}>
+        {/* <Link to={"/activity/patient/" + id}> */}
+        <Link
+          to={{
+            pathname: "/activity/patient/" + id,
+            state: {
+              patientName: name,
+              dob: dob,
+              subscribingClinicians: subscribingClinicians
+            }
+          }}
+        >
           <h4>{name}</h4>
         </Link>
         <small>DOB: {dob} </small>
@@ -160,30 +172,64 @@ class NotificationsMaterialTable extends Component {
   }
 
   getGoalTypeColumn(goalType, goal) {
-    let goalInt = parseInt(goal, 10);
-    if (goalInt >= 30) {
-      return (
+
+    // Following code uses material-ui tooltip...
+
+    // const HtmlTooltip = withStyles(theme => ({
+    //   tooltip: {
+    //     backgroundColor: "#f5f5f9",
+    //     color: "rgba(0, 0, 0, 0.87)",
+    //     maxWidth: 220,
+    //     fontSize: theme.typography.pxToRem(12),
+    //     border: "1px solid #dadde9"
+    //   }
+    // }))(Tooltip);
+
+    // let goalInt = parseInt(goal, 10);
+    // if (goalInt >= 30) {
+    //   return (
+    //     <div>
+    //       <div>
+    //         <HtmlTooltip
+    //           title={
+    //             <React.Fragment>
+    //               <Typography color="inherit">Warning</Typography>
+    //               <em>{"And here's"}</em> <b>{"some"}</b>{" "}
+    //               <u>{"amazing content"}</u>. {"It's very engaging. Right?"}
+    //             </React.Fragment>
+    //           }
+    //         >
+    //           <h2 style={{ color: "#f44336" }} className={this.props.title}>
+    //             {goal}
+    //           </h2>
+    //         </HtmlTooltip>
+    //       </div>
+    //       <div>{goalType}</div>
+    //     </div>
+    //   );
+    // } else {
+    //   return (
+    //     <div>
+    //       <div>
+    //         <h2 className={this.props.title + " " + this.props.dangerText}>
+    //           {goal}
+    //         </h2>
+    //       </div>
+    //       <div>{goalType}</div>
+    //     </div>
+    //   );
+    // }
+
+    return (
+      <div>
         <div>
-          <div>
-            <h2 style={{ color: "#f44336" }} className={this.props.title}>
-              {goal}
-            </h2>
-          </div>
-          <div>{goalType}</div>
+          <h2 className={this.props.title + " " + this.props.dangerText}>
+            {goal}
+          </h2>
         </div>
-      );
-    } else {
-      return (
-        <div>
-          <div>
-            <h2 className={this.props.title + " " + this.props.dangerText}>
-              {goal}
-            </h2>
-          </div>
-          <div>{goalType}</div>
-        </div>
-      );
-    }
+        <div>{goalType}</div>
+      </div>
+    );
   }
 
   getNotificationDateColumn(notification, notificationDate) {
@@ -209,7 +255,11 @@ class NotificationsMaterialTable extends Component {
     };
 
     const columns = [
-      { title: "Patient / Clinician", field: "patientClinician" },
+      {
+        title: "Patient / Clinician",
+        field: "patientClinician",
+        searchable: true
+      },
       { title: "Notification / Date", field: "notificationDate" },
       { title: "Goal / Type", field: "goalType" },
       { title: "Last Measurement", field: "lastMeasurement" },

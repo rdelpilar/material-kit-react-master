@@ -37,9 +37,9 @@ class Activity extends React.Component {
         >
           <br />
           <div className={classNames(classes.main, classes.mainRaised)}>
-            <PatientInfoLayer1 />
+            <PatientInfoLayer1 {...this.props.location} />
             <hr />
-            <PatientInfoLayer2 />
+            <PatientInfoLayer2 {...this.props} />
           </div>
           <PatientSecondaryNav />
           <div className={classNames(classes.main, classes.mainRaised)}>
