@@ -24,6 +24,7 @@ import ClinicSettings from "views/Clinic/ClinicSettings";
 import ClinicUsersAndLocations from "views/Clinic/ClinicUsersAndLocations";
 import ClinicHistory from "views/Clinic/ClinicHistory";
 import ClinicDrugsAndMedicalConditions from "views/Clinic/ClinicDrugsAndMedicalConditions";
+import ClinicAccount from "views/ClinicAccount/ClinicAccount";
 
 var hist = createBrowserHistory();
 
@@ -58,6 +59,7 @@ ReactDOM.render(
         path="/drugs-and-medical-conditions"
         component={ClinicDrugsAndMedicalConditions}
       />
+      <Route exact path="/my-account" component={ClinicAccount} />
 
       <Route path="/components" component={Components} />
       <Route path="/landing-page" component={LandingPage} />

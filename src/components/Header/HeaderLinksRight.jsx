@@ -31,7 +31,6 @@ function HeaderLinksRight({ ...props }) {
             round
             href="/my-account"
             color="white"
-            onClick={e => e.preventDefault()}
             >
             SU
             </Button>

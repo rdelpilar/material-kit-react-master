@@ -84,7 +84,7 @@ class ClinicHistoryTable extends Component {
                       name: "selectView",
                       id: "select-view"
                     }}
-                    style={{ minWidth: "200px" }}
+                    style={{ width: "160px" }}
                   >
                     <MenuItem value={1}>Patient History</MenuItem>
                     <MenuItem value={2}>Clinic History</MenuItem>
@@ -101,7 +101,7 @@ class ClinicHistoryTable extends Component {
                       name: "moreActions",
                       id: "select-more-actions"
                     }}
-                    style={{ minWidth: "200px" }}
+                    style={{ minWidth: "160px" }}
                   >
                     <MenuItem value={1}>Download Spreadsheet</MenuItem>
                   </Select>
