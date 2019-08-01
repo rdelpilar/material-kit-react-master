@@ -11,6 +11,7 @@ import MaterialTable from "material-table";
 import axios from "axios";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Primary from "components/Typography/Primary";
+import Fade from "@material-ui/core/Fade";
 import Typography from "@material-ui/core/Typography";
 import Danger from "components/Typography/Danger.jsx";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -21,6 +22,7 @@ import Button from "components/CustomButtons/Button.jsx";
 
 import Slide from "@material-ui/core/Slide";
 import AddInterventionDialog from "views/Dialogs/AddInterventionDialog";
+import { LinearProgress, CircularProgress } from "@material-ui/core";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -33,7 +35,8 @@ class NotificationsMaterialTable extends Component {
     super(props);
     this.state = {
       data: [],
-      classicModal: false
+      classicModal: false,
+      loading: "progress"
     };
   }
   componentDidMount() {
@@ -142,6 +145,10 @@ class NotificationsMaterialTable extends Component {
         this.setState({
           data: items
         });
+
+        this.setState({
+          loading: "success"
+        });
       });
   };
 
@@ -172,7 +179,6 @@ class NotificationsMaterialTable extends Component {
   }
 
   getGoalTypeColumn(goalType, goal) {
-
     // Following code uses material-ui tooltip...
 
     // const HtmlTooltip = withStyles(theme => ({
@@ -268,18 +274,43 @@ class NotificationsMaterialTable extends Component {
       { title: "Actions", field: "action" }
     ];
 
+    // <Fade
+    //   in={this.state.loading === "success"}
+    //   style={{
+    //     transitionDelay: this.state.loading === "success" ? "1000ms" : "0ms"
+    //   }}
+    //   unmountOnExit
+    // ></Fade>
     return (
       <div>
-        <MaterialTable
-          title={
-            <div className={classes.typo}>
-              <h3>Notification</h3>
-            </div>
-          }
-          data={data}
-          columns={columns}
-          options={options}
-        />
+        {this.state.loading === "progress" ? (
+          <div style={{ height: "60px", textAlign: "center" }}>
+            {this.state.loading === "success" ? null : (
+              <Fade
+                in={this.state.loading === "progress"}
+                style={{
+                  transitionDelay:
+                    this.state.loading === "progress" ? "300ms" : "0ms"
+                }}
+                unmountOnExit
+              >
+                <CircularProgress disableShrink />
+              </Fade>
+            )}
+          </div>
+        ) : null}
+        <div>
+          <MaterialTable
+            title={
+              <div className={classes.typo}>
+                <h3>Notification</h3>
+              </div>
+            }
+            data={data}
+            columns={columns}
+            options={options}
+          />
+        </div>
       </div>
     );
   }
