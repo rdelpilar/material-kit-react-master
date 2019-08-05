@@ -17,6 +17,9 @@ import Danger from "components/Typography/Danger.jsx";
 import Tooltip from "@material-ui/core/Tooltip";
 import Chart from "../Charts/Chart";
 
+import { connect } from "react-redux";
+import { addPatientInfo } from "../../redux/actions";
+
 import Button from "components/CustomButtons/Button.jsx";
 //import AddInterventionsDialog from "../Dialogs/AddInterventionDialog";
 
@@ -92,11 +95,11 @@ class NotificationsMaterialTable extends Component {
                 caret={false}
                 dropdownHeader="Actions"
                 buttonText={<MoreVertIcon />}
-                buttonProps={{
-                  className:
-                    classes.navLink + " " + classes.imageDropdownButton,
-                  color: "transparent"
-                }}
+                // buttonProps={{
+                //   className:
+                //     classes.navLink + " " + classes.imageDropdownButton,
+                //   color: "transparent"
+                // }}
                 dropdownList={[
                   <AddInterventionDialog>
                     Add Intervention
@@ -140,6 +143,9 @@ class NotificationsMaterialTable extends Component {
           );
 
           items.push(item);
+
+          // Add patient's info into the global store
+          this.props.addPatientInfo(item.id, item);
         });
 
         this.setState({
@@ -155,8 +161,8 @@ class NotificationsMaterialTable extends Component {
   getPatientClinicianColumn(id, name, dob, phone, subscribingClinicians) {
     return (
       <div>
-        {/* <Link to={"/activity/patient/" + id}> */}
-        <Link
+        <Link to={"/activity/patient/" + id}>
+          {/* <Link
           to={{
             pathname: "/activity/patient/" + id,
             state: {
@@ -165,7 +171,7 @@ class NotificationsMaterialTable extends Component {
               subscribingClinicians: subscribingClinicians
             }
           }}
-        >
+        > */}
           <h4>{name}</h4>
         </Link>
         <small>DOB: {dob} </small>
@@ -302,7 +308,8 @@ class NotificationsMaterialTable extends Component {
         <div>
           <MaterialTable
             title={
-              <div className={classes.typo}>
+              // <div className={classes.typo}>
+              <div>
                 <h3>Notification</h3>
               </div>
             }
@@ -316,4 +323,7 @@ class NotificationsMaterialTable extends Component {
   }
 }
 
-export default withStyles(headerLinksStyle)(NotificationsMaterialTable);
+export default connect(
+  null,
+  { addPatientInfo }
+)(NotificationsMaterialTable);

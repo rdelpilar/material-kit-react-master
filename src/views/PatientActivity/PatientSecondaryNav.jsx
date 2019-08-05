@@ -3,15 +3,19 @@ import PropTypes from "prop-types";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-// core components
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import componentsStyle from "assets/jss/material-kit-react/views/components.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 
 class PatientSecondaryNav extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
-    const { classes } = this.props;
+    const { classes, id } = this.props;
+    console.log("id: ", id);
     return (
       <div
         className={classes.section}
@@ -20,10 +24,18 @@ class PatientSecondaryNav extends React.Component {
         <div className={classes.container}>
           <GridContainer style={{ textAlign: "center" }}>
             <GridItem xs={12} sm={12} md={12}>
-              <Link to={"/activity/patient/1"}>
+              <Link
+                to={{
+                  pathname: "/activity/patient/" + id
+                }}
+              >
                 <Button color="primary">Activity</Button>
               </Link>
-              <Link to={"/settings/patient/1"}>
+              <Link
+                to={{
+                  pathname: "/settings/patient/" + id
+                }}
+              >
                 <Button color="primary">Settings</Button>
               </Link>
             </GridItem>
@@ -35,7 +47,8 @@ class PatientSecondaryNav extends React.Component {
 }
 
 PatientSecondaryNav.propTypes = {
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  id: PropTypes.string
 };
 
 export default withStyles(componentsStyle)(PatientSecondaryNav);

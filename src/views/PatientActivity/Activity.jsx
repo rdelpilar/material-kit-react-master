@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
 
@@ -14,8 +15,8 @@ import ActivityNotification from "./ActivityNotification";
 import ActivityPortletsContainer from "../PatientPortlets/ActivityPortletsContainer";
 
 class Activity extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -33,15 +34,15 @@ class Activity extends React.Component {
 
         <div
           className={classNames(classes.main, classes.mainRaised)}
-          style={{ marginTop: 80 + "px"}}
+          style={{ marginTop: 80 + "px" }}
         >
           <br />
           <div className={classNames(classes.main, classes.mainRaised)}>
-            <PatientInfoLayer1 {...this.props.location} />
+            <PatientInfoLayer1 {...this.props.match.params} />
             <hr />
-            <PatientInfoLayer2 {...this.props} />
+            <PatientInfoLayer2 {...this.props.match.params} />
           </div>
-          <PatientSecondaryNav />
+          <PatientSecondaryNav {...this.props.match.params} />
           <div className={classNames(classes.main, classes.mainRaised)}>
             <ActivityNotification />
           </div>
@@ -56,5 +57,10 @@ class Activity extends React.Component {
     );
   }
 }
+
+Activity.propTypes = {
+  classes: PropTypes.object,
+  match: PropTypes.object
+};
 
 export default withStyles(componentsStyle)(Activity);

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
 
@@ -11,12 +12,10 @@ import PatientInfoLayer1 from "../PatientActivity/PatientInfoLayer1";
 import PatientInfoLayer2 from "../PatientActivity/PatientInfoLayer2";
 import PatientSecondaryNav from "../PatientActivity/PatientSecondaryNav";
 import SettingsPortletContainer from "../PatientPortlets/SettingsPortletContainer";
-import GridContainer from "components/Grid/GridContainer";
-import GridItem from "components/Grid/GridItem";
 
 class Settings extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -38,11 +37,11 @@ class Settings extends React.Component {
         >
           <br />
           <div className={classNames(classes.main, classes.mainRaised)}>
-            <PatientInfoLayer1 />
+            <PatientInfoLayer1 {...this.props.match.params} />
             <hr />
-            <PatientInfoLayer2 />
+            <PatientInfoLayer2 {...this.props.match.params} />
           </div>
-          <PatientSecondaryNav />
+          <PatientSecondaryNav {...this.props.match.params} />
           <div className={classNames(classes.main, classes.mainRaised)}>
             <SettingsPortletContainer />
           </div>
@@ -53,5 +52,10 @@ class Settings extends React.Component {
     );
   }
 }
+
+Settings.propTypes = {
+  classes: PropTypes.object,
+  match: PropTypes.object
+};
 
 export default withStyles(componentsStyle)(Settings);

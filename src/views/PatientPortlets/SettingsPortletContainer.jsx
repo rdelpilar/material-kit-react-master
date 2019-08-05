@@ -30,9 +30,7 @@ class SettingsPortletsContainer extends React.Component {
             aria-controls="panel1bh-content"
             id="patientProfilePortlet"
           >
-            <Typography className={classes.heading}>
-              <h4>Patient Profile</h4>
-            </Typography>
+            <Typography className={classes.heading}>Patient Profile</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <div style={{ width: "100%" }}>
@@ -47,7 +45,7 @@ class SettingsPortletsContainer extends React.Component {
             id="myCardioMemsPortlet"
           >
             <Typography className={classes.heading}>
-              <h4>myCardioMEMS Mobile Application</h4>
+              myCardioMEMS Mobile Application
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
@@ -62,9 +60,7 @@ class SettingsPortletsContainer extends React.Component {
             aria-controls="panel3bh-content"
             id="diagnosesPortlet"
           >
-            <Typography className={classes.heading}>
-              <h4>Diagnoses</h4>
-            </Typography>
+            <Typography className={classes.heading}>Diagnoses</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <div style={{ width: "100%" }}>
@@ -78,9 +74,7 @@ class SettingsPortletsContainer extends React.Component {
             aria-controls="panel3bh-content"
             id="medicationsPortlet"
           >
-            <Typography className={classes.heading}>
-              <h4>Medications</h4>
-            </Typography>
+            <Typography className={classes.heading}>Medications</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <div style={{ width: "100%" }}>
@@ -95,7 +89,7 @@ class SettingsPortletsContainer extends React.Component {
             id="goalsAndThresholdsPortlet"
           >
             <Typography className={classes.heading}>
-              <h4>Goals and Thresholds</h4>
+              Goals and Thresholds
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
@@ -110,9 +104,7 @@ class SettingsPortletsContainer extends React.Component {
             aria-controls="panel3bh-content"
             id="notificationsPortlet"
           >
-            <Typography className={classes.heading}>
-              <h4>Notifications</h4>
-            </Typography>
+            <Typography className={classes.heading}>Notifications</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <div style={{ width: "100%" }}>
@@ -127,7 +119,7 @@ class SettingsPortletsContainer extends React.Component {
             id="hospitalizationPortlet"
           >
             <Typography className={classes.heading}>
-              <h4>Hospitalizations</h4>
+              Hospitalizations
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
@@ -142,9 +134,7 @@ class SettingsPortletsContainer extends React.Component {
             aria-controls="panel3bh-content"
             id="notesPortlet"
           >
-            <Typography className={classes.heading}>
-              <h4>Notes</h4>
-            </Typography>
+            <Typography className={classes.heading}>Notes</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <div style={{ width: "100%" }}>

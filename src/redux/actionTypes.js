@@ -1,0 +1,1 @@
+export const ADD_PATIENT_INFO = "ADD_PATIENT_INFO";
