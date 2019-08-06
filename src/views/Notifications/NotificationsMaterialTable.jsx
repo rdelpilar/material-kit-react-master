@@ -96,11 +96,11 @@ class NotificationsMaterialTable extends Component {
                 caret={false}
                 dropdownHeader="Actions"
                 buttonText={<MoreVertIcon />}
-                // buttonProps={{
-                //   className:
-                //     classes.navLink + " " + classes.imageDropdownButton,
-                //   color: "transparent"
-                // }}
+                buttonProps={{
+                  // className:
+                  //   classes.navLink + " " + classes.imageDropdownButton,
+                  color: "transparent"
+                }}
                 dropdownList={[
                   <AddInterventionDialog>
                     Add Intervention
@@ -147,8 +147,6 @@ class NotificationsMaterialTable extends Component {
 
           // Add patient's info into the global store
           this.props.addPatientInfo(item.id, item);
-
-          console.log("Item: ", item);
         });
 
         this.setState({

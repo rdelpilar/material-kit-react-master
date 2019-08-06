@@ -5,7 +5,56 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
 am4core.useTheme(am4themes_animated);
 
+const lastNdays = 7;
+const min = Math.ceil(18);
+const max = Math.floor(100);
+
 class Chart extends Component {
+  generateChartData(chart) {
+    let data = [];
+
+    for (var i = 0; i < lastNdays; i++) {
+      data.push({
+        date: new Date(new Date().setDate(new Date().getDate() - i)),
+        value: Math.floor(Math.random() * (max - min + 1)) + min
+      });
+    }
+
+    chart.data = data;
+    return chart;
+
+    // return (chart.data = [
+    //   {
+    //     date: new Date(2019, 7, 20),
+    //     value: 90
+    //   },
+    //   {
+    //     date: new Date(2019, 7, 21),
+    //     value: 102
+    //   },
+    //   {
+    //     date: new Date(2019, 7, 22),
+    //     value: 56
+    //   },
+    //   {
+    //     date: new Date(2019, 7, 23),
+    //     value: 62
+    //   },
+    //   {
+    //     date: new Date(2019, 7, 24),
+    //     value: 55
+    //   },
+    //   {
+    //     date: new Date(2019, 7, 25),
+    //     value: 81
+    //   },
+    //   {
+    //     date: new Date(2019, 7, 26),
+    //     value: 95
+    //   }
+    // ]);
+  }
+
   componentDidMount() {
     let chart = am4core.create(this.props.chartDivId, am4charts.XYChart);
 
@@ -44,36 +93,7 @@ class Chart extends Component {
 
     // this.chart = chart;
 
-    chart.data = [
-      {
-        date: new Date(2019, 7, 20),
-        value: 90
-      },
-      {
-        date: new Date(2019, 7, 21),
-        value: 102
-      },
-      {
-        date: new Date(2019, 7, 22),
-        value: 56
-      },
-      {
-        date: new Date(2019, 7, 23),
-        value: 62
-      },
-      {
-        date: new Date(2019, 7, 24),
-        value: 55
-      },
-      {
-        date: new Date(2019, 7, 25),
-        value: 81
-      },
-      {
-        date: new Date(2019, 7, 26),
-        value: 95
-      }
-    ];
+    this.generateChartData(chart);
 
     // Create axes
     var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
