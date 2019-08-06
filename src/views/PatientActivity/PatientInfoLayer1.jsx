@@ -35,7 +35,7 @@ class PatientInfoLayer1 extends React.Component {
                   </div>
                 </GridItem>
                 <GridItem xs={12} sm={5} md={6}>
-                  <div style={{ paddingTop: "35px" }}>
+                  <div style={{ paddingTop: "38px" }}>
                     DOB: {patientInfo ? patientInfo.dob : ""}
                   </div>
                 </GridItem>

@@ -25,7 +25,7 @@ function HeaderLinksRight({ ...props }) {
   const { classes } = props;
   return (
     <List className={classes.list}>
-        <ListItem className={classes.listItem} style={{paddingRight: 20 + 'px', paddingLeft: 20 + 'px'}}>
+        <ListItem className={classes.listItem} style={{paddingRight: "5px", paddingLeft: "5px"}}>
             <Button
             justIcon
             round
@@ -35,7 +35,7 @@ function HeaderLinksRight({ ...props }) {
             SU
             </Button>
       </ListItem>
-      <ListItem className={classes.listItem}>
+      <ListItem className={classes.listItem} style={{paddingRight: "5px", paddingLeft: "5px"}}>
         <CustomDropdown
           noLiPadding
           buttonText="Help"
@@ -63,7 +63,7 @@ function HeaderLinksRight({ ...props }) {
           ]}
         />
       </ListItem>
-      <ListItem className={classes.listItem}>
+      <ListItem className={classes.listItem} style={{paddingRight: "5px", paddingLeft: "5px"}}>
         <CustomDropdown
           noLiPadding
           buttonText="Switch To"
@@ -79,7 +79,7 @@ function HeaderLinksRight({ ...props }) {
           ]}
         />
       </ListItem>
-      <ListItem className={classes.listItem}>
+      <ListItem className={classes.listItem} style={{paddingRight: "5px", paddingLeft: "5px"}}>
         <Button
           href="/sign-out"
           color="transparent"

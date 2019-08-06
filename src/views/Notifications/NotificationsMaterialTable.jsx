@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import PropTypes from "prop-types";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import ReactDOMServer from "react-dom/server";
 
@@ -75,12 +76,12 @@ class NotificationsMaterialTable extends Component {
             item.subscribingClinicians
           );
 
-          item.goalType = this.getGoalTypeColumn(item.goalType, item.goal);
-
-          item.notificationDate = this.getNotificationDateColumn(
+          item.notificationAndDate = this.getNotificationDateColumn(
             item.notificationDate,
             item.notification
           );
+
+          item.metricType = this.getGoalTypeColumn(item.goalType, item.goal);
 
           item.paTrend = (
             <div>
@@ -146,6 +147,8 @@ class NotificationsMaterialTable extends Component {
 
           // Add patient's info into the global store
           this.props.addPatientInfo(item.id, item);
+
+          console.log("Item: ", item);
         });
 
         this.setState({
@@ -162,16 +165,6 @@ class NotificationsMaterialTable extends Component {
     return (
       <div>
         <Link to={"/activity/patient/" + id}>
-          {/* <Link
-          to={{
-            pathname: "/activity/patient/" + id,
-            state: {
-              patientName: name,
-              dob: dob,
-              subscribingClinicians: subscribingClinicians
-            }
-          }}
-        > */}
           <h4>{name}</h4>
         </Link>
         <small>DOB: {dob} </small>
@@ -244,40 +237,115 @@ class NotificationsMaterialTable extends Component {
     );
   }
 
-  getNotificationDateColumn(notification, notificationDate) {
+  getNotificationDateColumn(notificationDate, notification) {
     return (
       <div>
-        <div>
-          <h6 className={this.props.title}>
-            {notification} / {notificationDate}
-          </h6>
-        </div>
+        <h6 className={this.props.title}>
+          {notificationDate} / {notification}
+        </h6>
       </div>
     );
+  }
+
+  customPatientAndClinicianSearch(str, data) {
+    if (str.trim() === "" || typeof data === "undefined" || data == null)
+      return null;
+
+    const name = data.name;
+    const dob = data.dob;
+    const phone = data.phone;
+    const subscribingClinicians = data.subscribingClinicians;
+
+    if (
+      name.toLowerCase().indexOf(str) !== -1 ||
+      dob.toLowerCase().indexOf(str) !== -1 ||
+      phone.toLowerCase().indexOf(str) !== -1 ||
+      subscribingClinicians.toLowerCase().indexOf(str) !== -1
+    ) {
+      return data.patientClinician;
+    }
+
+    return null;
+  }
+
+  customGoalAndMetricTypeSearch(str, data) {
+    if (str.trim() === "" || typeof data === "undefined" || data == null)
+      return null;
+
+    const goal = data.goal;
+    const goalType = data.goalType;
+
+    if (
+      goal.toLowerCase().indexOf(str) !== -1 ||
+      goalType.toLowerCase().indexOf(str) !== -1
+    )
+      return data.metricType;
+
+    return null;
+  }
+
+  customDateAndNotificationSearch(str, data) {
+    if (str.trim() === "" || typeof data === "undefined" || data == null)
+      return null;
+
+    const notification = data.notification;
+    const date = data.notificationDate;
+
+    if (
+      notification.toLowerCase().indexOf(str) !== -1 ||
+      date.toLowerCase().indexOf(str) !== -1
+    ) {
+      return data.notificationAndDate;
+    }
+
+    return null;
   }
 
   render() {
     const { classes } = this.props;
     if (this.state.count <= 0) return false;
     const { data } = this.state;
+    console.log("data: ", data);
 
     const options = {
       pageSize: 10,
+      filtering: false,
       headerStyle: { backgroundColor: Primary, padding: "10px" }
     };
+
+    // const url = "";
 
     const columns = [
       {
         title: "Patient / Clinician",
         field: "patientClinician",
-        searchable: true
+        customFilterAndSearch: this.customPatientAndClinicianSearch
       },
-      { title: "Notification / Date", field: "notificationDate" },
-      { title: "Goal / Type", field: "goalType" },
+      {
+        title: "Date / Notification",
+        field: "notificationAndDate",
+        customFilterAndSearch: this.customDateAndNotificationSearch
+      },
+      {
+        title: "Goal / Type",
+        field: "goalType",
+        customFilterAndSearch: this.customGoalAndMetricTypeSearch
+        // customFilterAndSearch: (str, data) => {
+        //   console.log("str: ", str);
+        //   console.log(
+        //     "data0: ",
+        //     data.goalType.props.children[0].props.children.props.children
+        //   );
+        //   console.log(
+        //     "data1: ",
+        //     data.goalType.props.children[1].props.children
+        //   );
+        // }
+      },
       { title: "Last Measurement", field: "lastMeasurement" },
       { title: "Last Reading", field: "lastReading" },
-      { title: "PA Trend (Last 7 days)", field: "paTrend" },
-      { title: "Actions", field: "action" }
+      { title: "PA Trend (Last 7 days)", field: "paTrend", searchable: false },
+      { title: "Actions", field: "action", searchable: false }
     ];
 
     // <Fade
@@ -314,6 +382,21 @@ class NotificationsMaterialTable extends Component {
               </div>
             }
             data={data}
+            // data={query =>
+            //   new Promise((resolve, reject) => {
+            //     // use query to produce data. query contains search, filter, page and sort data.
+            //     console.log("query: ", query);
+            //     fetch(url) // You can send query to your server directly.
+            //       .then(response => response.json())
+            //       .then(result => {
+            //         resolve({
+            //           data: data,
+            //           page: result.pageNumber,
+            //           totalCount: result.total
+            //         });
+            //       });
+            //   })
+            // }
             columns={columns}
             options={options}
           />
@@ -322,6 +405,12 @@ class NotificationsMaterialTable extends Component {
     );
   }
 }
+
+NotificationsMaterialTable.propTypes = {
+  classes: PropTypes.object,
+  title: PropTypes.string,
+  dangerText: PropTypes.string
+};
 
 export default connect(
   null,

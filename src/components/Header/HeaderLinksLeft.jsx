@@ -24,7 +24,7 @@ function HeaderLinksLeft({ ...props }) {
   const { classes } = props;
   return (
     <List className={classes.list}>
-      <ListItem className={classes.listItem}>
+      <ListItem className={classes.listItem} style={{paddingRight: "5px", paddingLeft: "5px"}}>
         <CustomDropdown
             noLiPadding
             buttonText="Notifications"
@@ -49,7 +49,7 @@ function HeaderLinksLeft({ ...props }) {
             ]}
           />
       </ListItem>
-      <ListItem className={classes.listItem}>
+      <ListItem className={classes.listItem} style={{paddingRight: "5px", paddingLeft: "5px"}}>
         <Button
           href="/all-patients"
           color="transparent"
@@ -58,7 +58,7 @@ function HeaderLinksLeft({ ...props }) {
           All Patients
         </Button>
       </ListItem>
-      <ListItem className={classes.listItem}>
+      <ListItem className={classes.listItem} style={{paddingRight: "5px", paddingLeft: "5px"}}>
         <Button
           href="/clinic-settings"
           color="transparent"

@@ -43,7 +43,7 @@ const container = {
   },
   "@media (min-width: 992px)": {
     // maxWidth: "960px"
-    maxWidth: "85%"
+    maxWidth: "90%"
   },
   "@media (min-width: 1200px)": {
     // maxWidth: "1140px"
