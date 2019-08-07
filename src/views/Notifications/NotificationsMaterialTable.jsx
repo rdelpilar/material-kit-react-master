@@ -8,6 +8,7 @@ import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
 import withStyles from "@material-ui/core/styles/withStyles";
 import headerLinksStyle from "assets/jss/material-kit-react/components/headerLinksStyle.jsx";
 import componentsStyle from "assets/jss/material-kit-react/views/components.jsx";
+import Search from "@material-ui/icons/Search";
 
 import MaterialTable, { MTableBodyRow } from "material-table";
 import axios from "axios";
@@ -181,20 +182,22 @@ class NotificationsMaterialTable extends Component {
       });
   };
 
-  // const defaultFont = {
-  //   fontFamily: '"Muli", "Roboto", "Helvetica", "Arial", sans-serif',
-  //   fontWeight: "400",
-  //   lineHeight: "1.4em",
-  //   fontSize: "16px"
-  // };
-
   getPatientClinicianColumn(id, name, dob, phone, subscribingClinicians) {
     return (
       <div>
         <Link to={"/activity/patient/" + id}>
-          <p>{name}</p>
+          <p
+            style={{
+              color: "#68b3c8",
+              fontSize: "16px",
+              fontWeight: "400",
+              lineHeight: "1.4em"
+            }}
+          >
+            {name}
+          </p>
         </Link>
-        <small>DOB: {dob} </small>
+        <small style={{ fontSize: "90%" }}>DOB: {dob} </small>
         <br />
         <small>{phone}</small>
         <br />
@@ -388,8 +391,16 @@ class NotificationsMaterialTable extends Component {
       filtering: false,
       headerStyle: { padding: "10px" },
       rowStyle: {
-        hover: { backgroundColor: "#49bb7b" }
+        // hover: { backgroundColor: "#49bb7b" }
       }
+    };
+
+    const icons = {
+      Search: React.forwardRef((props, ref) => (
+        <Button justIcon round color="white">
+          <Search className={classes.searchIcon} />
+        </Button>
+      ))
     };
 
     // const url = "";
@@ -492,6 +503,7 @@ class NotificationsMaterialTable extends Component {
             // }
             columns={columns}
             options={options}
+            // icons={icons}
           />
         </div>
         <AddInterventionDialog
