@@ -7,8 +7,9 @@ import ReactDOMServer from "react-dom/server";
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
 import withStyles from "@material-ui/core/styles/withStyles";
 import headerLinksStyle from "assets/jss/material-kit-react/components/headerLinksStyle.jsx";
+import componentsStyle from "assets/jss/material-kit-react/views/components.jsx";
 
-import MaterialTable from "material-table";
+import MaterialTable, { MTableBodyRow } from "material-table";
 import axios from "axios";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Primary from "components/Typography/Primary";
@@ -27,6 +28,7 @@ import Button from "components/CustomButtons/Button.jsx";
 import Slide from "@material-ui/core/Slide";
 import AddInterventionDialog from "views/Dialogs/AddInterventionDialog";
 import { LinearProgress, CircularProgress } from "@material-ui/core";
+import { yellow } from "@material-ui/core/colors";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -40,9 +42,17 @@ class NotificationsMaterialTable extends Component {
     this.state = {
       data: [],
       classicModal: false,
-      loading: "progress"
+      loading: "progress",
+      addInterventionsModal: false
     };
   }
+
+  toggleAddInterventionsModal = () => {
+    this.setState({
+      addInterventionsModal: !this.state.addInterventionsModal
+    });
+  };
+
   componentDidMount() {
     this.getData();
   }
@@ -92,19 +102,31 @@ class NotificationsMaterialTable extends Component {
           item.action = (
             <div>
               <CustomDropdown
-                left
-                caret={false}
+                // left
+                // caret={false}
                 dropdownHeader="Actions"
                 buttonText={<MoreVertIcon />}
                 buttonProps={{
-                  // className:
-                  //   classes.navLink + " " + classes.imageDropdownButton,
+                  className:
+                    classes.navLink + " " + classes.imageDropdownButton,
                   color: "transparent"
                 }}
                 dropdownList={[
-                  <AddInterventionDialog>
-                    Add Intervention
-                  </AddInterventionDialog>,
+                  <div>
+                    <a
+                      color="primary"
+                      onClick={this.toggleAddInterventionsModal}
+                    >
+                      Add Intervention
+                    </a>
+                    {/* <Button
+                      color="primary"
+                      simple
+                      onClick={this.toggleAddInterventionsModal}
+                    >
+                      Add Intervention
+                    </Button> */}
+                  </div>,
                   { divider: true },
                   "Add Clinical Note",
                   "Update Status",
@@ -159,11 +181,18 @@ class NotificationsMaterialTable extends Component {
       });
   };
 
+  // const defaultFont = {
+  //   fontFamily: '"Muli", "Roboto", "Helvetica", "Arial", sans-serif',
+  //   fontWeight: "400",
+  //   lineHeight: "1.4em",
+  //   fontSize: "16px"
+  // };
+
   getPatientClinicianColumn(id, name, dob, phone, subscribingClinicians) {
     return (
       <div>
         <Link to={"/activity/patient/" + id}>
-          <h4>{name}</h4>
+          <p>{name}</p>
         </Link>
         <small>DOB: {dob} </small>
         <br />
@@ -299,16 +328,68 @@ class NotificationsMaterialTable extends Component {
     return null;
   }
 
+  sortPatientColumnByName(a, b, c, d) {
+    if (
+      typeof a === "undefined" ||
+      a == null ||
+      b === "undefined" ||
+      b == null
+    ) {
+      return null;
+    }
+
+    return a.name.localeCompare(b.name, "en");
+  }
+
+  sortNotificationByDate(a, b) {
+    if (
+      typeof a === "undefined" ||
+      a == null ||
+      b === "undefined" ||
+      b == null
+    ) {
+      return null;
+    }
+
+    // Slow, find a better algorithm
+    let arrA = a.notificationDate.split("-");
+    a = swap(arrA, 0, 1)
+      .reverse()
+      .join("");
+
+    let arrB = b.notificationDate.split("-");
+    b = swap(arrB, 0, 1)
+      .reverse()
+      .join("");
+
+    return a.localeCompare(b, "en");
+  }
+
+  sortGoalByGoal(a, b) {
+    if (
+      typeof a === "undefined" ||
+      a == null ||
+      b === "undefined" ||
+      b == null
+    ) {
+      return null;
+    }
+
+    return a.goal - b.goal;
+  }
+
   render() {
     const { classes } = this.props;
     if (this.state.count <= 0) return false;
     const { data } = this.state;
-    console.log("data: ", data);
 
     const options = {
       pageSize: 10,
       filtering: false,
-      headerStyle: { backgroundColor: Primary, padding: "10px" }
+      headerStyle: { padding: "10px" },
+      rowStyle: {
+        hover: { backgroundColor: "#49bb7b" }
+      }
     };
 
     // const url = "";
@@ -317,16 +398,19 @@ class NotificationsMaterialTable extends Component {
       {
         title: "Patient / Clinician",
         field: "patientClinician",
+        customSort: this.sortPatientColumnByName,
         customFilterAndSearch: this.customPatientAndClinicianSearch
       },
       {
         title: "Date / Notification",
         field: "notificationAndDate",
+        customSort: this.sortNotificationByDate,
         customFilterAndSearch: this.customDateAndNotificationSearch
       },
       {
         title: "Goal / Type",
-        field: "goalType",
+        field: "metricType",
+        customSort: this.sortGoalByGoal,
         customFilterAndSearch: this.customGoalAndMetricTypeSearch
         // customFilterAndSearch: (str, data) => {
         //   console.log("str: ", str);
@@ -342,8 +426,13 @@ class NotificationsMaterialTable extends Component {
       },
       { title: "Last Measurement", field: "lastMeasurement" },
       { title: "Last Reading", field: "lastReading" },
-      { title: "PA Trend (Last 7 days)", field: "paTrend", searchable: false },
-      { title: "Actions", field: "action", searchable: false }
+      {
+        title: "PA Trend (Last 7 days)",
+        field: "paTrend",
+        searchable: false,
+        sorting: false
+      },
+      { title: "Actions", field: "action", searchable: false, sorting: false }
     ];
 
     // <Fade
@@ -373,6 +462,12 @@ class NotificationsMaterialTable extends Component {
         ) : null}
         <div>
           <MaterialTable
+            // components={{
+            //   Row: props => (
+            //     //className={classes.dropdownLink}
+            //     <MTableBodyRow className={classes.dropdownLink} {...props} />
+            //   )
+            // }}
             title={
               // <div className={classes.typo}>
               <div>
@@ -399,9 +494,21 @@ class NotificationsMaterialTable extends Component {
             options={options}
           />
         </div>
+        <AddInterventionDialog
+          show={this.state.addInterventionsModal}
+          onClose={this.toggleAddInterventionsModal}
+        />
       </div>
     );
   }
+}
+
+function swap(arr, a, b) {
+  let tmp = arr[a];
+  arr[a] = arr[b];
+  arr[b] = tmp;
+
+  return arr;
 }
 
 NotificationsMaterialTable.propTypes = {
@@ -410,7 +517,11 @@ NotificationsMaterialTable.propTypes = {
   dangerText: PropTypes.string
 };
 
+const NotificationsMaterialTableWithCSS = withStyles(componentsStyle)(
+  NotificationsMaterialTable
+);
+
 export default connect(
   null,
   { addPatientInfo }
-)(NotificationsMaterialTable);
+)(NotificationsMaterialTableWithCSS);

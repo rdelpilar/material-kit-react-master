@@ -60,6 +60,33 @@ class NotificationsMaterialTable extends Component {
     return arr;
   }
 
+  sortPapImplantDate(a, b) {
+    if (
+      typeof a === "undefined" ||
+      a == null ||
+      b === "undefined" ||
+      b == null
+    ) {
+      return null;
+    }
+
+    // Slow, find a better algorithm
+    let arrA = a.papImplantDate.split("-");
+    a = swap(arrA, 0, 1)
+      .reverse()
+      .join("");
+
+    console.log("a: ", a);
+    let arrB = b.papImplantDate.split("-");
+    b = swap(arrB, 0, 1)
+      .reverse()
+      .join("");
+
+    console.log("b: ", b);
+
+    return a.localeCompare(b, "en");
+  }
+
   render() {
     if (this.state.count <= 0) return false;
     const { data } = this.state;
@@ -75,7 +102,11 @@ class NotificationsMaterialTable extends Component {
       { title: "Since Review", field: "sinceReview" },
       { title: "Next Billing", field: "nextBilling" },
       { title: "Co-Management", field: "coManagement" },
-      { title: "PAP Implant Date", field: "papImplantDate" },
+      {
+        title: "PAP Implant Date",
+        field: "papImplantDate",
+        customSort: this.sortPapImplantDate
+      },
       { title: "myCardioMEMS Medication", field: "myCardioMems" },
       { title: "Latest Notes", field: "latestNotes" },
       { title: "Subscribed", field: "subscribed" },
@@ -96,6 +127,14 @@ class NotificationsMaterialTable extends Component {
       />
     );
   }
+}
+
+function swap(arr, a, b) {
+  let tmp = arr[a];
+  arr[a] = arr[b];
+  arr[b] = tmp;
+
+  return arr;
 }
 
 export default NotificationsMaterialTable;
