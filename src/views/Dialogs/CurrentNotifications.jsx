@@ -39,7 +39,7 @@ class CurrentNotifications extends React.Component {
                     <ListItem>
                       <ListItemAvatar>
                         <Avatar>
-                          <NotificationsActive />
+                          <NotificationsActive color="primary" />
                         </Avatar>
                       </ListItemAvatar>
                       <ListItemText
@@ -51,7 +51,7 @@ class CurrentNotifications extends React.Component {
                     <ListItem>
                       <ListItemAvatar>
                         <Avatar>
-                          <NotificationsActive />
+                          <NotificationsActive color="primary" />
                         </Avatar>
                       </ListItemAvatar>
                       <ListItemText

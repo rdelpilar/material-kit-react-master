@@ -16,7 +16,7 @@ import componentsStyle from "assets/jss/material-kit-react/views/components.jsx"
 import Notifications from "@material-ui/icons/Notifications";
 import PermPhoneMsg from "@material-ui/icons/PermPhoneMsg";
 import NoteAdd from "@material-ui/icons/NoteAdd";
-import ListIcon from "@material-ui/icons/List";
+import Edit from "@material-ui/icons/Edit";
 
 // core components
 import NavPills from "components/NavPills/NavPills.jsx";
@@ -120,7 +120,7 @@ class AddInterventionDialog extends React.Component {
                           },
                           {
                             tabButton: "Make Medication List Change",
-                            tabIcon: ListIcon,
+                            tabIcon: Edit,
                             tabContent: <MakeMedicationListChange />
                           }
                         ]}
