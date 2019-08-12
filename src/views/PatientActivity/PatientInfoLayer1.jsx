@@ -6,7 +6,7 @@ import GridContainer from "components/Grid/GridContainer";
 import GridItem from "components/Grid/GridItem";
 import Actions from "views/Actions/Actions";
 import { connect } from "react-redux";
-import { getPatientInfoByIdFilter } from "redux/selectors";
+import { getPatientInfoByIdFilter } from "redux/patientInfoSelectors";
 
 class PatientInfoLayer1 extends React.Component {
   constructor(props) {

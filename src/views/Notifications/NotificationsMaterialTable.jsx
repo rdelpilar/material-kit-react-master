@@ -24,12 +24,11 @@ import { connect } from "react-redux";
 import { addPatientInfo } from "../../redux/actions";
 
 import Button from "components/CustomButtons/Button.jsx";
-//import AddInterventionsDialog from "../Dialogs/AddInterventionDialog";
+import Grow from "@material-ui/core/Grow";
 
 import Slide from "@material-ui/core/Slide";
 import AddInterventionDialog from "views/Dialogs/AddInterventionDialog";
 import { LinearProgress, CircularProgress } from "@material-ui/core";
-import { yellow } from "@material-ui/core/colors";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -44,7 +43,12 @@ class NotificationsMaterialTable extends Component {
       data: [],
       classicModal: false,
       loading: "progress",
-      addInterventionsModal: false
+      addInterventionsModal: false,
+      openSnackbar: this.props.openSnackbar,
+      vertical: "bottom",
+      horizontal: "right",
+      Transition: Grow,
+      message: this.props.message
     };
   }
 
@@ -208,53 +212,6 @@ class NotificationsMaterialTable extends Component {
   }
 
   getGoalTypeColumn(goalType, goal) {
-    // Following code uses material-ui tooltip...
-
-    // const HtmlTooltip = withStyles(theme => ({
-    //   tooltip: {
-    //     backgroundColor: "#f5f5f9",
-    //     color: "rgba(0, 0, 0, 0.87)",
-    //     maxWidth: 220,
-    //     fontSize: theme.typography.pxToRem(12),
-    //     border: "1px solid #dadde9"
-    //   }
-    // }))(Tooltip);
-
-    // let goalInt = parseInt(goal, 10);
-    // if (goalInt >= 30) {
-    //   return (
-    //     <div>
-    //       <div>
-    //         <HtmlTooltip
-    //           title={
-    //             <React.Fragment>
-    //               <Typography color="inherit">Warning</Typography>
-    //               <em>{"And here's"}</em> <b>{"some"}</b>{" "}
-    //               <u>{"amazing content"}</u>. {"It's very engaging. Right?"}
-    //             </React.Fragment>
-    //           }
-    //         >
-    //           <h2 style={{ color: "#f44336" }} className={this.props.title}>
-    //             {goal}
-    //           </h2>
-    //         </HtmlTooltip>
-    //       </div>
-    //       <div>{goalType}</div>
-    //     </div>
-    //   );
-    // } else {
-    //   return (
-    //     <div>
-    //       <div>
-    //         <h2 className={this.props.title + " " + this.props.dangerText}>
-    //           {goal}
-    //         </h2>
-    //       </div>
-    //       <div>{goalType}</div>
-    //     </div>
-    //   );
-    // }
-
     return (
       <div>
         <div>
@@ -331,7 +288,7 @@ class NotificationsMaterialTable extends Component {
     return null;
   }
 
-  sortPatientColumnByName(a, b, c, d) {
+  sortPatientColumnByName(a, b) {
     if (
       typeof a === "undefined" ||
       a == null ||
@@ -383,8 +340,9 @@ class NotificationsMaterialTable extends Component {
 
   render() {
     const { classes } = this.props;
-    if (this.state.count <= 0) return false;
-    const { data } = this.state;
+    const { data, count, loading } = this.state;
+
+    if (count <= 0) return false;
 
     const options = {
       pageSize: 10,
@@ -423,17 +381,6 @@ class NotificationsMaterialTable extends Component {
         field: "metricType",
         customSort: this.sortGoalByGoal,
         customFilterAndSearch: this.customGoalAndMetricTypeSearch
-        // customFilterAndSearch: (str, data) => {
-        //   console.log("str: ", str);
-        //   console.log(
-        //     "data0: ",
-        //     data.goalType.props.children[0].props.children.props.children
-        //   );
-        //   console.log(
-        //     "data1: ",
-        //     data.goalType.props.children[1].props.children
-        //   );
-        // }
       },
       { title: "Last Measurement", field: "lastMeasurement" },
       { title: "Last Reading", field: "lastReading" },
@@ -455,14 +402,13 @@ class NotificationsMaterialTable extends Component {
     // ></Fade>
     return (
       <div>
-        {this.state.loading === "progress" ? (
+        {loading === "progress" ? (
           <div style={{ height: "60px", textAlign: "center" }}>
-            {this.state.loading === "success" ? null : (
+            {loading === "success" ? null : (
               <Fade
-                in={this.state.loading === "progress"}
+                in={loading === "progress"}
                 style={{
-                  transitionDelay:
-                    this.state.loading === "progress" ? "300ms" : "0ms"
+                  transitionDelay: loading === "progress" ? "300ms" : "0ms"
                 }}
                 unmountOnExit
               >
@@ -473,12 +419,6 @@ class NotificationsMaterialTable extends Component {
         ) : null}
         <div>
           <MaterialTable
-            // components={{
-            //   Row: props => (
-            //     //className={classes.dropdownLink}
-            //     <MTableBodyRow className={classes.dropdownLink} {...props} />
-            //   )
-            // }}
             title={
               // <div className={classes.typo}>
               <div>
@@ -515,6 +455,12 @@ class NotificationsMaterialTable extends Component {
   }
 }
 
+// MySnackbarContentWrapper.propTypes = {
+//   className: PropTypes.string,
+//   message: PropTypes.string,
+//   onClose: PropTypes.func
+// };
+
 function swap(arr, a, b) {
   let tmp = arr[a];
   arr[a] = arr[b];
@@ -526,7 +472,8 @@ function swap(arr, a, b) {
 NotificationsMaterialTable.propTypes = {
   classes: PropTypes.object,
   title: PropTypes.string,
-  dangerText: PropTypes.string
+  dangerText: PropTypes.string,
+  addPatientInfo: PropTypes.func.isRequired
 };
 
 const NotificationsMaterialTableWithCSS = withStyles(componentsStyle)(

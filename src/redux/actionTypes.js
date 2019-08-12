@@ -1,1 +1,2 @@
 export const ADD_PATIENT_INFO = "ADD_PATIENT_INFO";
+export const SHOW_SNACKBAR = "SHOW_SNACKBAR";

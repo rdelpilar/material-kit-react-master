@@ -1,7 +1,7 @@
 import { ADD_PATIENT_INFO } from "../actionTypes";
 
 const initialState = {
-  //allIds: [],
+  allIds: [],
   byIds: {}
 };
 
@@ -11,7 +11,7 @@ export default function(state = initialState, action) {
       const { id, patientInfo } = action.payload;
       return {
         ...state,
-        // allIds: [...state.allIds, id],
+        allIds: [...state.allIds, id],
         byIds: {
           ...state.byIds,
           [id]: {

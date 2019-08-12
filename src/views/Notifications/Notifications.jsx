@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import classNames from "classnames";
+import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 import Header from "components/Header/Header.jsx";
@@ -45,5 +46,9 @@ class Notifications extends Component {
     );
   }
 }
+
+Notifications.propTypes = {
+  classes: PropTypes.object
+};
 
 export default withStyles(componentsStyle)(Notifications);

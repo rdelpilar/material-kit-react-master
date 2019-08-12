@@ -1,4 +1,4 @@
-import { ADD_PATIENT_INFO } from "./actionTypes";
+import { ADD_PATIENT_INFO, SHOW_SNACKBAR } from "./actionTypes";
 
 export const addPatientInfo = (id, patientInfo) => ({
   type: ADD_PATIENT_INFO,
@@ -18,3 +18,11 @@ export const addPatientInfo = (id, patientInfo) => ({
 //   console.log("Inside the other getPatientInfoById");
 //   return action;
 // };
+
+export const toggleSnackbar = (enable, message) => ({
+  type: SHOW_SNACKBAR,
+  payload: {
+    enable: enable,
+    message: message
+  }
+});

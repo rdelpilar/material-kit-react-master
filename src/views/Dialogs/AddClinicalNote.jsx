@@ -8,36 +8,29 @@ import GridItem from "components/Grid/GridItem";
 import { FormControl, FormLabel, TextField } from "@material-ui/core";
 import Info from "@material-ui/icons/Info";
 import Button from "components/CustomButtons/Button.jsx";
-import Snackbar from "@material-ui/core/Snackbar";
-import SnackbarContent from "@material-ui/core/SnackbarContent";
-import Grow from "@material-ui/core/Grow";
-import IconButton from "@material-ui/core/IconButton";
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import CloseIcon from "@material-ui/icons/Close";
+
+import { connect } from "react-redux";
+import { toggleSnackbar } from "../../redux/actions";
 
 class AddClinicalNote extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      openSnackbar: false,
-      vertical: "top",
-      horizontal: "right",
-      Transition: Grow
+      snackbarEnabled: false,
+      snackbarMessage: "Note has been saved!"
     };
   }
 
-  handleSendMessageClick = () => {
-    console.log("Clicked");
-    this.setState({ openSnackbar: true });
-  };
-
-  handleClose = () => {
-    this.setState({ openSnackbar: false });
+  handleSave = () => {
+    this.setState({
+      snackbarEnabled: !this.state.snackbarEnabled
+    });
+    this.props.toggleSnackbar(this.state.snackbarEnabled, this.state.snackbarMessage);
   };
 
   render() {
     const { classes } = this.props;
-    const { vertical, horizontal, openSnackbar } = this.state;
+
     return (
       <div>
         <GridContainer style={{ height: 50, maxWidth: "99%" }}>
@@ -79,10 +72,7 @@ class AddClinicalNote extends React.Component {
                     <div>
                       <GridContainer style={{ textAlign: "right" }}>
                         <GridItem xs={12} sm={12} md={12}>
-                          <Button
-                            onClick={this.handleSendMessageClick}
-                            color="primary"
-                          >
+                          <Button onClick={this.handleSave} color="primary">
                             Save
                           </Button>
                         </GridItem>
@@ -117,74 +107,19 @@ class AddClinicalNote extends React.Component {
             </div>
           </GridItem>
         </GridContainer>
-        <Snackbar
-          anchorOrigin={{ vertical, horizontal }}
-          key={`${vertical},${horizontal}`}
-          open={openSnackbar}
-          onClose={this.handleClose}
-          autoHideDuration={5000}
-          TransitionComponent={this.state.Transition}
-          ContentProps={{
-            "aria-describedby": "message-id"
-          }}
-          // message={<span id="message-id">Message sent</span>}
-        >
-          <MySnackbarContentWrapper
-            onClose={this.handleClose}
-            message="Note has been saved!"
-          />
-        </Snackbar>
       </div>
     );
   }
 }
 
-function MySnackbarContentWrapper(props) {
-  const { message, onClose } = props;
-  const Icon = CheckCircleIcon;
-
-  return (
-    <SnackbarContent
-      style={{
-        backgroundColor: "#43A047"
-      }}
-      aria-describedby="client-snackbar"
-      message={
-        <span
-          id="client-snackbar"
-          style={{
-            display: "flex",
-            alignItems: "center"
-          }}
-        >
-          <Icon
-            style={{ fontSize: "20", opacity: "0.9", marginRight: "10px" }}
-          />
-          {message}
-        </span>
-      }
-      action={[
-        <IconButton
-          key="close"
-          aria-label="close"
-          color="inherit"
-          onClick={onClose}
-        >
-          <CloseIcon style={{ fontSize: 20 }} />
-        </IconButton>
-      ]}
-    />
-  );
-}
-
-MySnackbarContentWrapper.propTypes = {
-  className: PropTypes.string,
-  message: PropTypes.string,
-  onClose: PropTypes.func
-};
-
 AddClinicalNote.propTypes = {
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  toggleSnackbar: PropTypes.func.isRequired
 };
 
-export default withStyles(componentsStyle)(AddClinicalNote);
+const AddClinicalNoteWithCSS = withStyles(componentsStyle)(AddClinicalNote);
+
+export default connect(
+  null,
+  { toggleSnackbar }
+)(AddClinicalNoteWithCSS);
