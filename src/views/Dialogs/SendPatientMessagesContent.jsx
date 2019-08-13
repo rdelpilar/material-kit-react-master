@@ -17,13 +17,22 @@ import {
 import Info from "@material-ui/icons/Info";
 import Button from "components/CustomButtons/Button.jsx";
 
-class SendPatientMessages extends React.Component {
+import { connect } from "react-redux";
+import { toggleSnackbar } from "../../redux/actions";
+
+class SendPatientMessagesContent extends React.Component {
   constructor(props) {
     super(props);
   }
 
+  handleSendMessageClick = () => {
+    const message = "Message has been sent!";
+    this.props.toggleSnackbar(true, message);
+  };
+
   render() {
     const { classes } = this.props;
+
     return (
       <div>
         <GridContainer style={{ maxWidth: "99%" }}>
@@ -150,8 +159,14 @@ class SendPatientMessages extends React.Component {
   }
 }
 
-SendPatientMessages.propTypes = {
-  classes: PropTypes.object
+SendPatientMessagesContent.propTypes = {
+  classes: PropTypes.object,
+  toggleSnackbar: PropTypes.func.isRequired
 };
 
-export default withStyles(componentsStyle)(SendPatientMessages);
+const SendPatientMessagesContentWithCSS = withStyles(componentsStyle)(SendPatientMessagesContent);
+
+export default connect(
+  null,
+  { toggleSnackbar }
+)(SendPatientMessagesContentWithCSS);

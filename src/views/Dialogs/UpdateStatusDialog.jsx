@@ -11,20 +11,7 @@ import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 import componentsStyle from "assets/jss/material-kit-react/views/components.jsx";
-
-import Notifications from "@material-ui/icons/Notifications";
-import PermPhoneMsg from "@material-ui/icons/PermPhoneMsg";
-import NoteAdd from "@material-ui/icons/NoteAdd";
-import Edit from "@material-ui/icons/Edit";
-
-// core components
-import NavPills from "components/NavPills/NavPills.jsx";
 import { Divider, IconButton } from "@material-ui/core";
-
-import AddClinicalNoteContent from "./AddClinicalNoteContent";
-import MakeMedicationListChange from "./MakeMedicationListChange";
-import CurrentNotifications from "./CurrentNotifications";
-
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import CloseIcon from "@material-ui/icons/Close";
 
@@ -35,9 +22,9 @@ import SnackbarContent from "@material-ui/core/SnackbarContent";
 import Grow from "@material-ui/core/Grow";
 import { getSnackbarState } from "redux/snackbarSelectors";
 import { toggleSnackbar } from "redux/actions";
-import SendPatientMessagesContent from "./SendPatientMessagesContent";
+import UpdateStatusDialogContent from "./UpdateStatusDialogContent";
 
-class AddInterventionDialog extends React.Component {
+class UpdateStatusDialog extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -58,7 +45,6 @@ class AddInterventionDialog extends React.Component {
     if (reason === "clickaway") {
       return;
     }
-
     this.props.toggleSnackbar(false, "");
     this.setState({ openSnackbar: false, message: "" });
   };
@@ -132,59 +118,28 @@ class AddInterventionDialog extends React.Component {
           maxWidth="md"
           keepMounted
           onClose={() => this.props.onClose}
-          aria-labelledby="addInterventionDialogTitle"
-          aria-describedby="addInterventionDialogContent"
+          aria-labelledby="updateStatusDialogTitle"
+          aria-describedby="updateStatusDialogContent"
         >
           <DialogTitle
-            id="addInterventionDialogTitle"
+            id="updateStatusDialogTitle"
             disableTypography
             className={classes.modalHeader}
             style={{ backgroundColor: "#009CDE" }}
           >
             <h3 className={classes.modalTitle} style={{ color: "#FFFFFF" }}>
-              Add Intervention
+              Update Status
             </h3>
           </DialogTitle>
           <DialogContent
-            id="addInterventionDialogContent"
+            id="updateStatusDialogContent"
             className={classes.modalBody}
           >
-            <div className={classes.section}>
-              <div className={classes.container}>
-                <div id="navigation-pills">
-                  <GridContainer>
-                    <GridItem xs={12} sm={12} md={12} lg={12}>
-                      <NavPills
-                        style={{ width: "100%" }}
-                        color="primary"
-                        tabs={[
-                          {
-                            tabButton: "Current Notifications",
-                            tabIcon: Notifications,
-                            tabContent: <CurrentNotifications />
-                          },
-                          {
-                            tabButton: "Send Patient Message(s)",
-                            tabIcon: PermPhoneMsg,
-                            tabContent: <SendPatientMessagesContent />
-                          },
-                          {
-                            tabButton: "Add Clinical Note",
-                            tabIcon: NoteAdd,
-                            tabContent: <AddClinicalNoteContent />
-                          },
-                          {
-                            tabButton: "Make Medication List Change",
-                            tabIcon: Edit,
-                            tabContent: <MakeMedicationListChange />
-                          }
-                        ]}
-                      />
-                    </GridItem>
-                  </GridContainer>
-                </div>
-              </div>
-            </div>
+            <GridContainer>
+              <GridItem xs={12} sm={12} md={12} lg={12}>
+                <UpdateStatusDialogContent />
+              </GridItem>
+            </GridContainer>
           </DialogContent>
           <Divider variant="inset" />
           <DialogActions className={classes.modalFooter}>
@@ -219,7 +174,7 @@ const mapStateToProps = state => {
   return { openSnackbar: snackbar.enable, message: snackbar.message };
 };
 
-AddInterventionDialog.propTypes = {
+UpdateStatusDialog.propTypes = {
   classes: PropTypes.object,
   onClose: PropTypes.func.isRequired,
   show: PropTypes.bool,
@@ -231,11 +186,11 @@ AddInterventionDialog.propTypes = {
   toggleSnackbar: PropTypes.func.isRequired
 };
 
-const AddInterventionDialogWithCSS = withStyles(componentsStyle)(
-  AddInterventionDialog
+const UpdateStatusDialogWithCSS = withStyles(componentsStyle)(
+  UpdateStatusDialog
 );
 
 export default connect(
   mapStateToProps,
   { toggleSnackbar }
-)(AddInterventionDialogWithCSS);
+)(UpdateStatusDialogWithCSS);

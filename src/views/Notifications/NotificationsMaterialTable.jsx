@@ -29,6 +29,9 @@ import Grow from "@material-ui/core/Grow";
 import Slide from "@material-ui/core/Slide";
 import AddInterventionDialog from "views/Dialogs/AddInterventionDialog";
 import { LinearProgress, CircularProgress } from "@material-ui/core";
+import AddClinicalNoteDialog from "views/Dialogs/AddClinicalNoteDialog";
+import UpdateStatusDialog from "views/Dialogs/UpdateStatusDialog";
+import RemindMeDialog from "views/Dialogs/RemindMeDialog";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -44,17 +47,33 @@ class NotificationsMaterialTable extends Component {
       classicModal: false,
       loading: "progress",
       addInterventionsModal: false,
-      openSnackbar: this.props.openSnackbar,
-      vertical: "bottom",
-      horizontal: "right",
-      Transition: Grow,
-      message: this.props.message
+      addClinicalNoteModal: false,
+      updateStatusModal: false,
+      remindMeModal: false
     };
   }
 
   toggleAddInterventionsModal = () => {
     this.setState({
       addInterventionsModal: !this.state.addInterventionsModal
+    });
+  };
+
+  toggleAddClinicalNoteModal = () => {
+    this.setState({
+      addClinicalNoteModal: !this.state.addClinicalNoteModal
+    });
+  };
+
+  toggleUpdateStatusModal = () => {
+    this.setState({
+      updateStatusModal: !this.state.updateStatusModal
+    });
+  };
+
+  toggleRemindMeModal = () => {
+    this.setState({
+      remindMeModal: !this.state.remindMeModal
     });
   };
 
@@ -133,10 +152,25 @@ class NotificationsMaterialTable extends Component {
                     </Button> */}
                   </div>,
                   { divider: true },
-                  "Add Clinical Note",
-                  "Update Status",
+                  <div>
+                    <a
+                      color="primary"
+                      onClick={this.toggleAddClinicalNoteModal}
+                    >
+                      Add Clinical Note
+                    </a>
+                  </div>,
+                  <div>
+                    <a color="primary" onClick={this.toggleUpdateStatusModal}>
+                      Update Status
+                    </a>
+                  </div>,
                   "Clear Notification(s)",
-                  "Remind Me",
+                  <div>
+                    <a color="primary" onClick={this.toggleRemindMeModal}>
+                      Update Status
+                    </a>
+                  </div>,
                   "Subscribed"
                 ]}
               />
@@ -449,6 +483,18 @@ class NotificationsMaterialTable extends Component {
         <AddInterventionDialog
           show={this.state.addInterventionsModal}
           onClose={this.toggleAddInterventionsModal}
+        />
+        <AddClinicalNoteDialog
+          show={this.state.addClinicalNoteModal}
+          onClose={this.toggleAddClinicalNoteModal}
+        />
+        <UpdateStatusDialog
+          show={this.state.updateStatusModal}
+          onClose={this.toggleUpdateStatusModal}
+        />
+        <RemindMeDialog
+          show={this.state.remindMeModal}
+          onClose={this.toggleRemindMeModal}
         />
       </div>
     );

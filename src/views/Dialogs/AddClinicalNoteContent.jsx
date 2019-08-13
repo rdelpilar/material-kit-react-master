@@ -12,20 +12,14 @@ import Button from "components/CustomButtons/Button.jsx";
 import { connect } from "react-redux";
 import { toggleSnackbar } from "../../redux/actions";
 
-class AddClinicalNote extends React.Component {
+class AddClinicalNoteContent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      snackbarEnabled: false,
-      snackbarMessage: "Note has been saved!"
-    };
   }
 
   handleSave = () => {
-    this.setState({
-      snackbarEnabled: !this.state.snackbarEnabled
-    });
-    this.props.toggleSnackbar(this.state.snackbarEnabled, this.state.snackbarMessage);
+    const message = "Note has been saved!";
+    this.props.toggleSnackbar(true, message);
   };
 
   render() {
@@ -63,7 +57,7 @@ class AddClinicalNote extends React.Component {
                       margin="normal"
                       variant="outlined"
                       fullWidth
-                      placeholder="Add clinic note..."
+                      placeholder="Add clinic notes..."
                       style={{
                         backgroundColor: "#FFFFFF",
                         marginTop: 0
@@ -112,14 +106,14 @@ class AddClinicalNote extends React.Component {
   }
 }
 
-AddClinicalNote.propTypes = {
+AddClinicalNoteContent.propTypes = {
   classes: PropTypes.object,
   toggleSnackbar: PropTypes.func.isRequired
 };
 
-const AddClinicalNoteWithCSS = withStyles(componentsStyle)(AddClinicalNote);
+const AddClinicalNoteContentWithCSS = withStyles(componentsStyle)(AddClinicalNoteContent);
 
 export default connect(
   null,
   { toggleSnackbar }
-)(AddClinicalNoteWithCSS);
+)(AddClinicalNoteContentWithCSS);
