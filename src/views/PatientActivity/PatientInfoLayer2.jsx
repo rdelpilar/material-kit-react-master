@@ -4,18 +4,27 @@ import PropTypes from "prop-types";
 import tabsStyle from "assets/jss/material-kit-react/views/componentsSections/tabsStyle.jsx";
 
 import Stars from "@material-ui/icons/Stars";
+import StarIcon from "@material-ui/icons/Star";
 import FormControl from "@material-ui/core/FormControl";
 import GridContainer from "components/Grid/GridContainer";
 import GridItem from "components/Grid/GridItem";
 
 import TextField from "@material-ui/core/TextField";
+import {
+  List,
+  ListItem,
+  ListItemAvatar,
+  Avatar,
+  Divider,
+  ListItemIcon,
+  ListItemText
+} from "@material-ui/core";
 
 class PatientInfoLayer2 extends React.Component {
   constructor(props) {
     super(props);
   }
-  componentDidMount() {
-  }
+  componentDidMount() {}
   render() {
     const { classes, id } = this.props;
 
@@ -34,7 +43,7 @@ class PatientInfoLayer2 extends React.Component {
           backgroundColor: "#FFF"
         }}
       >
-        <div className={classes.container}>
+        <div className={classes.container} style={{ maxWidth: "95%" }}>
           <div id="nav-tabs">
             <GridContainer>
               <GridItem xs={12} sm={12} md={2}>
@@ -79,34 +88,35 @@ class PatientInfoLayer2 extends React.Component {
                     minWidth: "100%"
                   }}
                 >
-                  {/* <Select
-                    // value={personName}
-                    // onChange={handleChangeMultiple}
-                    inputProps={{
-                      id: "subscribingClinicians"
+                  <List
+                    dense={true}
+                    style={{
+                      width: "100%",
+                      maxWidth: 180,
+                      maxHeight: 60,
+                      overflow: "auto"
                     }}
                   >
-                    {subscribingClinicians.map(name => (
-                      <option key={name} value={name}>
-                        {name}
-                      </option>
-                    ))}
-                  </Select> */}
-                  <TextField
-                    id="subscribingClinicians"
-                    label=""
-                    multiline
-                    rows="4"
-                    inputProps={{
-                      id: "subscribingClinicians"
-                    }}
-                    margin="normal"
-                    value={subscribingClinicians}
-                  ></TextField>
+                    <ListItem>
+                      <small>
+                        ClinicRCT_Phy_ImpTre1, ClinicRCT_Phy_ImpTre1
+                      </small>
+                    </ListItem>
+                    <ListItem>
+                      <small>
+                        ClinicRCT_Phy_ImpTre2, ClinicRCT_Phy_ImpTre2
+                      </small>
+                    </ListItem>
+                    <ListItem>
+                      <small>
+                        ClinicRCT_Phy_ImpTre3, ClinicRCT_Phy_ImpTre3
+                      </small>
+                    </ListItem>
+                  </List>
                 </FormControl>
                 <h4>
-                  <Stars color="primary" />
-                  <small>&nbsp;Subscribed</small>
+                  <StarIcon />
+                  <small style={{ marginLeft: 5 }}>You are subscribed to this patient</small>
                 </h4>
               </GridItem>
               <GridItem xs={12} sm={12} md={2}>
