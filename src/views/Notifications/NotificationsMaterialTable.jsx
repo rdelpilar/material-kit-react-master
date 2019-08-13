@@ -381,7 +381,7 @@ class NotificationsMaterialTable extends Component {
     const options = {
       pageSize: 10,
       filtering: false,
-      headerStyle: { padding: "10px" },
+      headerStyle: { padding: "10px", backgroundColor: "#F2F3F7" },
       rowStyle: {
         // hover: { backgroundColor: "#49bb7b" }
       }

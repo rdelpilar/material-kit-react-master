@@ -1,19 +1,22 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import PropTypes from "prop-types";
 import { BrowserRouter as Router, Link } from "react-router-dom";
-import ReactDOMServer from "react-dom/server";
 
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
 import withStyles from "@material-ui/core/styles/withStyles";
 import headerLinksStyle from "assets/jss/material-kit-react/components/headerLinksStyle.jsx";
 
-import MaterialTable from "material-table";
+import MaterialTable, { MTableToolbar } from "material-table";
 import axios from "axios";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Primary from "components/Typography/Primary";
 
 import Slide from "@material-ui/core/Slide";
 import AddInterventionDialog from "views/Dialogs/AddInterventionDialog";
+import GridContainer from "components/Grid/GridContainer";
+import GridItem from "components/Grid/GridItem";
+import { Typography, Divider, Select, MenuItem } from "@material-ui/core";
+import { values } from "regenerator-runtime";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -169,11 +172,92 @@ class ClinicUsersTable extends Component {
     };
 
     const columns = [
-      { title: "User Name", field: "userName" },
-      { title: "User Type", field: "userType" },
-      { title: "Telephone No.", field: "telephoneNumber" },
-      { title: "Department", field: "department" }
+      { title: "Taken on", field: "takenOn" },
+      { title: "PA Systolic", field: "paSystolic" },
+      { title: "PA Diastolic", field: "paDiastolic" },
+      { title: "PA Mean", field: "paMean" },
+      { title: "+/- Goal", field: "plusMinusGoal" },
+      { title: "Heart Rate", field: "heartRate" },
+      { title: "Cardiac Output", field: "cardiacOutput" },
+      { title: "Waveform Status", field: "waveformStatus" }
     ];
+
+    const components = {
+      Toolbar: props => (
+        <div>
+          <br />
+          <div style={{ padding: "0px 50px" }}>
+            <GridContainer>
+              <GridItem xs={12} sm={11} md={1}>
+                <h5 style={{ marginBottom: 0 }}>
+                  <small>GOAL</small>
+                </h5>
+                <Typography variant="h4">24</Typography>
+                <h5 style={{ marginTop: 0, marginBottom: 0 }}>
+                  <small>Set 08-13-2019</small>
+                </h5>
+                <h5 style={{ marginTop: 0, marginBottom: 0 }}>
+                  <small>PA Mean</small>
+                </h5>
+              </GridItem>
+              <GridItem xs={1} sm={1} md={1}>
+                <Divider
+                  style={{ width: "1px", padding: "1px", height: "110px" }}
+                />
+              </GridItem>
+              <GridItem xs={12} sm={12} md={3}>
+                <h5 style={{ marginBottom: 0 }}>
+                  <small>30 DAY READING SUMMARY</small>
+                  <br />
+                  <small>(does not consider readings received today)</small>
+                </h5>
+                <Typography variant="h4">0</Typography>
+                <h5 style={{ marginTop: 0, marginBottom: 0 }}>
+                  <small>Reading Compliance</small>
+                </h5>
+              </GridItem>
+              <GridItem xs={12} sm={6} md={1} style={{ marginTop: "60px" }}>
+                <Typography variant="h4" style={{ marginBottom: 0 }}>
+                  0
+                </Typography>
+                <h5 style={{ marginTop: 0, marginBottom: 0 }}>
+                  <small>Missed</small>
+                </h5>
+              </GridItem>
+              <GridItem xs={12} sm={5} md={1} style={{ marginTop: "60px" }}>
+                <Typography variant="h4" style={{ marginBottom: 0 }}>
+                  0
+                </Typography>
+                <h5 style={{ marginTop: 0, marginBottom: 0 }}>
+                  <small>Suspect</small>
+                </h5>
+              </GridItem>
+              <GridItem xs={1} sm={1} md={1}>
+                <Divider
+                  style={{ width: "1px", padding: "1px", height: "110px" }}
+                />
+              </GridItem>
+              <GridItem xs={12} sm={6} md={1}>
+                <h5 style={{ marginBottom: 0 }}>
+                  <small>FILTER</small>
+                </h5>
+                <Select
+                  value={"all"}
+                  inputProps={{ name: "items", id: "items" }}
+                  style={{ marginTop: "40px" }}
+                >
+                  <MenuItem value={"all"}>All</MenuItem>
+                </Select>
+              </GridItem>
+              <GridItem xs={12} sm={6} md={3} style={{ marginTop: "60px" }}>
+                <MTableToolbar {...props} />
+              </GridItem>
+            </GridContainer>
+          </div>
+          <br />
+        </div>
+      )
+    };
 
     return (
       <div>
@@ -187,10 +271,15 @@ class ClinicUsersTable extends Component {
           data={data}
           columns={columns}
           options={options}
+          components={components}
         />
       </div>
     );
   }
 }
+
+ClinicUsersTable.propTypes = {
+  classes: PropTypes.object
+};
 
 export default withStyles(headerLinksStyle)(ClinicUsersTable);

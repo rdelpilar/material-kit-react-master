@@ -9,7 +9,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import GridContainer from "components/Grid/GridContainer";
 import GridItem from "components/Grid/GridItem";
 
-import Datetime from "react-datetime";
 import Input from "@material-ui/core/Input";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
@@ -18,7 +17,13 @@ import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Button from "components/CustomButtons/Button.jsx";
 
-import Primary from "components/Typography/Primary";
+import "date-fns";
+import DateFnsUtils from "@date-io/date-fns";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker
+} from "@material-ui/pickers";
+
 import Slide from "@material-ui/core/Slide";
 import MaterialTable from "material-table";
 import { TextField, Divider } from "@material-ui/core";
@@ -33,7 +38,8 @@ class DiagnosisPortlet extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      addDiagnosisModal: false
+      addDiagnosisModal: false,
+      diagnosisSelectedDate: new Date()
     };
   }
 
@@ -47,12 +53,17 @@ class DiagnosisPortlet extends React.Component {
       addDiagnosisModal: false
     });
   }
+  handleDiagnosisDateChange = date => {
+    this.setState({
+      diagnosisSelectedDate: date
+    });
+  };
   render() {
     const { classes, ...rest } = this.props;
 
     const options = {
       pageSize: 10,
-      headerStyle: { backgroundColor: Primary, padding: "10px" }
+      headerStyle: { backgroundColor: "#F2F3F7", padding: "10px" }
     };
 
     const columns = [
@@ -110,9 +121,19 @@ class DiagnosisPortlet extends React.Component {
                         className={classes.formControl}
                         style={{ width: "100%", color: "#009CDE" }}
                       >
-                        <InputLabel shrink>Diagnosis Date</InputLabel>
-                        <br />
-                        <Datetime />
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                          <KeyboardDatePicker
+                            margin="normal"
+                            id="date-picker-dialog"
+                            label="Diagnosis Date"
+                            format="MM/dd/yyyy"
+                            value={this.state.diagnosisSelectedDate}
+                            onChange={this.handleDiagnosisDateChange}
+                            KeyboardButtonProps={{
+                              "aria-label": "change date"
+                            }}
+                          />
+                        </MuiPickersUtilsProvider>
                       </FormControl>
                     </GridItem>
                     <GridItem xs={12} sm={12} md={12}>

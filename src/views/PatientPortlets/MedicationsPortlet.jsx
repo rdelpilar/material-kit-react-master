@@ -9,7 +9,13 @@ import DialogActions from "@material-ui/core/DialogActions";
 import GridContainer from "components/Grid/GridContainer";
 import GridItem from "components/Grid/GridItem";
 
-import Datetime from "react-datetime";
+import "date-fns";
+import DateFnsUtils from "@date-io/date-fns";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker
+} from "@material-ui/pickers";
+
 import MenuItem from "@material-ui/core/MenuItem";
 
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -19,7 +25,6 @@ import FormControl from "@material-ui/core/FormControl";
 
 import Button from "components/CustomButtons/Button.jsx";
 
-import Primary from "components/Typography/Primary";
 import Slide from "@material-ui/core/Slide";
 import MaterialTable from "material-table";
 import { TextField, Divider } from "@material-ui/core";
@@ -35,7 +40,10 @@ class MedicationsPortlet extends React.Component {
     super(props);
     this.state = {
       addTemporaryMedicationPortal: false,
-      addMedicationPortal: false
+      addMedicationPortal: false,
+      selectedAddMedicationDate: new Date(),
+      selectedAddTemporaryMedicationStartDate: new Date(),
+      selectedAddTemporaryMedicationStopDate: new Date()
     };
   }
 
@@ -59,13 +67,28 @@ class MedicationsPortlet extends React.Component {
       addMedicationPortal: false
     });
   }
+  handleAddMedicationDateChange = date => {
+    this.setState({
+      selectedAddMedicationDate: date
+    });
+  };
+  handleAddTemporaryMedicationStartDateChange = date => {
+    this.setState({
+      selectedAddTemporaryMedicationStartDate: date
+    });
+  };
+  handleAddTemporaryMedicationStopDateChange = date => {
+    this.setState({
+      selectedAddTemporaryMedicationStopDate: date
+    });
+  };
 
   render() {
     const { classes, ...rest } = this.props;
 
     const options = {
       pageSize: 10,
-      headerStyle: { backgroundColor: Primary, padding: "10px" }
+      headerStyle: { backgroundColor: "#F2F3F7", padding: "10px" }
     };
 
     const columns = [
@@ -213,9 +236,7 @@ class MedicationsPortlet extends React.Component {
                   className={classes.container}
                   style={{
                     justify: "space-evenly",
-                    maxWidth: "100%",
-                    height: "720px",
-                    width: "520px"
+                    maxWidth: "100%"
                   }}
                 >
                   <GridContainer>
@@ -448,13 +469,28 @@ class MedicationsPortlet extends React.Component {
                   </GridContainer>
                   <br />
                   <GridContainer>
-                    <GridItem xs={12} sm={12} md={6}>
+                    <GridItem xs={12} sm={12} md={12}>
                       <FormControl
                         className={classes.formControl}
                         style={{ width: "100%", color: "#009CDE" }}
                       >
-                        <InputLabel shrink>Start Date (Required)</InputLabel>
-                        <Datetime />
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                          <KeyboardDatePicker
+                            margin="normal"
+                            id="date-picker-dialog"
+                            label="Start Date (Required)"
+                            format="MM/dd/yyyy"
+                            value={
+                              this.state.selectedAddTemporaryMedicationStartDate
+                            }
+                            onChange={
+                              this.handleAddTemporaryMedicationStartDateChange
+                            }
+                            KeyboardButtonProps={{
+                              "aria-label": "change date"
+                            }}
+                          />
+                        </MuiPickersUtilsProvider>
                       </FormControl>
                     </GridItem>
                     <GridItem xs={12} sm={12} md={6}>
@@ -462,8 +498,23 @@ class MedicationsPortlet extends React.Component {
                         className={classes.formControl}
                         style={{ width: "100%", color: "#009CDE" }}
                       >
-                        <InputLabel shrink>Stop Date (Required)</InputLabel>
-                        <Datetime />
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                          <KeyboardDatePicker
+                            margin="normal"
+                            id="date-picker-dialog"
+                            label="Stop Date (Required)"
+                            format="MM/dd/yyyy"
+                            value={
+                              this.state.selectedAddTemporaryMedicationStopDate
+                            }
+                            onChange={
+                              this.handleAddTemporaryMedicationStopDateChange
+                            }
+                            KeyboardButtonProps={{
+                              "aria-label": "change date"
+                            }}
+                          />
+                        </MuiPickersUtilsProvider>
                       </FormControl>
                     </GridItem>
                   </GridContainer>
@@ -795,8 +846,19 @@ class MedicationsPortlet extends React.Component {
                         className={classes.formControl}
                         style={{ width: "100%", color: "#009CDE" }}
                       >
-                        <InputLabel shrink>Date (Required)</InputLabel>
-                        <Datetime />
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                          <KeyboardDatePicker
+                            margin="normal"
+                            id="date-picker-dialog"
+                            label="Date (Required)"
+                            format="MM/dd/yyyy"
+                            value={this.state.selectedAddMedicationDate}
+                            onChange={this.handleAddMedicationDateChange}
+                            KeyboardButtonProps={{
+                              "aria-label": "change date"
+                            }}
+                          />
+                        </MuiPickersUtilsProvider>
                       </FormControl>
                     </GridItem>
                   </GridContainer>

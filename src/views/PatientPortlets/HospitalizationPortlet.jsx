@@ -13,7 +13,6 @@ import Datetime from "react-datetime";
 import InputLabel from "@material-ui/core/InputLabel";
 import { TextField } from "@material-ui/core";
 
-import Primary from "components/Typography/Primary";
 import Button from "components/CustomButtons/Button.jsx";
 import Slide from "@material-ui/core/Slide";
 import MaterialTable from "material-table";
@@ -23,6 +22,13 @@ import {
   FormControl,
   FormGroup
 } from "@material-ui/core";
+
+import "date-fns";
+import DateFnsUtils from "@date-io/date-fns";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker
+} from "@material-ui/pickers";
 
 import { CheckBox } from "@material-ui/icons";
 
@@ -36,7 +42,9 @@ class HospitalizationPortlet extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      addHospitalizationModal: false
+      addHospitalizationModal: false,
+      admissionDate: new Date(),
+      dischargeDate: new Date()
     };
   }
 
@@ -50,12 +58,22 @@ class HospitalizationPortlet extends React.Component {
       addHospitalizationModal: false
     });
   }
+  handleAdmissionDateChange = date => {
+    this.setState({
+      admissionDate: date
+    });
+  };
+  handleDischargeDateChange = date => {
+    this.setState({
+      dischargeDate: date
+    });
+  };
   render() {
     const { classes, ...rest } = this.props;
 
     const options = {
       pageSize: 10,
-      headerStyle: { backgroundColor: Primary, padding: "10px" }
+      headerStyle: { backgroundColor: "#F2F3F7", padding: "10px" }
     };
 
     const columns = [
@@ -102,9 +120,7 @@ class HospitalizationPortlet extends React.Component {
                   className={classes.container}
                   style={{
                     justify: "space-evenly",
-                    maxWidth: "100%",
-                    height: "480px",
-                    width: "400px"
+                    maxWidth: "100%"
                   }}
                 >
                   <GridContainer>
@@ -114,9 +130,19 @@ class HospitalizationPortlet extends React.Component {
                         className={classes.formControl}
                         style={{ width: "100%", color: "#009CDE" }}
                       >
-                        <InputLabel shrink>Admission Date</InputLabel>
-                        <br />
-                        <Datetime />
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                          <KeyboardDatePicker
+                            margin="normal"
+                            id="date-picker-dialog"
+                            label="Admission Date"
+                            format="MM/dd/yyyy"
+                            value={this.state.admissionDate}
+                            onChange={this.handleAdmissionDateChange}
+                            KeyboardButtonProps={{
+                              "aria-label": "change date"
+                            }}
+                          />
+                        </MuiPickersUtilsProvider>
                       </FormControl>
                     </GridItem>
                     <GridItem xs={12} sm={12} md={12}>
@@ -125,9 +151,19 @@ class HospitalizationPortlet extends React.Component {
                         className={classes.formControl}
                         style={{ width: "100%", color: "#009CDE" }}
                       >
-                        <InputLabel shrink>Discharge Date</InputLabel>
-                        <br />
-                        <Datetime />
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                          <KeyboardDatePicker
+                            margin="normal"
+                            id="date-picker-dialog"
+                            label="Discharge Date"
+                            format="MM/dd/yyyy"
+                            value={this.state.dischargeDate}
+                            onChange={this.handleDischargeDateChange}
+                            KeyboardButtonProps={{
+                              "aria-label": "change date"
+                            }}
+                          />
+                        </MuiPickersUtilsProvider>
                       </FormControl>
                     </GridItem>
                     <GridItem xs={12} sm={12} md={12}>

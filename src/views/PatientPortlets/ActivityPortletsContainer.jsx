@@ -23,7 +23,7 @@ class ActivityPortletsContainer extends React.Component {
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1bh-content"
-            id="panel1bh-header"
+            id="activityRecentIntervention"
           >
             <Typography className={classes.heading}>
               Recent Intervention
@@ -37,7 +37,7 @@ class ActivityPortletsContainer extends React.Component {
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel2bh-content"
-            id="panel2bh-header"
+            id="activityDTV"
           >
             <Typography className={classes.heading}>
               DirectTrend Viewer
@@ -51,14 +51,12 @@ class ActivityPortletsContainer extends React.Component {
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel3bh-content"
-            id="panel3bh-header"
+            id="activityReading"
           >
-            <Typography className={classes.heading}>
-              Readings
-            </Typography>
+            <Typography className={classes.heading}>Readings</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <div className={classNames(classes.main, classes.mainRaised)}>
+            <div style={{ width: "100%" }}>
               <ReadingsPortlet />
             </div>
           </ExpansionPanelDetails>

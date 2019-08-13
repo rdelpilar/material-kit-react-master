@@ -6,7 +6,6 @@ import componentsStyle from "assets/jss/material-kit-react/views/components.jsx"
 import MaterialTable from "material-table";
 import { Typography } from "@material-ui/core";
 import axios from "axios";
-import Primary from "components/Typography/Primary";
 
 import GridContainer from "components/Grid/GridContainer";
 import GridItem from "components/Grid/GridItem";
@@ -16,10 +15,8 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions";
 
 import Button from "components/CustomButtons/Button.jsx";
-import Datetime from "react-datetime";
-import InputLabel from "@material-ui/core/InputLabel";
 import { TextField } from "@material-ui/core";
-import { Divider, FormControl } from "@material-ui/core";
+import { FormControl } from "@material-ui/core";
 
 class ClinicDrugsTable extends Component {
   constructor(props) {
@@ -82,7 +79,7 @@ class ClinicDrugsTable extends Component {
 
     const options = {
       pageSize: 10,
-      headerStyle: { backgroundColor: Primary, padding: "10px" },
+      headerStyle: { backgroundColor: "#F2F3F7", padding: "10px" },
       actionsColumnIndex: -1
     };
 

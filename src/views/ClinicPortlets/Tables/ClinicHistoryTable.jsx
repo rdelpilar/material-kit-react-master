@@ -66,7 +66,7 @@ class ClinicHistoryTable extends Component {
 
     const options = {
       pageSize: 10,
-      headerStyle: { backgroundColor: Primary, padding: "10px" },
+      headerStyle: { backgroundColor: "#F2F3F7", padding: "10px" },
       actionsColumnIndex: -1
     };
 

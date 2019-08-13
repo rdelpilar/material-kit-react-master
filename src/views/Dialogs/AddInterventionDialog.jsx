@@ -186,7 +186,7 @@ class AddInterventionDialog extends React.Component {
               </div>
             </div>
           </DialogContent>
-          <Divider variant="inset" />
+          <Divider />
           <DialogActions className={classes.modalFooter}>
             <Button onClick={this.handleDialogClose} color="primary">
               Close

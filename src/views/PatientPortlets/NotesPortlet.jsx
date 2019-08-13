@@ -9,15 +9,19 @@ import DialogActions from "@material-ui/core/DialogActions";
 import GridContainer from "components/Grid/GridContainer";
 import GridItem from "components/Grid/GridItem";
 
-import Datetime from "react-datetime";
-import InputLabel from "@material-ui/core/InputLabel";
 import { TextField } from "@material-ui/core";
 
-import Primary from "components/Typography/Primary";
 import Button from "components/CustomButtons/Button.jsx";
 import Slide from "@material-ui/core/Slide";
 import MaterialTable from "material-table";
 import { Divider, FormControl } from "@material-ui/core";
+
+import "date-fns";
+import DateFnsUtils from "@date-io/date-fns";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker
+} from "@material-ui/pickers";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -29,7 +33,8 @@ class NotesPortlet extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      addNoteModal: false
+      addNoteModal: false,
+      notesSelectedDate: new Date()
     };
   }
 
@@ -43,12 +48,18 @@ class NotesPortlet extends React.Component {
       addNoteModal: false
     });
   }
+  handleNotesDateChange = date => {
+    this.setState({
+      notesSelectedDate: date
+    });
+  };
+
   render() {
     const { classes, ...rest } = this.props;
 
     const options = {
       pageSize: 10,
-      headerStyle: { backgroundColor: Primary, padding: "10px" }
+      headerStyle: { backgroundColor: "#F2F3F7", padding: "10px" }
     };
 
     const columns = [
@@ -95,7 +106,6 @@ class NotesPortlet extends React.Component {
                   style={{
                     justify: "space-evenly",
                     maxWidth: "100%",
-                    height: "480px",
                     width: "400px"
                   }}
                 >
@@ -106,9 +116,19 @@ class NotesPortlet extends React.Component {
                         className={classes.formControl}
                         style={{ width: "100%", color: "#009CDE" }}
                       >
-                        <InputLabel shrink>Date</InputLabel>
-                        <br />
-                        <Datetime />
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                          <KeyboardDatePicker
+                            margin="normal"
+                            id="date-picker-dialog"
+                            label="Date"
+                            format="MM/dd/yyyy"
+                            value={this.state.notesSelectedDate}
+                            onChange={this.handleNotesDateChange}
+                            KeyboardButtonProps={{
+                              "aria-label": "change date"
+                            }}
+                          />
+                        </MuiPickersUtilsProvider>
                       </FormControl>
                     </GridItem>
                     <GridItem xs={12} sm={12} md={12}>
@@ -126,7 +146,7 @@ class NotesPortlet extends React.Component {
                           margin="normal"
                           variant="outlined"
                           fullWidth
-                          placeholder="Add note..."
+                          placeholder="Add notes..."
                           style={{
                             backgroundColor: "#FFFFFF",
                             marginTop: 0 + "px"
@@ -176,6 +196,7 @@ class NotesPortlet extends React.Component {
     );
   }
 }
+
 NotesPortlet.propTypes = {
   classes: PropTypes.object
 };
