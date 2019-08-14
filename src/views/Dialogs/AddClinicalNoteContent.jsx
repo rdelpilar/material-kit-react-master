@@ -111,7 +111,9 @@ AddClinicalNoteContent.propTypes = {
   toggleSnackbar: PropTypes.func.isRequired
 };
 
-const AddClinicalNoteContentWithCSS = withStyles(componentsStyle)(AddClinicalNoteContent);
+const AddClinicalNoteContentWithCSS = withStyles(componentsStyle)(
+  AddClinicalNoteContent
+);
 
 export default connect(
   null,
