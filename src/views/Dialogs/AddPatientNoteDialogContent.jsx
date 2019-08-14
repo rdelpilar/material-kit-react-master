@@ -49,7 +49,7 @@ class AddPatientNoteDialogContent extends React.Component {
                   aria-label="main"
                   style={{ overflowY: "auto" }}
                 >
-                  <ListItem alignItems="flex-start">
+                  <ListItem button alignItems="flex-start">
                     <Button
                       justIcon
                       round
@@ -84,7 +84,7 @@ class AddPatientNoteDialogContent extends React.Component {
                     </ListItemSecondaryAction>
                   </ListItem>
                   <Divider variant="inset" component="li" />
-                  <ListItem alignItems="flex-start">
+                  <ListItem button alignItems="flex-start">
                     <Button
                       justIcon
                       round
@@ -119,7 +119,7 @@ class AddPatientNoteDialogContent extends React.Component {
                     </ListItemSecondaryAction>
                   </ListItem>
                   <Divider variant="inset" component="li" />
-                  <ListItem alignItems="flex-start">
+                  <ListItem button alignItems="flex-start">
                     <Button
                       justIcon
                       round
@@ -154,7 +154,7 @@ class AddPatientNoteDialogContent extends React.Component {
                     </ListItemSecondaryAction>
                   </ListItem>
                   <Divider variant="inset" component="li" />
-                  <ListItem alignItems="flex-start">
+                  <ListItem button alignItems="flex-start">
                     <Button
                       justIcon
                       round
@@ -183,7 +183,7 @@ class AddPatientNoteDialogContent extends React.Component {
                     />
                   </ListItem>
                   <Divider variant="inset" component="li" />
-                  <ListItem alignItems="flex-start">
+                  <ListItem button alignItems="flex-start">
                     <Button
                       justIcon
                       round
@@ -212,7 +212,7 @@ class AddPatientNoteDialogContent extends React.Component {
                     />
                   </ListItem>
                   <Divider variant="inset" component="li" />
-                  <ListItem alignItems="flex-start">
+                  <ListItem button alignItems="flex-start">
                     <Button
                       justIcon
                       round
@@ -247,7 +247,7 @@ class AddPatientNoteDialogContent extends React.Component {
                     </ListItemSecondaryAction>
                   </ListItem>
                   <Divider variant="inset" component="li" />
-                  <ListItem alignItems="flex-start">
+                  <ListItem button alignItems="flex-start">
                     <Button
                       justIcon
                       round
@@ -282,7 +282,7 @@ class AddPatientNoteDialogContent extends React.Component {
                     </ListItemSecondaryAction>
                   </ListItem>
                   <Divider variant="inset" component="li" />
-                  <ListItem alignItems="flex-start">
+                  <ListItem button alignItems="flex-start">
                     <Button
                       justIcon
                       round
@@ -317,7 +317,7 @@ class AddPatientNoteDialogContent extends React.Component {
                     </ListItemSecondaryAction>
                   </ListItem>
                   <Divider variant="inset" component="li" />
-                  <ListItem alignItems="flex-start">
+                  <ListItem button alignItems="flex-start">
                     <Button
                       justIcon
                       round
@@ -352,7 +352,7 @@ class AddPatientNoteDialogContent extends React.Component {
                     </ListItemSecondaryAction>
                   </ListItem>
                   <Divider variant="inset" component="li" />
-                  <ListItem alignItems="flex-start">
+                  <ListItem button alignItems="flex-start">
                     <Button
                       justIcon
                       round

@@ -92,13 +92,13 @@ class PatientInfoLayer2 extends React.Component {
                     overflow: "auto"
                   }}
                 >
-                  <ListItem>
+                  <ListItem button>
                     <small>ClinicRCT_Phy_ImpTre1, ClinicRCT_Phy_ImpTre1</small>
                   </ListItem>
-                  <ListItem>
+                  <ListItem button>
                     <small>ClinicRCT_Phy_ImpTre2, ClinicRCT_Phy_ImpTre2</small>
                   </ListItem>
-                  <ListItem>
+                  <ListItem button>
                     <small>ClinicRCT_Phy_ImpTre3, ClinicRCT_Phy_ImpTre3</small>
                   </ListItem>
                 </List>
@@ -115,7 +115,7 @@ class PatientInfoLayer2 extends React.Component {
             </GridItem>
             <GridItem xs={12} sm={12} md={2}>
               <h4>
-                <small>Note / Edit:</small>
+                <small>Note:</small>
               </h4>
               <div>
                 {/* <TextField
