@@ -1,34 +1,23 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
-import { BrowserRouter as Router, Link } from "react-router-dom";
-import ReactDOMServer from "react-dom/server";
+import { Link } from "react-router-dom";
 
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
 import withStyles from "@material-ui/core/styles/withStyles";
-import headerLinksStyle from "assets/jss/material-kit-react/components/headerLinksStyle.jsx";
 import componentsStyle from "assets/jss/material-kit-react/views/components.jsx";
-import Search from "@material-ui/icons/Search";
 
-import MaterialTable, { MTableBodyRow } from "material-table";
+import MaterialTable from "material-table";
 import axios from "axios";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import Primary from "components/Typography/Primary";
 import Fade from "@material-ui/core/Fade";
-import Typography from "@material-ui/core/Typography";
-import Danger from "components/Typography/Danger.jsx";
-import Tooltip from "@material-ui/core/Tooltip";
 import Chart from "../Charts/Chart";
 
 import { connect } from "react-redux";
 import { addPatientInfo } from "../../redux/actions";
 
-import Button from "components/CustomButtons/Button.jsx";
-import Grow from "@material-ui/core/Grow";
-
 import Slide from "@material-ui/core/Slide";
 import AddInterventionDialog from "views/Dialogs/AddInterventionDialog";
-import { LinearProgress, CircularProgress } from "@material-ui/core";
+import { CircularProgress } from "@material-ui/core";
 import AddClinicalNoteDialog from "views/Dialogs/AddClinicalNoteDialog";
 import UpdateStatusDialog from "views/Dialogs/UpdateStatusDialog";
 import RemindMeDialog from "views/Dialogs/RemindMeDialog";
@@ -136,41 +125,32 @@ class NotificationsMaterialTable extends Component {
                   color: "transparent"
                 }}
                 dropdownList={[
-                  <div>
-                    <a
-                      color="primary"
-                      onClick={this.toggleAddInterventionsModal}
-                    >
-                      Add Intervention
-                    </a>
-                    {/* <Button
-                      color="primary"
-                      simple
-                      onClick={this.toggleAddInterventionsModal}
-                    >
-                      Add Intervention
-                    </Button> */}
-                  </div>,
+                  <Link
+                    className={classes.dropdownLink}
+                    onClick={this.toggleAddInterventionsModal}
+                  >
+                    Add Intervention
+                  </Link>,
                   { divider: true },
-                  <div>
-                    <a
-                      color="primary"
-                      onClick={this.toggleAddClinicalNoteModal}
-                    >
-                      Add Clinical Note
-                    </a>
-                  </div>,
-                  <div>
-                    <a color="primary" onClick={this.toggleUpdateStatusModal}>
-                      Update Status
-                    </a>
-                  </div>,
+                  <Link
+                    className={classes.dropdownLink}
+                    onClick={this.toggleAddClinicalNoteModal}
+                  >
+                    Add Clinical Note
+                  </Link>,
+                  <Link
+                    className={classes.dropdownLink}
+                    onClick={this.toggleUpdateStatusModal}
+                  >
+                    Update Status
+                  </Link>,
                   "Clear Notification(s)",
-                  <div>
-                    <a color="primary" onClick={this.toggleRemindMeModal}>
-                      Update Status
-                    </a>
-                  </div>,
+                  <Link
+                    className={classes.dropdownLink}
+                    onClick={this.toggleRemindMeModal}
+                  >
+                    Remind Me
+                  </Link>,
                   "Subscribed"
                 ]}
               />
@@ -373,7 +353,6 @@ class NotificationsMaterialTable extends Component {
   }
 
   render() {
-    const { classes } = this.props;
     const { data, count, loading } = this.state;
 
     if (count <= 0) return false;
@@ -385,14 +364,6 @@ class NotificationsMaterialTable extends Component {
       rowStyle: {
         // hover: { backgroundColor: "#49bb7b" }
       }
-    };
-
-    const icons = {
-      Search: React.forwardRef((props, ref) => (
-        <Button justIcon round color="white">
-          <Search className={classes.searchIcon} />
-        </Button>
-      ))
     };
 
     // const url = "";

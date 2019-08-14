@@ -7,11 +7,37 @@ import ListItem from "@material-ui/core/ListItem";
 
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
 import headerLinksStyle from "assets/jss/material-kit-react/components/headerLinksStyle";
+import AddInterventionDialog from "views/Dialogs/AddInterventionDialog";
+import AddClinicalNoteDialog from "views/Dialogs/AddClinicalNoteDialog";
+import RemindMeDialog from "views/Dialogs/RemindMeDialog";
 
 class Actions extends Component {
   constructor() {
     super();
+    this.state = {
+      addInterventionsModal: false,
+      addClinicalNoteModal: false,
+      remindMeModal: false
+    };
   }
+
+  toggleAddInterventionsModal = () => {
+    this.setState({
+      addInterventionsModal: !this.state.addInterventionsModal
+    });
+  };
+
+  toggleAddClinicalNoteModal = () => {
+    this.setState({
+      addClinicalNoteModal: !this.state.addClinicalNoteModal
+    });
+  };
+
+  toggleRemindMeModal = () => {
+    this.setState({
+      remindMeModal: !this.state.remindMeModal
+    });
+  };
 
   render() {
     const { classes, ...rest } = this.props;
@@ -28,22 +54,41 @@ class Actions extends Component {
                 color: "primary"
               }}
               dropdownList={[
-                <Link to="/inactivate" className={classes.dropdownLink}>
-                  Inactivate
-                </Link>,
-                <a href="/add-intervention" className={classes.dropdownLink}>
+                <Link className={classes.dropdownLink}>Inactivate</Link>,
+                <Link
+                  className={classes.dropdownLink}
+                  onClick={this.toggleAddInterventionsModal}
+                >
                   Add Intervention
-                </a>,
-                <Link to="/add-clinical-note" className={classes.dropdownLink}>
+                </Link>,
+                <Link
+                  className={classes.dropdownLink}
+                  onClick={this.toggleAddClinicalNoteModal}
+                >
                   Add Clinical Note
                 </Link>,
-                <Link to="/remind-me" className={classes.dropdownLink}>
+                <Link
+                  className={classes.dropdownLink}
+                  onClick={this.toggleRemindMeModal}
+                >
                   Remind Me
                 </Link>
               ]}
             />
           </ListItem>
         </List>
+        <AddInterventionDialog
+          show={this.state.addInterventionsModal}
+          onClose={this.toggleAddInterventionsModal}
+        />
+        <AddClinicalNoteDialog
+          show={this.state.addClinicalNoteModal}
+          onClose={this.toggleAddClinicalNoteModal}
+        />
+        <RemindMeDialog
+          show={this.state.remindMeModal}
+          onClose={this.toggleRemindMeModal}
+        />
       </div>
     );
   }

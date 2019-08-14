@@ -135,7 +135,7 @@ class PatientInfoLayer2 extends React.Component {
                   size="sm"
                   onClick={this.toggleAddPatientNoteModal}
                 >
-                  Add / Edit Note
+                  Add / Edit
                 </Button>
               </div>
             </GridItem>

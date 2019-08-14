@@ -1,13 +1,13 @@
 import React from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
-import tabsStyle from "assets/jss/material-kit-react/views/componentsSections/tabsStyle.jsx";
-
 import GridContainer from "components/Grid/GridContainer";
 import GridItem from "components/Grid/GridItem";
+import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
 
-import TextField from "@material-ui/core/TextField";
+import { Link } from "react-router-dom";
+
+import MoreVertIcon from "@material-ui/icons/MoreVert";
 import componentsStyle from "assets/jss/material-kit-react/views/components.jsx";
-import { Icon } from "@material-ui/core";
 
 class ActivityNotification extends React.Component {
   constructor() {
@@ -32,7 +32,9 @@ class ActivityNotification extends React.Component {
                 <h4>
                   <small>Notification / Date</small>
                 </h4>
-                <h4 style={{ marginTop: 0 + "px" }}>No PA Pressure goal Established / 07-31-2019</h4>
+                <h4 style={{ marginTop: 0 + "px" }}>
+                  No PA Pressure goal Established / 07-31-2019
+                </h4>
               </GridItem>
               <GridItem xs={12} sm={12} md={4}>
                 <h4>
@@ -50,9 +52,46 @@ class ActivityNotification extends React.Component {
                 <h4>
                   <small>Actions</small>
                 </h4>
-                <h4>
-                  <Icon>more_vert</Icon>
-                </h4>
+                <CustomDropdown
+                  style={{ zIndex: 99999 }}
+                  // caret={false}
+                  dropdownHeader="Actions"
+                  buttonText={<MoreVertIcon />}
+                  buttonProps={{
+                    className:
+                      classes.navLink + " " + classes.imageDropdownButton,
+                    color: "transparent"
+                  }}
+                  dropdownList={[
+                    <Link
+                      className={classes.dropdownLink}
+                      onClick={this.toggleAddInterventionsModal}
+                    >
+                      Add Intervention
+                    </Link>,
+                    { divider: true },
+                    <Link
+                      className={classes.dropdownLink}
+                      onClick={this.toggleAddClinicalNoteModal}
+                    >
+                      Add Clinical Note
+                    </Link>,
+                    <Link
+                      className={classes.dropdownLink}
+                      onClick={this.toggleUpdateStatusModal}
+                    >
+                      Update Status
+                    </Link>,
+                    "Clear Notification(s)",
+                    <Link
+                      className={classes.dropdownLink}
+                      onClick={this.toggleRemindMeModal}
+                    >
+                      Remind Me
+                    </Link>,
+                    "Subscribed"
+                  ]}
+                />
               </GridItem>
             </GridContainer>
           </div>
