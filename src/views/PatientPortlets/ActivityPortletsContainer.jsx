@@ -32,7 +32,9 @@ class ActivityPortletsContainer extends React.Component {
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <RecentInterventionPortlet />
+            <div style={{ width: "100%", height: "100%" }}>
+              <RecentInterventionPortlet />
+            </div>
           </ExpansionPanelDetails>
         </ExpansionPanel>
         <ExpansionPanel expanded>

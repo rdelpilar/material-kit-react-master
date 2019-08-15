@@ -86,38 +86,33 @@ class PatientInfoLayer2 extends React.Component {
                 <List
                   dense={true}
                   style={{
-                    width: "100%",
-                    maxWidth: 180,
+                    width: "80%",
+                    maxWidth: "80%",
                     maxHeight: 60,
                     overflow: "auto"
                   }}
                 >
-                  <ListItem button>
+                  <ListItem button style={{ paddingLeft: 0 }}>
                     <small>ClinicRCT_Phy_ImpTre1, ClinicRCT_Phy_ImpTre1</small>
                   </ListItem>
-                  <ListItem button>
+                  <ListItem button style={{ paddingLeft: 0 }}>
                     <small>ClinicRCT_Phy_ImpTre2, ClinicRCT_Phy_ImpTre2</small>
                   </ListItem>
-                  <ListItem button>
+                  <ListItem button style={{ paddingLeft: 0 }}>
                     <small>ClinicRCT_Phy_ImpTre3, ClinicRCT_Phy_ImpTre3</small>
                   </ListItem>
                 </List>
               </FormControl>
-              {/* <h4>
-                <StarIcon />
-                <small style={{ marginLeft: 5 }}>
-                  You are subscribed to this patient
-                </small>
-              </h4> */}
-              {/* <Badge color="info" style={{ alignText: "center" }}>
-                Subscribed
-              </Badge> */}
               <Chip
                 size="small"
-                icon={<StarIcon />}
+                icon={<StarIcon style={{ color: "#fff" }} />}
                 label="Subscribed"
                 className={classes.chip}
-                color="primary"
+                style={{
+                  marginTop: 15,
+                  color: "#fff",
+                  backgroundColor: "#009CDE"
+                }}
               />
             </GridItem>
             <GridItem xs={12} sm={12} md={2}>
