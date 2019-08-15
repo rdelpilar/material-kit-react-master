@@ -28,7 +28,7 @@ function HeaderLinksRight({ ...props }) {
   return (
     <List className={classes.list}>
         <ListItem className={classes.listItem} style={{paddingRight: "5px", paddingLeft: "5px"}}>
-        <Avatar style={{ margin: 10, color: "#fff", backgroundColor: "white", height: 35, width: 35 }}><Link to="/my-account" style={{ color: "#009CDE" }}>SU</Link></Avatar>
+        <Avatar style={{ margin: 10, color: "#fff", backgroundColor: "white", height: 38, width: 38 }}><Link to="/my-account" style={{ color: "#009CDE" }}>SU</Link></Avatar>
       </ListItem>
       <ListItem className={classes.listItem} style={{paddingRight: "5px", paddingLeft: "5px"}}>
         <CustomDropdown
