@@ -18,22 +18,17 @@ import Favorite from "@material-ui/icons/Favorite";
 // core components
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
 import Button from "components/CustomButtons/Button.jsx";
-
+import { deepOrange, deepPurple, indigo } from "@material-ui/core/colors";
 import headerLinksStyle from "assets/jss/material-kit-react/components/headerLinksStyle.jsx";
-
+import {
+  Avatar
+} from "@material-ui/core";
 function HeaderLinksRight({ ...props }) {
   const { classes } = props;
   return (
     <List className={classes.list}>
         <ListItem className={classes.listItem} style={{paddingRight: "5px", paddingLeft: "5px"}}>
-            <Button
-            justIcon
-            round
-            href="/my-account"
-            color="white"
-            >
-            SU
-            </Button>
+        <Avatar style={{ margin: 10, color: "#fff", backgroundColor: "white", height: 35, width: 35 }}><Link to="/my-account" style={{ color: "#009CDE" }}>SU</Link></Avatar>
       </ListItem>
       <ListItem className={classes.listItem} style={{paddingRight: "5px", paddingLeft: "5px"}}>
         <CustomDropdown

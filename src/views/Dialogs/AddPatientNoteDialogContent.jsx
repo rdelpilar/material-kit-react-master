@@ -18,6 +18,8 @@ import {
   IconButton,
   TextField
 } from "@material-ui/core";
+import { deepOrange, deepPurple } from "@material-ui/core/colors";
+import { makeStyles } from "@material-ui/core/styles";
 import Star from "@material-ui/icons/Star";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
@@ -50,14 +52,15 @@ class AddPatientNoteDialogContent extends React.Component {
                   style={{ overflowY: "auto" }}
                 >
                   <ListItem button alignItems="flex-start">
-                    <Button
-                      justIcon
-                      round
-                      color="primary"
-                      style={{ marginRight: "20px" }}
+                    <Avatar
+                      style={{
+                        margin: 10,
+                        color: "#fff",
+                        backgroundColor: "#009CDE"
+                      }}
                     >
                       SU
-                    </Button>
+                    </Avatar>
                     <ListItemText
                       primary="August 14, 2019 - 12:30 PM"
                       secondary={
@@ -85,14 +88,15 @@ class AddPatientNoteDialogContent extends React.Component {
                   </ListItem>
                   <Divider variant="inset" component="li" />
                   <ListItem button alignItems="flex-start">
-                    <Button
-                      justIcon
-                      round
-                      color="primary"
-                      style={{ marginRight: "20px" }}
+                    <Avatar
+                      style={{
+                        margin: 10,
+                        color: "#fff",
+                        backgroundColor: "#009CDE"
+                      }}
                     >
                       SU
-                    </Button>
+                    </Avatar>
                     <ListItemText
                       primary="August 13, 2019 - 1:56 PM"
                       secondary={
@@ -120,14 +124,15 @@ class AddPatientNoteDialogContent extends React.Component {
                   </ListItem>
                   <Divider variant="inset" component="li" />
                   <ListItem button alignItems="flex-start">
-                    <Button
-                      justIcon
-                      round
-                      color="primary"
-                      style={{ marginRight: "20px" }}
+                    <Avatar
+                      style={{
+                        margin: 10,
+                        color: "#fff",
+                        backgroundColor: "#009CDE"
+                      }}
                     >
                       SU
-                    </Button>
+                    </Avatar>
                     <ListItemText
                       primary="August 12, 2019 - 14:03 PM"
                       secondary={
@@ -155,14 +160,15 @@ class AddPatientNoteDialogContent extends React.Component {
                   </ListItem>
                   <Divider variant="inset" component="li" />
                   <ListItem button alignItems="flex-start">
-                    <Button
-                      justIcon
-                      round
-                      color="default"
-                      style={{ marginRight: "20px" }}
+                    <Avatar
+                      style={{
+                        margin: 10,
+                        color: "#fff",
+                        backgroundColor: deepOrange[500]
+                      }}
                     >
                       RD
-                    </Button>
+                    </Avatar>
                     <ListItemText
                       primary="August 11, 2019 - 9:05 AM"
                       secondary={
@@ -184,14 +190,15 @@ class AddPatientNoteDialogContent extends React.Component {
                   </ListItem>
                   <Divider variant="inset" component="li" />
                   <ListItem button alignItems="flex-start">
-                    <Button
-                      justIcon
-                      round
-                      color="default"
-                      style={{ marginRight: "20px" }}
+                    <Avatar
+                      style={{
+                        margin: 10,
+                        color: "#fff",
+                        backgroundColor: deepOrange[500]
+                      }}
                     >
                       RD
-                    </Button>
+                    </Avatar>
                     <ListItemText
                       primary="August 10, 2019 - 2:02 PM"
                       secondary={
@@ -213,14 +220,15 @@ class AddPatientNoteDialogContent extends React.Component {
                   </ListItem>
                   <Divider variant="inset" component="li" />
                   <ListItem button alignItems="flex-start">
-                    <Button
-                      justIcon
-                      round
-                      color="primary"
-                      style={{ marginRight: "20px" }}
+                    <Avatar
+                      style={{
+                        margin: 10,
+                        color: "#fff",
+                        backgroundColor: "#009CDE"
+                      }}
                     >
                       SU
-                    </Button>
+                    </Avatar>
                     <ListItemText
                       primary="August 9, 2019 - 5:53 PM"
                       secondary={
@@ -248,14 +256,15 @@ class AddPatientNoteDialogContent extends React.Component {
                   </ListItem>
                   <Divider variant="inset" component="li" />
                   <ListItem button alignItems="flex-start">
-                    <Button
-                      justIcon
-                      round
-                      color="primary"
-                      style={{ marginRight: "20px" }}
+                    <Avatar
+                      style={{
+                        margin: 10,
+                        color: "#fff",
+                        backgroundColor: "#009CDE"
+                      }}
                     >
                       SU
-                    </Button>
+                    </Avatar>
                     <ListItemText
                       primary="August 8, 2019 - 8:20 AM"
                       secondary={
@@ -283,84 +292,15 @@ class AddPatientNoteDialogContent extends React.Component {
                   </ListItem>
                   <Divider variant="inset" component="li" />
                   <ListItem button alignItems="flex-start">
-                    <Button
-                      justIcon
-                      round
-                      color="primary"
-                      style={{ marginRight: "20px" }}
+                    <Avatar
+                      style={{
+                        margin: 10,
+                        color: "#fff",
+                        backgroundColor: "#009CDE"
+                      }}
                     >
                       SU
-                    </Button>
-                    <ListItemText
-                      primary="August 9, 2019 - 5:53 PM"
-                      secondary={
-                        <React.Fragment>
-                          <Typography
-                            component="span"
-                            variant="body2"
-                            className={classes.inline}
-                            color="textPrimary"
-                          >
-                            ClinicRCT_Phy_ImpTre1
-                          </Typography>
-                          {" — Patient note for today..."}
-                        </React.Fragment>
-                      }
-                    />
-                    <ListItemSecondaryAction>
-                      <IconButton edge="end" aria-label="delete">
-                        <EditIcon />
-                      </IconButton>
-                      <IconButton edge="end" aria-label="delete">
-                        <DeleteIcon />
-                      </IconButton>
-                    </ListItemSecondaryAction>
-                  </ListItem>
-                  <Divider variant="inset" component="li" />
-                  <ListItem button alignItems="flex-start">
-                    <Button
-                      justIcon
-                      round
-                      color="primary"
-                      style={{ marginRight: "20px" }}
-                    >
-                      SU
-                    </Button>
-                    <ListItemText
-                      primary="August 9, 2019 - 5:53 PM"
-                      secondary={
-                        <React.Fragment>
-                          <Typography
-                            component="span"
-                            variant="body2"
-                            className={classes.inline}
-                            color="textPrimary"
-                          >
-                            ClinicRCT_Phy_ImpTre1
-                          </Typography>
-                          {" — Patient note for today..."}
-                        </React.Fragment>
-                      }
-                    />
-                    <ListItemSecondaryAction>
-                      <IconButton edge="end" aria-label="delete">
-                        <EditIcon />
-                      </IconButton>
-                      <IconButton edge="end" aria-label="delete">
-                        <DeleteIcon />
-                      </IconButton>
-                    </ListItemSecondaryAction>
-                  </ListItem>
-                  <Divider variant="inset" component="li" />
-                  <ListItem button alignItems="flex-start">
-                    <Button
-                      justIcon
-                      round
-                      color="primary"
-                      style={{ marginRight: "20px" }}
-                    >
-                      SU
-                    </Button>
+                    </Avatar>
                     <ListItemText
                       primary="August 9, 2019 - 5:53 PM"
                       secondary={

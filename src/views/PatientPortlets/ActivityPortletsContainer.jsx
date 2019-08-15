@@ -13,6 +13,8 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import ReadingsPortlet from "views/PatientActivity/ReadingsPortlet";
 import DirectTrendChart from "views/Charts/DirectTrendChart";
+import DirectTrendChartPortlet from "views/PatientActivity/DirectTrendChartPortlet";
+import RecentInterventionPortlet from "views/PatientActivity/RecentInterventionPortlet";
 
 class ActivityPortletsContainer extends React.Component {
   render() {
@@ -30,7 +32,7 @@ class ActivityPortletsContainer extends React.Component {
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <Typography>Recent interventions...</Typography>
+            <RecentInterventionPortlet />
           </ExpansionPanelDetails>
         </ExpansionPanel>
         <ExpansionPanel expanded>
@@ -44,7 +46,7 @@ class ActivityPortletsContainer extends React.Component {
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <DirectTrendChart />
+            <DirectTrendChartPortlet />
           </ExpansionPanelDetails>
         </ExpansionPanel>
         <ExpansionPanel>

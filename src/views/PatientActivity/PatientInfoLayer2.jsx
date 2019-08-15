@@ -7,11 +7,11 @@ import FormControl from "@material-ui/core/FormControl";
 import GridContainer from "components/Grid/GridContainer";
 import GridItem from "components/Grid/GridItem";
 
-import { List, ListItem } from "@material-ui/core";
+import { List, ListItem, Chip } from "@material-ui/core";
 import AddPatientNoteDialog from "views/Dialogs/AddPatientNoteDialog";
 import Button from "components/CustomButtons/Button.jsx";
-import Badge from "components/Badge/Badge.jsx";
-import Stars from "@material-ui/icons/Stars";
+// import Badge from "components/Badge/Badge.jsx";
+import StarIcon from "@material-ui/icons/Stars";
 
 class PatientInfoLayer2 extends React.Component {
   constructor(props) {
@@ -109,9 +109,16 @@ class PatientInfoLayer2 extends React.Component {
                   You are subscribed to this patient
                 </small>
               </h4> */}
-              <Badge color="info" style={{ alignText: "center" }}>
+              {/* <Badge color="info" style={{ alignText: "center" }}>
                 Subscribed
-              </Badge>
+              </Badge> */}
+              <Chip
+                size="small"
+                icon={<StarIcon />}
+                label="Subscribed"
+                className={classes.chip}
+                color="primary"
+              />
             </GridItem>
             <GridItem xs={12} sm={12} md={2}>
               <h4>
