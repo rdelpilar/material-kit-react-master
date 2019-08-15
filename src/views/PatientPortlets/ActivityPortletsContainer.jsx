@@ -21,7 +21,7 @@ class ActivityPortletsContainer extends React.Component {
     const { classes } = this.props;
     return (
       <div>
-        <ExpansionPanel>
+        <ExpansionPanel expanded>
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1bh-content"

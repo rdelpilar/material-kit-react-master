@@ -76,7 +76,7 @@ class RecentInterventionPortlet extends React.Component {
                   title={
                     <div>
                       <Typography style={{ fontSize: 18 }}>
-                        Medication Intervention
+                        Message Intervention
                       </Typography>
                     </div>
                   }
@@ -102,11 +102,7 @@ class RecentInterventionPortlet extends React.Component {
                     <GridItem item style={{ width: "20%" }}></GridItem>
                     <GridItem item>
                       <Typography variant="body2" component="p">
-                        Effective: August 16, 2019
-                        <br />
-                        Start
-                        <br />
-                        Aldomet Methyldopa&reg;
+                        The patient is non-compliant
                       </Typography>
                     </GridItem>
                   </Grid>
