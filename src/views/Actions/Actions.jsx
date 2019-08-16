@@ -54,20 +54,25 @@ class Actions extends Component {
                 color: "primary"
               }}
               dropdownList={[
-                <Link className={classes.dropdownLink}>Inactivate</Link>,
+                <Link key="" className={classes.dropdownLink}>
+                  Inactivate
+                </Link>,
                 <Link
+                  key=""
                   className={classes.dropdownLink}
                   onClick={this.toggleAddInterventionsModal}
                 >
                   Add Intervention
                 </Link>,
                 <Link
+                  key=""
                   className={classes.dropdownLink}
                   onClick={this.toggleAddClinicalNoteModal}
                 >
                   Add Clinical Note
                 </Link>,
                 <Link
+                  key=""
                   className={classes.dropdownLink}
                   onClick={this.toggleRemindMeModal}
                 >

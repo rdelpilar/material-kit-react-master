@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
 import withStyles from "@material-ui/core/styles/withStyles";
 import componentsStyle from "assets/jss/material-kit-react/views/components.jsx";
+import headerLinksStyle from "assets/jss/material-kit-react/components/headerLinksStyle";
 
 import MaterialTable from "material-table";
 import axios from "axios";
@@ -14,6 +15,9 @@ import Chart from "../Charts/Chart";
 
 import { connect } from "react-redux";
 import { addPatientInfo } from "../../redux/actions";
+
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
 
 import Slide from "@material-ui/core/Slide";
 import AddInterventionDialog from "views/Dialogs/AddInterventionDialog";
@@ -113,82 +117,56 @@ class NotificationsMaterialTable extends Component {
           );
 
           item.action = (
-            <div>
-              <CustomDropdown
-                // left
-                // caret={false}
-                dropdownHeader="Actions"
-                buttonText={<MoreVertIcon />}
-                buttonProps={{
-                  className:
-                    classes.navLink + " " + classes.imageDropdownButton,
-                  color: "transparent"
-                }}
-                dropdownList={[
-                  <Link
-                    key=""
-                    style={{ color: "#009CDE" }}
-                    className={classes.dropdownLink}
-                    onClick={this.toggleAddInterventionsModal}
-                  >
-                    Add Intervention
-                  </Link>,
-                  { divider: true },
-                  <Link
-                    key=""
-                    style={{ color: "#009CDE" }}
-                    className={classes.dropdownLink}
-                    onClick={this.toggleAddClinicalNoteModal}
-                  >
-                    Add Clinical Note
-                  </Link>,
-                  <Link
-                    key=""
-                    style={{ color: "#009CDE" }}
-                    className={classes.dropdownLink}
-                    onClick={this.toggleUpdateStatusModal}
-                  >
-                    Update Status
-                  </Link>,
-                  "Clear Notification(s)",
-                  <Link
-                    key=""
-                    style={{ color: "#009CDE" }}
-                    className={classes.dropdownLink}
-                    onClick={this.toggleRemindMeModal}
-                  >
-                    Remind Me
-                  </Link>,
-                  "Subscribed"
-                ]}
-              />
-              {/* <CustomDropdown
-                noLiPadding
-                buttonProps={{
-                  className: classes.navLink,
-                  color: "transparent"
-                }}
-                buttonIcon={MoreVertIcon}
-                dropdownList={[
-                  <AddInterventionsDialog></AddInterventionsDialog>,
-                  <hr/>,
-                  <Link to="/learn-more" className={classes.dropdownLink}>
-                    Add Clinical Note
-                  </Link>,
-                  <Link to="/about" className={classes.dropdownLink}>
-                    Update Status
-                  </Link>,
-                  <Link to="#" className={classes.dropdownLink}>
-                    Clear Notification(s)
-                  </Link>,
-                  <Link to="#" className={classes.dropdownLink}>
-                    Remind Me
-                </Link>,
-                  <Link to="#" className={classes.dropdownLink}>
-                    Subscribed
-              </Link>
-                ]}
-              /> */}
+            <div style={{ marginTop: 10 }}>
+              <List className={classes.list}>
+                <ListItem className={classes.listItem}>
+                  <CustomDropdown
+                    noLiPadding
+                    dropdownHeader="Actions"
+                    buttonText={<MoreVertIcon />}
+                    buttonProps={{
+                      color: "transparent"
+                    }}
+                    dropdownList={[
+                      <Link
+                        key=""
+                        className={classes.dropdownLink}
+                        onClick={this.toggleAddInterventionsModal}
+                      >
+                        Add Intervention
+                      </Link>,
+                      { divider: true },
+                      <Link
+                        key=""
+                        className={classes.dropdownLink}
+                        onClick={this.toggleAddClinicalNoteModal}
+                      >
+                        Add Clinical Note
+                      </Link>,
+                      <Link
+                        key=""
+                        className={classes.dropdownLink}
+                        onClick={this.toggleUpdateStatusModal}
+                      >
+                        Update Status
+                      </Link>,
+                      <Link key="" className={classes.dropdownLink}>
+                        Clear Notification(s)
+                      </Link>,
+                      <Link
+                        key=""
+                        className={classes.dropdownLink}
+                        onClick={this.toggleRemindMeModal}
+                      >
+                        Remind Me
+                      </Link>,
+                      <Link key="" className={classes.dropdownLink}>
+                        Subscribed
+                      </Link>
+                    ]}
+                  />
+                </ListItem>
+              </List>
             </div>
           );
 
@@ -501,7 +479,7 @@ NotificationsMaterialTable.propTypes = {
   addPatientInfo: PropTypes.func.isRequired
 };
 
-const NotificationsMaterialTableWithCSS = withStyles(componentsStyle)(
+const NotificationsMaterialTableWithCSS = withStyles(headerLinksStyle)(
   NotificationsMaterialTable
 );
 

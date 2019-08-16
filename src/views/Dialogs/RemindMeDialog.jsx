@@ -142,7 +142,7 @@ class RemindMeDialog extends React.Component {
               </GridItem>
             </GridContainer>
           </DialogContent>
-          <Divider variant="inset" />
+          <Divider variant="middle" />
           <DialogActions className={classes.modalFooter}>
             <Button onClick={this.handleDialogClose} color="primary">
               Close

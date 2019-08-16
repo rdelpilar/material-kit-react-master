@@ -54,7 +54,10 @@ class UpdateStatusDialogContent extends React.Component {
                       }}
                     />
                     <div>
-                      <Info color="primary" style={{ marginRight: 5 }} />
+                      <Info
+                        color="primary"
+                        style={{ marginRight: 5, color: "#009CDE" }}
+                      />
                       <em>
                         The status is cleared when the patient is removed from
                         the Notification List. Previous statuses can be viewed

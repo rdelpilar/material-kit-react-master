@@ -2,17 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 import componentsStyle from "assets/jss/material-kit-react/views/components.jsx";
-import classNames from "classnames";
 import GridContainer from "components/Grid/GridContainer";
 import GridItem from "components/Grid/GridItem";
+import { FormControl, TextField } from "@material-ui/core";
+import "date-fns";
+import DateFnsUtils from "@date-io/date-fns";
 import {
-  FormControl,
-  FormLabel,
-  TextField,
-  Divider,
-  InputLabel
-} from "@material-ui/core";
-import Datetime from "react-datetime";
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker
+} from "@material-ui/pickers";
 
 import { connect } from "react-redux";
 import { toggleSnackbar } from "../../redux/actions";
@@ -20,11 +18,20 @@ import { toggleSnackbar } from "../../redux/actions";
 class RemindMeDialogContent extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      remindMeDialogSelectedDate: new Date()
+    };
   }
 
   handleSave = () => {
     const message = "Note has been saved!";
     this.props.toggleSnackbar(true, message);
+  };
+
+  handleRemindMeSelectedDateChange = date => {
+    this.setState({
+      remindMeDialogSelectedDate: date
+    });
   };
 
   render() {
@@ -40,8 +47,19 @@ class RemindMeDialogContent extends React.Component {
               className={classes.formControl}
               style={{ width: "100%", color: "#009CDE" }}
             >
-              <InputLabel shrink>Reminder date</InputLabel>
-              <Datetime />
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardDatePicker
+                  margin="normal"
+                  id="date-picker-dialog"
+                  label="Reminder date"
+                  format="MM/dd/yyyy"
+                  value={this.state.remindMeDialogSelectedDate}
+                  onChange={this.handleRemindMeSelectedDateChange}
+                  KeyboardButtonProps={{
+                    "aria-label": "change date"
+                  }}
+                />
+              </MuiPickersUtilsProvider>
             </FormControl>
           </GridItem>
           <GridItem xs={12} sm={12} md={12}>

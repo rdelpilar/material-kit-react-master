@@ -70,7 +70,7 @@ class RecentInterventionPortlet extends React.Component {
                     <Avatar
                       style={{ color: "#fff", backgroundColor: "#009CDE" }}
                     >
-                      <EnhancedEncryption />
+                      <Mail />
                     </Avatar>
                   }
                   title={
@@ -148,7 +148,7 @@ class RecentInterventionPortlet extends React.Component {
                         style={{ fontSize: 14 }}
                         color="textSecondary"
                       >
-                        <b>Sent on:</b> Thursday, August 15, 2019, 12:46 PM
+                        <b>Sent on:</b> Thursday, August 15, 2019, 9:21 AM
                       </Typography>
                       <Typography
                         style={{ fontSize: 12 }}
@@ -214,7 +214,7 @@ class RecentInterventionPortlet extends React.Component {
                         style={{ fontSize: 14 }}
                         color="textSecondary"
                       >
-                        <b>Sent on:</b> Wednesday, August 14, 2019, 12:46 PM
+                        <b>Sent on:</b> Wednesday, August 14, 2019, 6:50 PM
                       </Typography>
                       <Typography
                         style={{ fontSize: 12 }}
@@ -276,7 +276,7 @@ class RecentInterventionPortlet extends React.Component {
                         style={{ fontSize: 14 }}
                         color="textSecondary"
                       >
-                        <b>Sent on:</b> Tuesday, August 13, 2019, 12:46 PM
+                        <b>Sent on:</b> Tuesday, August 13, 2019, 3:36 PM
                       </Typography>
                       <Typography
                         style={{ fontSize: 12 }}
@@ -342,7 +342,7 @@ class RecentInterventionPortlet extends React.Component {
                         style={{ fontSize: 14 }}
                         color="textSecondary"
                       >
-                        <b>Sent on:</b> Monday, August 12, 2019, 12:46 PM
+                        <b>Sent on:</b> Monday, August 12, 2019, 3:15 PM
                       </Typography>
                       <Typography
                         style={{ fontSize: 12 }}
@@ -408,7 +408,7 @@ class RecentInterventionPortlet extends React.Component {
                         style={{ fontSize: 14 }}
                         color="textSecondary"
                       >
-                        <b>Sent on:</b> Friday, August 9, 2019, 12:46 PM
+                        <b>Sent on:</b> Friday, August 9, 2019, 1:29 PM
                       </Typography>
                       <Typography
                         style={{ fontSize: 12 }}

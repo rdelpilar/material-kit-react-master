@@ -5,10 +5,8 @@ import componentsStyle from "assets/jss/material-kit-react/views/components.jsx"
 import classNames from "classnames";
 import GridContainer from "components/Grid/GridContainer";
 import GridItem from "components/Grid/GridItem";
-import Button from "components/CustomButtons/Button.jsx";
 import {
   List,
-  ListItemAvatar,
   ListItem,
   Avatar,
   ListItemText,
@@ -18,9 +16,7 @@ import {
   IconButton,
   TextField
 } from "@material-ui/core";
-import { deepOrange, deepPurple } from "@material-ui/core/colors";
-import { makeStyles } from "@material-ui/core/styles";
-import Star from "@material-ui/icons/Star";
+import { deepOrange } from "@material-ui/core/colors";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 
@@ -181,9 +177,7 @@ class AddPatientNoteDialogContent extends React.Component {
                           >
                             ClinicRCT_Phy_ImpTre2
                           </Typography>
-                          {
-                            " — Patient note for this day... added by ClinicRCT_Phy_ImpTre2"
-                          }
+                          {" — Patient note for this day..."}
                         </React.Fragment>
                       }
                     />
@@ -211,9 +205,7 @@ class AddPatientNoteDialogContent extends React.Component {
                           >
                             ClinicRCT_Phy_ImpTre2
                           </Typography>
-                          {
-                            " — Patient note for this day... added by ClinicRCT_Phy_ImpTre2"
-                          }
+                          {" — Patient note for this day..."}
                         </React.Fragment>
                       }
                     />
