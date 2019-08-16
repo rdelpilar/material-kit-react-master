@@ -120,6 +120,7 @@ class Chart extends Component {
     circleBullet.circle.radius = 5;
     circleBullet.circle.stroke = am4core.color("#fff");
     circleBullet.circle.strokeWidth = 1;
+    //circleBullet.background.color = "#009CDE";
     circleBullet.tooltipText = "{date}\nValue: [bold]{value}[/]";
 
     var labelBullet = lineSeries.bullets.push(new am4charts.LabelBullet());

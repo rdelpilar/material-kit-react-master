@@ -28,17 +28,27 @@ class NotificationsMaterialTable extends Component {
         let items = [];
         res.data.patientInfos.forEach(item => {
           if (item.priority === true) {
-            item.priority = <Star color="primary" />;
+            item.priority = (
+              <Star style={{ color: "#009CDE", backgroundColor: "#fff" }} />
+            );
           } else {
-            item.priority = <StarBorder color="primary" />;
+            item.priority = (
+              <StarBorder
+                style={{ color: "#009CDE", backgroundColor: "#fff" }}
+              />
+            );
           }
 
           if (item.paNotification === true) {
-            item.paNotification = <Error color="primary" />;
+            item.paNotification = (
+              <Error style={{ color: "#009CDE", backgroundColor: "#fff" }} />
+            );
           }
 
           if (item.subscribed === true) {
-            item.subscribed = <Stars color="primary" />;
+            item.subscribed = (
+              <Stars style={{ color: "#009CDE", backgroundColor: "#fff" }} />
+            );
           }
 
           items.push(item);
@@ -76,13 +86,10 @@ class NotificationsMaterialTable extends Component {
       .reverse()
       .join("");
 
-    console.log("a: ", a);
     let arrB = b.papImplantDate.split("-");
     b = swap(arrB, 0, 1)
       .reverse()
       .join("");
-
-    console.log("b: ", b);
 
     return a.localeCompare(b, "en");
   }

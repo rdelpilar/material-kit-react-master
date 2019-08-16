@@ -43,7 +43,7 @@ class AddClinicalNoteContent extends React.Component {
                   >
                     <FormLabel component="legend">
                       <span>
-                        <Info color="primary" style={{ marginRight: 5 }} />
+                        <Info style={{ marginRight: 5, color: "#009CDE" }} />
                         <em>This note will not be sent to this patient</em>
                       </span>
                     </FormLabel>

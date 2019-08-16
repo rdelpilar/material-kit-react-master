@@ -126,6 +126,8 @@ class NotificationsMaterialTable extends Component {
                 }}
                 dropdownList={[
                   <Link
+                    key=""
+                    style={{ color: "#009CDE" }}
                     className={classes.dropdownLink}
                     onClick={this.toggleAddInterventionsModal}
                   >
@@ -133,12 +135,16 @@ class NotificationsMaterialTable extends Component {
                   </Link>,
                   { divider: true },
                   <Link
+                    key=""
+                    style={{ color: "#009CDE" }}
                     className={classes.dropdownLink}
                     onClick={this.toggleAddClinicalNoteModal}
                   >
                     Add Clinical Note
                   </Link>,
                   <Link
+                    key=""
+                    style={{ color: "#009CDE" }}
                     className={classes.dropdownLink}
                     onClick={this.toggleUpdateStatusModal}
                   >
@@ -146,6 +152,8 @@ class NotificationsMaterialTable extends Component {
                   </Link>,
                   "Clear Notification(s)",
                   <Link
+                    key=""
+                    style={{ color: "#009CDE" }}
                     className={classes.dropdownLink}
                     onClick={this.toggleRemindMeModal}
                   >
@@ -417,7 +425,7 @@ class NotificationsMaterialTable extends Component {
                 }}
                 unmountOnExit
               >
-                <CircularProgress disableShrink />
+                <CircularProgress style={{ color: "#009CDE" }} disableShrink />
               </Fade>
             )}
           </div>

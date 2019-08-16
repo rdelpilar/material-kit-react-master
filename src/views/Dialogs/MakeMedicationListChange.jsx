@@ -33,7 +33,7 @@ class MakeMedicationListChange extends React.Component {
               <div className={classNames(classes.section)}>
                 <br />
                 <div className={classes.container}>
-                  <a>Medication List</a>
+                  <a style={{ color: "#009CDE" }}>Medication List</a>
                 </div>
               </div>
             </div>

@@ -57,7 +57,7 @@ class SendPatientMessagesContent extends React.Component {
                           </small>
                         </h4>
                         <span>
-                          <Info color="primary" style={{ marginRight: 5 }} />
+                          <Info style={{ marginRight: 5, color: "#009CDE" }} />
                           <small>
                             <em>
                               Record messages in the patient's medical record as
