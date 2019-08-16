@@ -493,7 +493,7 @@ class MedicationsPortlet extends React.Component {
                         </MuiPickersUtilsProvider>
                       </FormControl>
                     </GridItem>
-                    <GridItem xs={12} sm={12} md={6}>
+                    <GridItem xs={12} sm={12} md={12}>
                       <FormControl
                         className={classes.formControl}
                         style={{ width: "100%", color: "#009CDE" }}
@@ -841,7 +841,7 @@ class MedicationsPortlet extends React.Component {
                   </GridContainer>
                   <br />
                   <GridContainer>
-                    <GridItem xs={12} sm={12} md={6}>
+                    <GridItem xs={12} sm={12} md={12}>
                       <FormControl
                         className={classes.formControl}
                         style={{ width: "100%", color: "#009CDE" }}
